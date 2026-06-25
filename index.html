@@ -1,31 +1,28 @@
 <!DOCTYPE html>
 <html lang="sv">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Inre Spegel</title>
-  <meta name="description" content="Inre Spegel – en plats för själslig reflektion, galaktisk symbolik och jordad närvaro." />
+  <meta name="description" content="Inre Spegel – en plats för reflektion, stillhet och inre vägledning.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --bg: #0f0f12;
-      --bg-soft: #16161b;
-      --panel: #1d1d24;
-      --panel-2: #252530;
-      --text: #f3efe7;
-      --muted: #b9b1a4;
+      --bg: #0e0f12;
+      --panel: #171920;
+      --panel-2: #1f222b;
+      --text: #f3eee6;
+      --muted: #b8b0a2;
       --line: rgba(255,255,255,0.08);
       --gold: #c8a96b;
-      --gold-soft: #8f7650;
-      --accent: #9fb7b9;
-      --danger: #c57f7f;
-      --shadow: 0 10px 30px rgba(0,0,0,0.35);
+      --gold-dark: #8f7446;
+      --max: 1100px;
       --radius: 18px;
-      --max: 1180px;
+      --shadow: 0 10px 30px rgba(0,0,0,0.35);
     }
 
     * {
@@ -38,12 +35,12 @@
 
     body {
       margin: 0;
+      font-family: "Inter", sans-serif;
+      color: var(--text);
       background:
         radial-gradient(circle at top, rgba(200,169,107,0.08), transparent 30%),
-        radial-gradient(circle at 80% 20%, rgba(159,183,185,0.08), transparent 25%),
+        radial-gradient(circle at 80% 20%, rgba(180,180,255,0.05), transparent 22%),
         var(--bg);
-      color: var(--text);
-      font-family: "Inter", sans-serif;
       line-height: 1.6;
     }
 
@@ -60,55 +57,53 @@
     header {
       position: sticky;
       top: 0;
-      z-index: 20;
+      z-index: 10;
       backdrop-filter: blur(12px);
-      background: rgba(15,15,18,0.75);
+      background: rgba(14,15,18,0.75);
       border-bottom: 1px solid var(--line);
     }
 
     .nav {
+      min-height: 74px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 20px;
-      min-height: 76px;
     }
 
     .brand {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 12px;
       font-family: "Cormorant Garamond", serif;
-      letter-spacing: 0.06em;
     }
 
-    .brand-mark {
+    .logo {
       width: 42px;
       height: 42px;
-      border: 1px solid rgba(200,169,107,0.35);
       border-radius: 50%;
+      border: 1px solid rgba(200,169,107,0.35);
       display: grid;
       place-items: center;
       color: var(--gold);
-      box-shadow: inset 0 0 24px rgba(200,169,107,0.08);
       font-size: 1.1rem;
+      box-shadow: inset 0 0 20px rgba(200,169,107,0.08);
     }
 
-    .brand span {
-      font-size: 1.6rem;
+    .brand-name {
+      font-size: 1.7rem;
+      letter-spacing: 0.04em;
     }
 
     nav {
       display: flex;
-      gap: 20px;
       flex-wrap: wrap;
-      justify-content: flex-end;
+      gap: 18px;
     }
 
     nav a {
       color: var(--muted);
       font-size: 0.95rem;
-      transition: 0.25s ease;
     }
 
     nav a:hover {
@@ -116,63 +111,65 @@
     }
 
     .hero {
-      padding: 88px 0 56px;
+      padding: 90px 0 60px;
     }
 
-    .hero-grid {
+    .hero-box {
       display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 28px;
-      align-items: stretch;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 24px;
     }
 
-    .hero-card,
-    .panel {
+    .card {
       background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
       border: 1px solid var(--line);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
     }
 
-    .hero-card {
-      padding: 42px;
+    .hero-main {
+      padding: 40px;
+    }
+
+    .hero-side {
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
     .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
       color: var(--gold);
-      font-size: 0.84rem;
       text-transform: uppercase;
       letter-spacing: 0.14em;
-      margin-bottom: 18px;
-    }
-
-    .eyebrow::before {
-      content: "";
-      width: 26px;
-      height: 1px;
-      background: rgba(200,169,107,0.55);
+      font-size: 0.82rem;
+      margin-bottom: 14px;
     }
 
     h1, h2, h3 {
-      margin: 0 0 16px;
+      margin: 0 0 14px;
       font-family: "Cormorant Garamond", serif;
-      line-height: 1.05;
-      letter-spacing: 0.01em;
+      line-height: 1.06;
     }
 
     h1 {
-      font-size: clamp(3rem, 6vw, 5.4rem);
+      font-size: clamp(3rem, 6vw, 5rem);
       max-width: 10ch;
     }
 
+    h2 {
+      font-size: clamp(2.1rem, 4vw, 3.2rem);
+    }
+
+    h3 {
+      font-size: 1.8rem;
+    }
+
     .lead {
-      font-size: 1.06rem;
       color: var(--muted);
-      max-width: 62ch;
-      margin-bottom: 28px;
+      max-width: 60ch;
+      margin-bottom: 26px;
+      font-size: 1.05rem;
     }
 
     .actions {
@@ -188,9 +185,8 @@
       min-height: 46px;
       padding: 0 18px;
       border-radius: 999px;
-      border: 1px solid transparent;
       font-weight: 500;
-      transition: 0.25s ease;
+      transition: 0.2s ease;
     }
 
     .btn-primary {
@@ -199,14 +195,14 @@
     }
 
     .btn-primary:hover {
-      background: #d7b67a;
+      background: #d9b778;
       transform: translateY(-1px);
     }
 
     .btn-secondary {
-      border-color: var(--line);
-      color: var(--text);
+      border: 1px solid var(--line);
       background: rgba(255,255,255,0.02);
+      color: var(--text);
     }
 
     .btn-secondary:hover {
@@ -214,46 +210,30 @@
       background: rgba(255,255,255,0.04);
     }
 
-    .panel {
-      padding: 28px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
     .quote {
       font-family: "Cormorant Garamond", serif;
-      font-size: 1.55rem;
-      color: var(--text);
+      font-size: 1.6rem;
       line-height: 1.25;
-      margin-bottom: 18px;
+      color: var(--text);
     }
 
     .small {
       color: var(--muted);
-      font-size: 0.95rem;
+      font-size: 0.94rem;
     }
 
     section {
-      padding: 24px 0 72px;
+      padding: 20px 0 72px;
     }
 
     .section-head {
-      display: flex;
-      align-items: end;
-      justify-content: space-between;
-      gap: 18px;
       margin-bottom: 22px;
     }
 
     .section-head p {
-      max-width: 65ch;
-      color: var(--muted);
       margin: 0;
-    }
-
-    h2 {
-      font-size: clamp(2rem, 4vw, 3.2rem);
+      max-width: 70ch;
+      color: var(--muted);
     }
 
     .grid-3,
@@ -270,135 +250,110 @@
       grid-template-columns: repeat(2, 1fr);
     }
 
-    .card {
+    .panel {
+      padding: 24px;
       background: var(--panel);
       border: 1px solid var(--line);
       border-radius: var(--radius);
-      padding: 24px;
       box-shadow: var(--shadow);
     }
 
-    .card h3 {
-      font-size: 1.8rem;
-      margin-bottom: 12px;
-    }
-
-    .card p {
-      color: var(--muted);
-      margin: 0;
-    }
-
-    .sigil {
+    .symbol {
       width: 46px;
       height: 46px;
-      border-radius: 14px;
+      margin-bottom: 16px;
       display: grid;
       place-items: center;
-      margin-bottom: 16px;
+      border-radius: 14px;
       border: 1px solid rgba(200,169,107,0.22);
       color: var(--gold);
       background: rgba(200,169,107,0.05);
       font-size: 1.1rem;
     }
 
-    .reading {
-      display: grid;
-      grid-template-columns: 0.9fr 1.1fr;
-      gap: 22px;
-    }
-
-    .reading .card p + p {
-      margin-top: 14px;
-    }
-
-    .ritual-list {
-      display: grid;
-      gap: 14px;
-    }
-
-    .ritual-item {
-      padding: 16px 18px;
-      border-radius: 14px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.02);
+    .panel p {
       color: var(--muted);
+      margin: 0;
     }
 
-    .ritual-item strong {
-      color: var(--text);
-      display: block;
-      margin-bottom: 6px;
+    .panel p + p {
+      margin-top: 12px;
     }
 
     .mirror-box {
-      background: linear-gradient(180deg, rgba(200,169,107,0.06), rgba(255,255,255,0.02));
-      border: 1px solid rgba(200,169,107,0.18);
-      border-radius: calc(var(--radius) + 4px);
       padding: 28px;
+      border-radius: var(--radius);
+      border: 1px solid rgba(200,169,107,0.2);
+      background: linear-gradient(180deg, rgba(200,169,107,0.06), rgba(255,255,255,0.02));
       box-shadow: var(--shadow);
     }
 
-    .mirror-box textarea,
-    .mirror-box input {
-      width: 100%;
-      margin-top: 12px;
-      background: rgba(0,0,0,0.18);
-      border: 1px solid var(--line);
-      border-radius: 14px;
+    label {
+      display: block;
+      margin-bottom: 8px;
       color: var(--text);
+      font-weight: 500;
+    }
+
+    input,
+    textarea {
+      width: 100%;
       padding: 14px 16px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: rgba(0,0,0,0.16);
+      color: var(--text);
       font: inherit;
       outline: none;
     }
 
-    .mirror-box textarea {
-      min-height: 140px;
-      resize: vertical;
-    }
-
-    .mirror-box input:focus,
-    .mirror-box textarea:focus {
+    input:focus,
+    textarea:focus {
       border-color: rgba(200,169,107,0.4);
       box-shadow: 0 0 0 3px rgba(200,169,107,0.08);
     }
 
+    textarea {
+      min-height: 130px;
+      resize: vertical;
+      margin-top: 16px;
+    }
+
     .output {
-      margin-top: 18px;
-      padding: 18px;
+      margin-top: 16px;
+      min-height: 72px;
+      padding: 16px;
       border-radius: 14px;
-      background: rgba(255,255,255,0.03);
       border: 1px solid var(--line);
+      background: rgba(255,255,255,0.03);
       color: var(--muted);
-      min-height: 70px;
     }
 
     .mantra {
       font-family: "Cormorant Garamond", serif;
-      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
       line-height: 1.2;
-      color: var(--text);
       margin: 0;
     }
 
     footer {
-      padding: 24px 0 60px;
+      padding: 20px 0 56px;
       color: var(--muted);
     }
 
     .footer-box {
       border-top: 1px solid var(--line);
-      padding-top: 24px;
+      padding-top: 22px;
       display: flex;
       justify-content: space-between;
       gap: 16px;
       flex-wrap: wrap;
     }
 
-    @media (max-width: 980px) {
-      .hero-grid,
-      .reading,
-      .grid-2,
-      .grid-3 {
+    @media (max-width: 900px) {
+      .hero-box,
+      .grid-3,
+      .grid-2 {
         grid-template-columns: 1fr;
       }
 
@@ -406,13 +361,9 @@
         max-width: 100%;
       }
 
-      .hero {
-        padding-top: 56px;
-      }
-
-      .hero-card,
+      .hero-main,
+      .hero-side,
       .panel,
-      .card,
       .mirror-box {
         padding: 24px;
       }
@@ -420,9 +371,9 @@
 
     @media (max-width: 640px) {
       .nav {
+        flex-direction: column;
         align-items: flex-start;
         padding: 16px 0;
-        flex-direction: column;
       }
 
       nav {
@@ -436,15 +387,19 @@
       .btn {
         width: 100%;
       }
+
+      .hero {
+        padding-top: 56px;
+      }
     }
   </style>
 </head>
 <body>
   <header>
     <div class="container nav">
-      <a href="#" class="brand">
-        <div class="brand-mark">◐</div>
-        <span>Inre Spegel</span>
+      <a class="brand" href="#">
+        <div class="logo">◐</div>
+        <div class="brand-name">Inre Spegel</div>
       </a>
 
       <nav>
@@ -452,36 +407,32 @@
         <a href="#lasning">Läsning</a>
         <a href="#signatur">Signatur</a>
         <a href="#spegel">Dagens spegel</a>
-        <a href="#ritualer">Ritualer</a>
       </nav>
     </div>
   </header>
 
   <main>
     <section class="hero">
-      <div class="container hero-grid">
-        <div class="hero-card">
-          <div class="eyebrow">En plats för närvaro, sanning och minne</div>
+      <div class="container hero-box">
+        <div class="card hero-main">
+          <div class="eyebrow">En plats för stillhet och inre klarhet</div>
           <h1>Det livet visar dig är din inre spegel.</h1>
           <p class="lead">
-            Inre Spegel är en stilla portal för självreflektion, symbolik, galaktisk signatur och jordad andlighet.
-            Här möter intuition struktur, och det osynliga får ett språk i det levda livet.
+            Inre Spegel är en plats där symbolik, självkännedom och jordad andlighet får mötas.
+            Här blir det du känner inte bara något du går igenom, utan något du kan förstå djupare.
           </p>
           <div class="actions">
             <a class="btn btn-primary" href="#spegel">Öppna dagens spegel</a>
-            <a class="btn btn-secondary" href="#lasning">Läs din väg</a>
+            <a class="btn btn-secondary" href="#lasning">Läs mer</a>
           </div>
         </div>
 
-        <aside class="panel">
-          <div>
-            <p class="quote">
-              “Du är inte här för att fly världen. Du är här för att se igenom den,
-              minnas vem du är och bygga något sant mitt i den.”
-            </p>
-          </div>
+        <aside class="card hero-side">
+          <p class="quote">
+            “Du är inte här för att fly världen. Du är här för att minnas vem du är mitt i den.”
+          </p>
           <p class="small">
-            Inspirerad av ett språk där tid, symboler, läkning och själslig riktning får mötas i vardagen.
+            En mjuk portal för reflektion, sanning och inre riktning.
           </p>
         </aside>
       </div>
@@ -490,40 +441,35 @@
     <section id="om">
       <div class="container">
         <div class="section-head">
-          <div>
-            <h2>Vad är Inre Spegel?</h2>
-          </div>
+          <h2>Vad är Inre Spegel?</h2>
           <p>
-            En inre spegel visar inte bara vem du tror att du är — den visar vad livet försöker säga till dig genom relationer,
-            upprepningar, förlust, längtan, motstånd och synkronicitet.
+            En inre spegel visar dig inte bara ytan. Den visar vad livet försöker berätta genom känslor,
+            relationer, upprepade mönster, längtan och förändring.
           </p>
         </div>
 
         <div class="grid-3">
-          <article class="card">
-            <div class="sigil">✦</div>
+          <article class="panel">
+            <div class="symbol">✦</div>
             <h3>Själens språk</h3>
             <p>
-              Symboler, arketyper och frekvenser används här som ett språk för att förstå ditt inre landskap,
-              din längtan och det du håller på att vakna upp till.
+              Symboler, arketyper och ord kan ibland öppna sådant i oss som vanlig analys inte når.
             </p>
           </article>
 
-          <article class="card">
-            <div class="sigil">◌</div>
+          <article class="panel">
+            <div class="symbol">◌</div>
             <h3>Jordad närvaro</h3>
             <p>
-              Det andliga blir starkast när det får landa i kroppen, i hemmet, i relationer, i val,
-              i arbete och i hur du bär dig själv genom vardagen.
+              Det andliga blir verkligt först när det får landa i kroppen, i vardagen och i dina val.
             </p>
           </article>
 
-          <article class="card">
-            <div class="sigil">☾</div>
-            <h3>Levd transformation</h3>
+          <article class="panel">
+            <div class="symbol">☾</div>
+            <h3>Inre återkomst</h3>
             <p>
-              Det du går igenom är inte bara ett problem att lösa. Det kan också vara en portal,
-              en initiering och en återkomst till det som alltid varit sant i dig.
+              Det du går igenom kan vara mer än ett hinder. Det kan också vara en väg tillbaka till dig själv.
             </p>
           </article>
         </div>
@@ -533,44 +479,32 @@
     <section id="lasning">
       <div class="container">
         <div class="section-head">
-          <div>
-            <h2>En läsning</h2>
-          </div>
+          <h2>En läsning</h2>
           <p>
-            Den här texten är skriven i en ton som passar Inre Spegel — mystisk men klar, poetisk men förankrad.
+            För dig som känner att du bär något mer än bara vardag, men som också vill stå kvar med båda fötterna på jorden.
           </p>
         </div>
 
-        <div class="reading">
-          <article class="card">
-            <h3>Till dig som bygger mellan världar</h3>
+        <div class="grid-2">
+          <article class="panel">
+            <h3>Brobyggaren</h3>
             <p>
-              Du är inte här för att välja mellan det tekniska och det själsliga. Du är här för att förena dem.
-              Din väg är att låta det osynliga få form, funktion och riktning.
+              Du är inte här för att välja mellan det logiska och det intuitiva. Du är här för att förena dem.
             </p>
             <p>
-              Det som andra kallar motsatser — intuition och logik, känsla och system, sorg och styrka —
-              är i dig delar av samma kod.
-            </p>
-            <p>
-              Du bär en brobyggande energi. En del av dig minns andra sätt att leva, andra sätt att känna tid,
-              andra sätt att se verkligheten. Men din uppgift är inte att fly hitifrån. Din uppgift är att förankra det du minns här.
+              Det som verkar motsägelsefullt i andra människor kan i dig bli en levande helhet:
+              teknik och känsla, struktur och ande, sorg och styrka.
             </p>
           </article>
 
-          <article class="card">
-            <h3>När livet blir spegel</h3>
+          <article class="panel">
+            <h3>När livet talar</h3>
             <p>
-              Din största gåva ligger nära ditt djupaste sår. När något faller samman i ditt liv väcks samtidigt din förmåga
-              att se klarare, känna djupare och skapa sannare.
+              Ibland talar livet genom synkronicitet. Ibland genom förlust, väntan eller tryck.
+              Det som gör ont är inte alltid där för att bryta ner dig. Det kan också vara där för att visa vad som är sant.
             </p>
             <p>
-              Du är här för att återställa flöde — i system, i rum, i människor och i dig själv.
-              Det som är trasigt drar sig till dig, inte som en förbannelse utan som ett kall.
-            </p>
-            <p>
-              När du slutar se din känslighet som ett fel och istället som ett instrument,
-              börjar livet svara dig på ett annat sätt. Då blir även sorgen en dörr till mognad, kärlek och syfte.
+              När du vågar möta det utan att fly, börjar en ny typ av klarhet växa fram.
             </p>
           </article>
         </div>
@@ -580,35 +514,32 @@
     <section id="signatur">
       <div class="container">
         <div class="section-head">
-          <div>
-            <h2>Galaktisk signatur</h2>
-          </div>
+          <h2>Din signatur</h2>
           <p>
-            Här kan du presentera tribe, tone, ikon, betydelse och ett personligt mantra. Byt gärna ut texten nedan mot din exakta signatur senare.
+            Här kan du senare lägga in din exakta galaktiska signatur, ikon, tolkning och personliga mantra.
           </p>
         </div>
 
         <div class="grid-2">
-          <article class="card">
-            <h3>Exempel på tolkning</h3>
+          <article class="panel">
+            <h3>Tolkning</h3>
             <p>
-              Din signatur visar inte bara vem du är, utan hur din energi rör sig genom tid, relationer och val.
-              Den pekar mot ditt syfte, din dolda kraft, din största gåva och den väg som för dig närmare ditt högre jag.
+              Din signatur kan ses som ett språk för din energi: hur du rör dig, vad du bär, vad som väcker dig
+              och vad livet återkommande försöker lära dig.
             </p>
-            <p style="margin-top:14px;">
-              Ikonerna kan läsas som arketyper: brobyggaren, spegeln, helaren, krigaren, stormen, solen.
-              Varje symbol öppnar en annan dörr i dig.
+            <p>
+              Vissa människor bär brobyggarens energi. Andra spegelns, helarens, stormens eller krigarens.
             </p>
           </article>
 
-          <article class="mirror-box">
-            <p class="eyebrow" style="margin-bottom:10px;">Mantra</p>
+          <div class="mirror-box">
+            <div class="eyebrow">Mantra</div>
             <p class="mantra">
-              Jag minns vem jag är. <br>
-              Jag bygger broar mellan världar. <br>
-              Jag förankrar sanning i det levda livet.
+              Jag minns vem jag är.<br>
+              Jag väljer klarhet.<br>
+              Jag förankrar sanning i mitt liv.
             </p>
-          </article>
+          </div>
         </div>
       </div>
     </section>
@@ -616,69 +547,31 @@
     <section id="spegel">
       <div class="container">
         <div class="section-head">
-          <div>
-            <h2>Dagens spegel</h2>
-          </div>
+          <h2>Dagens spegel</h2>
           <p>
-            Skriv ett ord, en känsla eller något du går igenom. Sidan speglar tillbaka en kort reflektion.
+            Skriv vad du känner idag och få en kort reflektion tillbaka.
           </p>
         </div>
 
         <div class="grid-2">
           <div class="mirror-box">
             <label for="feeling">Vad visar livet dig idag?</label>
-            <input id="feeling" type="text" placeholder="t.ex. sorg, press, hopp, väntan, kärlek, tomhet" />
+            <input id="feeling" type="text" placeholder="t.ex. sorg, hopp, press, väntan, kärlek">
 
-            <label for="journal" style="display:block; margin-top:18px;">Valfri anteckning</label>
-            <textarea id="journal" placeholder="Skriv fritt om vad som rör sig i dig..."></textarea>
+            <label for="journal" style="margin-top:16px;">Anteckning</label>
+            <textarea id="journal" placeholder="Skriv några rader om vad som rör sig i dig..."></textarea>
 
-            <button class="btn btn-primary" style="margin-top:18px;" onclick="reflectMessage()">Spegla tillbaka</button>
+            <button class="btn btn-primary" style="margin-top:16px;" onclick="reflectMessage()">Spegla tillbaka</button>
 
-            <div class="output" id="output">
-              Din reflektion visas här...
-            </div>
+            <div class="output" id="output">Din reflektion visas här...</div>
           </div>
 
-          <article class="card">
+          <article class="panel">
             <h3>Frågor att sitta med</h3>
-            <p>
-              Vad i mitt liv försöker få min uppmärksamhet just nu?
-            </p>
-            <p style="margin-top:12px;">
-              Vad håller jag fast i som egentligen vill bli frigjort?
-            </p>
-            <p style="margin-top:12px;">
-              Var i mitt liv behöver jag mer sanning, mer ömhet och mer närvaro?
-            </p>
+            <p>Vad i mitt liv försöker få min uppmärksamhet just nu?</p>
+            <p>Vad håller jag fast i som egentligen vill bli frigjort?</p>
+            <p>Var behöver jag mer sanning, mer ömhet och mer närvaro?</p>
           </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="ritualer">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <h2>Ritualer för förankring</h2>
-          </div>
-          <p>
-            En spirituell väg blir starkare när den får kropp, handling och rytm.
-          </p>
-        </div>
-
-        <div class="ritual-list">
-          <div class="ritual-item">
-            <strong>Spegelritual</strong>
-            Sitt i stillhet framför en spegel i fem minuter och fråga: “Vad försöker livet visa mig nu?”
-          </div>
-          <div class="ritual-item">
-            <strong>Jordningsritual</strong>
-            Laga, rensa eller organisera något fysiskt i hemmet som en medveten handling av inre återställning.
-          </div>
-          <div class="ritual-item">
-            <strong>Signaturritual</strong>
-            Läs ditt mantra högt varje morgon och låt orden bli en kalibrering av din riktning.
-          </div>
         </div>
       </div>
     </section>
@@ -687,7 +580,7 @@
   <footer>
     <div class="container footer-box">
       <div>© Inre Spegel</div>
-      <div>En plats för sanning, symbolik och inre återkoppling.</div>
+      <div>Stillhet, symbolik och inre riktning.</div>
     </div>
   </footer>
 
@@ -697,24 +590,24 @@
       const journal = document.getElementById("journal").value.trim();
       const output = document.getElementById("output");
 
-      let response = "Det du känner just nu är inte slumpmässigt. Stanna upp och fråga vad det vill visa dig.";
+      let response = "Det du känner just nu bär ett budskap. Stanna upp och fråga vad det vill visa dig.";
 
       if (feeling.includes("sorg")) {
-        response = "Sorgen visar att något har älskats på djupet. Försök inte jaga bort den direkt. Låt den bli en bro mellan kärlek, minne och mognad.";
+        response = "Sorgen visar att något har älskats på djupet. Försök inte tvinga bort den. Låt den få vara en bro mellan kärlek, minne och mognad.";
       } else if (feeling.includes("press") || feeling.includes("stress")) {
-        response = "Pressen kan vara ett tecken på att din energi dras åt flera håll samtidigt. Fråga dig vad som verkligen är ditt att bära, och vad du kan lägga ner.";
+        response = "Pressen kan vara ett tecken på att du bär för mycket samtidigt. Fråga dig vad som verkligen är ditt att hålla just nu.";
       } else if (feeling.includes("hopp")) {
-        response = "Hoppet är ofta själens sätt att minnas framtiden innan sinnet hunnit förstå den. Skydda det som ett litet inre ljus.";
+        response = "Hoppet är ofta själens sätt att känna en framtid innan sinnet hinner förstå den. Skydda det som ett inre ljus.";
       } else if (feeling.includes("tomhet")) {
-        response = "Tomheten är inte alltid frånvaro. Ibland är den ett heligt mellanrum där något gammalt lämnat, men det nya ännu inte landat.";
+        response = "Tomheten är inte alltid frånvaro. Ibland är den mellanrummet där något gammalt lämnat, och något nytt ännu inte landat.";
       } else if (feeling.includes("kärlek")) {
-        response = "Kärleken vill göra dig modigare, öppnare och sannare. Fråga inte bara vem du älskar, utan vem du blir i kärlekens närvaro.";
+        response = "Kärleken ber dig inte bara känna mer. Den ber dig också bli sannare, öppnare och modigare.";
       } else if (feeling.includes("väntan")) {
-        response = "Väntan kan vara en initiering i tillit. Allt som är sant i dig behöver inte tvingas fram. Vissa saker vill mogna innan de visar sig.";
+        response = "Väntan kan vara en övning i tillit. Vissa saker vill mogna innan de visar sig fullt ut.";
       }
 
       if (journal.length > 0) {
-        response += " Det du skrev bär redan ett svar i sig. Läs dina egna ord igen som om de kom från din högre röst.";
+        response += " Läs gärna dina egna ord igen långsamt. Ofta gömmer sig svaret redan där.";
       }
 
       output.textContent = response;
