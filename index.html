@@ -1,394 +1,251 @@
 <!DOCTYPE html>
 <html lang="sv">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Inre Spegel — Galaktisk Portal</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-:root{--gold:#c9a84c;--gold-light:#e8d5a3;--white:#f0ece4;--dark:#07070f;--dark2:#0e0e1c;--dark3:#141428}
-html{scroll-behavior:smooth}
-body{background:var(--dark);color:var(--white);font-family:'Jost',sans-serif;font-weight:300;overflow-x:hidden}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inre Spegel</title>
+  <meta name="description" content="Inre Spegel – en plats för själslig reflektion, galaktisk symbolik och jordad närvaro." />
 
-/* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:999;display:flex;justify-content:space-between;align-items:center;padding:1.1rem 3rem;background:rgba(7,7,15,0.88);backdrop-filter:blur(20px);border-bottom:1px solid rgba(201,168,76,0.1)}
-.logo{font-family:'Cormorant Garamond',serif;font-size:0.95rem;letter-spacing:0.4em;color:var(--gold);text-decoration:none;text-transform:uppercase}
-.nav-links{display:flex;gap:2rem;list-style:none;align-items:center}
-.nav-links a{color:var(--white);text-decoration:none;font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;opacity:0.45;transition:all .3s;cursor:pointer}
-.nav-links a:hover,.nav-links a.active{opacity:1;color:var(--gold)}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-/* HERO */
-.hero{height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;background:radial-gradient(ellipse at 50% 25%,#1c1c40 0%,#0a0a1e 55%,#040408 100%)}
-.stars{position:absolute;inset:0;pointer-events:none;background-image:
-  radial-gradient(1px 1px at 8% 15%,rgba(255,255,255,.5) 0%,transparent 100%),
-  radial-gradient(1px 1px at 22% 68%,rgba(255,255,255,.35) 0%,transparent 100%),
-  radial-gradient(1px 1px at 38% 8%,rgba(255,255,255,.6) 0%,transparent 100%),
-  radial-gradient(1px 1px at 55% 52%,rgba(201,168,76,.7) 0%,transparent 100%),
-  radial-gradient(1px 1px at 72% 28%,rgba(255,255,255,.4) 0%,transparent 100%),
-  radial-gradient(1px 1px at 85% 75%,rgba(255,255,255,.3) 0%,transparent 100%),
-  radial-gradient(1px 1px at 14% 88%,rgba(255,255,255,.45) 0%,transparent 100%),
-  radial-gradient(1px 1px at 91% 12%,rgba(255,255,255,.5) 0%,transparent 100%),
-  radial-gradient(1px 1px at 47% 82%,rgba(201,168,76,.5) 0%,transparent 100%),
-  radial-gradient(1.5px 1.5px at 63% 41%,rgba(255,255,255,.6) 0%,transparent 100%),
-  radial-gradient(1px 1px at 3% 45%,rgba(255,255,255,.3) 0%,transparent 100%),
-  radial-gradient(1px 1px at 77% 60%,rgba(255,255,255,.4) 0%,transparent 100%)}
-.orb{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:550px;height:550px;border-radius:50%;background:radial-gradient(circle,rgba(201,168,76,.065) 0%,transparent 65%);animation:pulse 8s ease-in-out infinite}
-@keyframes pulse{0%,100%{transform:translate(-50%,-50%) scale(1);opacity:.5}50%{transform:translate(-50%,-50%) scale(1.12);opacity:1}}
-.hero-inner{position:relative;z-index:2;padding:2rem;max-width:680px}
-.eyebrow{font-size:.58rem;letter-spacing:.65em;text-transform:uppercase;color:var(--gold);opacity:.65;display:block;margin-bottom:1.8rem}
-.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,7vw,5.5rem);font-weight:300;font-style:italic;line-height:1.12;margin-bottom:.6rem}
-.hero h1 em{color:var(--gold)}
-.hero-sub{font-size:.62rem;letter-spacing:.45em;opacity:.3;text-transform:uppercase;margin-bottom:3rem}
-.tab-switcher{display:flex;border:1px solid rgba(201,168,76,.22);border-radius:40px;overflow:hidden;margin:0 auto}
-.ts-btn{padding:.7rem 2.2rem;background:transparent;border:none;color:var(--white);font-family:'Jost',sans-serif;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;cursor:pointer;transition:all .3s;opacity:.45}
-.ts-btn:hover{opacity:.8;background:rgba(201,168,76,.08)}
-.ts-btn.active{background:var(--gold);color:var(--dark);opacity:1;font-weight:400}
-.scroll-hint{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.5rem;opacity:.3;animation:sh 2.8s ease-in-out infinite}
-@keyframes sh{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(7px)}}
-.scroll-hint span{font-size:.52rem;letter-spacing:.4em;text-transform:uppercase}
-.scroll-hint::after{content:'';width:1px;height:38px;background:var(--gold);display:block}
+  <style>
+    :root {
+      --bg: #0f0f12;
+      --bg-soft: #16161b;
+      --panel: #1d1d24;
+      --panel-2: #252530;
+      --text: #f3efe7;
+      --muted: #b9b1a4;
+      --line: rgba(255,255,255,0.08);
+      --gold: #c8a96b;
+      --gold-soft: #8f7650;
+      --accent: #9fb7b9;
+      --danger: #c57f7f;
+      --shadow: 0 10px 30px rgba(0,0,0,0.35);
+      --radius: 18px;
+      --max: 1180px;
+    }
 
-/* TABS */
-.tab-panel{display:none}
-.tab-panel.active{display:block}
+    * {
+      box-sizing: border-box;
+    }
 
-/* SECTIONS */
-.sec{padding:7rem 2rem;max-width:1060px;margin:0 auto}
-.sec-alt{padding:7rem 2rem;background:var(--dark2);border-top:1px solid rgba(201,168,76,.07);border-bottom:1px solid rgba(201,168,76,.07)}
-.sec-alt-in{max-width:1060px;margin:0 auto}
-.label{font-size:.52rem;letter-spacing:.55em;text-transform:uppercase;color:var(--gold);opacity:.6;display:block;margin-bottom:.7rem}
-h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:300;font-style:italic;line-height:1.2;margin-bottom:.5rem}
-h3{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:300;font-style:italic;color:var(--gold-light);margin-bottom:.6rem}
-p{line-height:1.95;opacity:.62;font-size:.87rem;margin-bottom:.9rem}
-.line{width:55px;height:1px;background:var(--gold);opacity:.35;margin:1.4rem 0}
+    html {
+      scroll-behavior: smooth;
+    }
 
-/* SIGNATURE CARD */
-.sig-card{background:linear-gradient(135deg,rgba(18,18,38,.97),rgba(7,7,18,.99));border:1px solid rgba(201,168,76,.18);border-radius:22px;padding:3.5rem 2rem;text-align:center;position:relative;overflow:hidden;margin-bottom:2.5rem}
-.sig-card::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(201,168,76,.07) 0%,transparent 55%);pointer-events:none}
-.kin-label{font-size:.55rem;letter-spacing:.65em;text-transform:uppercase;color:var(--gold);opacity:.55;display:block;margin-bottom:.4rem}
-.kin-name{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:300;margin-bottom:.3rem}
-.kin-date{font-size:.62rem;letter-spacing:.35em;opacity:.3;text-transform:uppercase;margin-bottom:2.5rem}
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top, rgba(200,169,107,0.08), transparent 30%),
+        radial-gradient(circle at 80% 20%, rgba(159,183,185,0.08), transparent 25%),
+        var(--bg);
+      color: var(--text);
+      font-family: "Inter", sans-serif;
+      line-height: 1.6;
+    }
 
-/* GALACTIC CROSS */
-.cross{display:grid;grid-template-areas:'. guide .' 'anti dest ana' '. occ .';gap:1.1rem;margin:0 auto;max-width:400px}
-.ci{display:flex;flex-direction:column;align-items:center;gap:.35rem}
-.ci.guide{grid-area:guide}.ci.anti{grid-area:anti}.ci.dest{grid-area:dest}.ci.ana{grid-area:ana}.ci.occ{grid-area:occ}
-.seal{width:70px;height:70px;border-radius:11px;background:rgba(25,25,48,.9);border:1px solid rgba(201,168,76,.22);display:flex;align-items:center;justify-content:center;font-size:2rem;transition:all .3s;cursor:default}
-.ci.dest .seal{width:90px;height:90px;font-size:2.4rem;border-color:rgba(201,168,76,.5);box-shadow:0 0 28px rgba(201,168,76,.18)}
-.ci-lbl{font-size:.46rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);opacity:.5}
-.ci-nm{font-size:.7rem;opacity:.72;text-align:center;max-width:80px;line-height:1.3}
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-/* MANTRA */
-.mantra{border-left:2px solid var(--gold);padding:1.4rem 1.8rem;background:rgba(201,168,76,.04);border-radius:0 10px 10px 0;margin:2rem 0}
-.m-lbl{font-size:.48rem;letter-spacing:.5em;text-transform:uppercase;color:var(--gold);opacity:.55;display:block;margin-bottom:.75rem}
-.m-txt{font-family:'Cormorant Garamond',serif;font-size:1.12rem;font-style:italic;line-height:1.9;opacity:.88}
+    .container {
+      width: min(100% - 32px, var(--max));
+      margin: 0 auto;
+    }
 
-/* CHIPS */
-.chips{display:flex;flex-wrap:wrap;gap:.75rem;margin:2rem 0;justify-content:center}
-.chip{padding:.42rem 1rem;background:rgba(201,168,76,.07);border:1px solid rgba(201,168,76,.18);border-radius:40px;font-size:.58rem;letter-spacing:.14em;text-transform:uppercase}
-.chip b{color:var(--gold);margin-right:.3rem}
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(12px);
+      background: rgba(15,15,18,0.75);
+      border-bottom: 1px solid var(--line);
+    }
 
-/* ALTER EGO CARDS */
-.ae-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.4rem;margin-top:2.5rem}
-.ae-card{background:rgba(18,18,36,.75);border:1px solid rgba(201,168,76,.1);border-radius:14px;padding:2rem;transition:all .3s}
-.ae-card:hover{border-color:rgba(201,168,76,.35);transform:translateY(-3px)}
-.ae-icon{font-size:2.2rem;margin-bottom:.9rem;display:block}
-.ae-role{font-size:.48rem;letter-spacing:.42em;text-transform:uppercase;color:var(--gold);opacity:.55;display:block;margin-bottom:.35rem}
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      min-height: 76px;
+    }
 
-/* SIGILL DEEP */
-.sigill-list{display:flex;flex-direction:column;gap:2.8rem;margin-top:2.5rem}
-.si{display:grid;grid-template-columns:90px 1fr;gap:1.8rem;align-items:start}
-.si-icon{width:82px;height:82px;border-radius:12px;background:rgba(25,25,50,.9);border:1px solid rgba(201,168,76,.2);display:flex;align-items:center;justify-content:center;font-size:2.4rem;flex-shrink:0}
-.si-pos{font-size:.48rem;letter-spacing:.45em;text-transform:uppercase;color:var(--gold);opacity:.5;display:block;margin-bottom:.25rem}
-.si-tags{display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:.7rem}
-.si-tag{font-size:.56rem;padding:.18rem .65rem;border:1px solid rgba(201,168,76,.2);border-radius:30px;color:var(--gold-light);opacity:.7}
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-family: "Cormorant Garamond", serif;
+      letter-spacing: 0.06em;
+    }
 
-/* ACTION CARDS */
-.action-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.2rem;margin-top:2rem}
-.action-card{background:rgba(14,14,28,.8);border:1px solid rgba(201,168,76,.1);border-radius:12px;padding:1.8rem;transition:all .3s}
-.action-card:hover{border-color:rgba(201,168,76,.3)}
-.a-num{font-family:'Cormorant Garamond',serif;font-size:2.5rem;color:var(--gold);opacity:.25;line-height:1;margin-bottom:.5rem}
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      border: 1px solid rgba(200,169,107,0.35);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: var(--gold);
+      box-shadow: inset 0 0 24px rgba(200,169,107,0.08);
+      font-size: 1.1rem;
+    }
 
-/* MAMMA CARD */
-.mamma-card{background:linear-gradient(135deg,rgba(20,14,35,.96),rgba(10,10,22,.98));border:1px solid rgba(201,168,76,.16);border-radius:18px;padding:2rem;margin-top:2rem}
+    .brand span {
+      font-size: 1.6rem;
+    }
 
-/* CONTACT */
-.contact-box{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2rem}
-.form, .contact-info{background:rgba(18,18,36,.75);border:1px solid rgba(201,168,76,.1);border-radius:14px;padding:2rem}
-.input, textarea{width:100%;padding:1rem 1.1rem;margin-bottom:1rem;background:rgba(255,255,255,.03);border:1px solid rgba(201,168,76,.14);border-radius:10px;color:var(--white);font-family:'Jost',sans-serif;font-size:.9rem;outline:none}
-.input:focus, textarea:focus{border-color:rgba(201,168,76,.45)}
-textarea{min-height:140px;resize:vertical}
-button.send{padding:.9rem 1.4rem;background:var(--gold);border:none;color:var(--dark);font-weight:400;letter-spacing:.18em;text-transform:uppercase;border-radius:30px;cursor:pointer}
-.contact-info p{margin-bottom:1rem}
+    nav {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
 
-/* FOOTER */
-footer{padding:2.5rem 2rem;text-align:center;border-top:1px solid rgba(201,168,76,.08);opacity:.45;font-size:.78rem}
+    nav a {
+      color: var(--muted);
+      font-size: 0.95rem;
+      transition: 0.25s ease;
+    }
 
-@media (max-width: 800px){
-  nav{padding:1rem 1.2rem;flex-direction:column;gap:1rem}
-  .nav-links{gap:1rem;flex-wrap:wrap;justify-content:center}
-  .hero h1{font-size:3rem}
-  .contact-box{grid-template-columns:1fr}
-  .si{grid-template-columns:1fr;gap:1rem}
-}
-</style>
-</head>
-<body>
+    nav a:hover {
+      color: var(--text);
+    }
 
-<nav>
-  <a class="logo" href="#hem">Inre Spegel</a>
-  <ul class="nav-links">
-    <li><a class="active" href="#hem">Hem</a></li>
-    <li><a href="#om">Om mig</a></li>
-    <li><a href="#skrift">Skrift</a></li>
-    <li><a href="#kontakt">Kontakt</a></li>
-  </ul>
-</nav>
+    .hero {
+      padding: 88px 0 56px;
+    }
 
-<section class="hero" id="hem">
-  <div class="stars"></div>
-  <div class="orb"></div>
-  <div class="hero-inner">
-    <span class="eyebrow">Andlighet · Uppvaknande · Inre Sanning</span>
-    <h1>Inre <em>Spegel</em><br>Galaktisk portal för själen</h1>
-    <div class="hero-sub">Betrakta det som alltid har sett dig</div>
-    <div class="tab-switcher">
-      <button class="ts-btn active" data-tab="portal">Portal</button>
-      <button class="ts-btn" data-tab="blogg">Blogg</button>
-      <button class="ts-btn" data-tab="ljus">Ljus</button>
-    </div>
-  </div>
-  <div class="scroll-hint">
-    <span>scrolla ner</span>
-  </div>
-</section>
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 28px;
+      align-items: stretch;
+    }
 
-<div class="tab-panel active" id="portal">
-  <section class="sec">
-    <span class="label">Inledning</span>
-    <h2>En plats för reflektion, minne och uppvaknande</h2>
-    <div class="line"></div>
-    <p>Välkommen till Inre Spegel, en blogg för dig som känner att livet är mer än ytan. Här möts kosmisk symbolik, självrannsakan och frågor om medvetande, mening och naturliga cykler.</p>
-    <p>Sidan är byggd för att kännas som en stilla nattlig portal: mörk, varm, mystisk och öppen för det osynliga. Den fungerar lika bra som en personlig blogg, som ett andligt nav eller som en plats för texter, meditationer och insikter.</p>
+    .hero-card,
+    .panel {
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
 
-    <div class="chips">
-      <div class="chip"><b>01</b> Medvetande</div>
-      <div class="chip"><b>02</b> Drömmar</div>
-      <div class="chip"><b>03</b> Symboler</div>
-      <div class="chip"><b>04</b> Stillhet</div>
-      <div class="chip"><b>05</b> Naturens rytm</div>
-    </div>
+    .hero-card {
+      padding: 42px;
+    }
 
-    <div class="sig-card">
-      <span class="kin-label">Galaktisk spegel</span>
-      <div class="kin-name">Din inre signal</div>
-      <div class="kin-date">Lyssna på det som redan vet</div>
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--gold);
+      font-size: 0.84rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      margin-bottom: 18px;
+    }
 
-      <div class="cross">
-        <div class="ci guide">
-          <div class="seal">✦</div>
-          <div class="ci-lbl">Guide</div>
-          <div class="ci-nm">Det som vägleder dig</div>
-        </div>
-        <div class="ci anti">
-          <div class="seal">◌</div>
-          <div class="ci-lbl">Anti</div>
-          <div class="ci-nm">Det som utmanar dig</div>
-        </div>
-        <div class="ci dest">
-          <div class="seal">◈</div>
-          <div class="ci-lbl">Destiny</div>
-          <div class="ci-nm">Din kärnväg</div>
-        </div>
-        <div class="ci ana">
-          <div class="seal">◍</div>
-          <div class="ci-lbl">Analog</div>
-          <div class="ci-nm">Det som speglar dig</div>
-        </div>
-        <div class="ci occ">
-          <div class="seal">✧</div>
-          <div class="ci-lbl">Occult</div>
-          <div class="ci-nm">Det dolda skiktet</div>
-        </div>
-      </div>
+    .eyebrow::before {
+      content: "";
+      width: 26px;
+      height: 1px;
+      background: rgba(200,169,107,0.55);
+    }
 
-      <div class="mantra">
-        <span class="m-lbl">Mantra</span>
-        <div class="m-txt">“När jag stannar upp ser jag tydligare. När jag lyssnar inåt minns jag vem jag är.”</div>
-      </div>
-    </div>
-  </section>
+    h1, h2, h3 {
+      margin: 0 0 16px;
+      font-family: "Cormorant Garamond", serif;
+      line-height: 1.05;
+      letter-spacing: 0.01em;
+    }
 
-  <section class="sec-alt" id="skrift">
-    <div class="sec-alt-in">
-      <span class="label">Skrift</span>
-      <h2>Tre vägar genom bloggen</h2>
-      <div class="line"></div>
+    h1 {
+      font-size: clamp(3rem, 6vw, 5.4rem);
+      max-width: 10ch;
+    }
 
-      <div class="ae-grid">
-        <div class="ae-card">
-          <span class="ae-icon">🌙</span>
-          <span class="ae-role">Reflektion</span>
-          <h3>Inre frågor</h3>
-          <p>Texter om sorg, helande, tystnad och hur man hittar tillbaka till sig själv när livet skakar.</p>
-        </div>
-        <div class="ae-card">
-          <span class="ae-icon">✨</span>
-          <span class="ae-role">Uppvaknande</span>
-          <h3>Medvetenhet</h3>
-          <p>Inlägg om intuition, mönster, energi och den där känslan av att verkligheten är mer än vi först tror.</p>
-        </div>
-        <div class="ae-card">
-          <span class="ae-icon">🪐</span>
-          <span class="ae-role">Kosmos</span>
-          <h3>Galaktiska rytmer</h3>
-          <p>Symbolik, stjärnspår och idéer om att leva mer i takt med naturens och själens cykler.</p>
-        </div>
-      </div>
+    .lead {
+      font-size: 1.06rem;
+      color: var(--muted);
+      max-width: 62ch;
+      margin-bottom: 28px;
+    }
 
-      <div class="sigill-list">
-        <div class="si">
-          <div class="si-icon">📖</div>
-          <div>
-            <span class="si-pos">Post 01</span>
-            <h3>Dagbok från gränslandet</h3>
-            <div class="si-tags">
-              <span class="si-tag">sorg</span>
-              <span class="si-tag">hopp</span>
-              <span class="si-tag">läkning</span>
-            </div>
-            <p>En ärlig text om att bära saknad och samtidigt låta något nytt långsamt växa fram i samma hjärta.</p>
-          </div>
-        </div>
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
 
-        <div class="si">
-          <div class="si-icon">🕯️</div>
-          <div>
-            <span class="si-pos">Post 02</span>
-            <h3>När tystnaden börjar tala</h3>
-            <div class="si-tags">
-              <span class="si-tag">intuition</span>
-              <span class="si-tag">stillhet</span>
-              <span class="si-tag">inre lyssnande</span>
-            </div>
-            <p>Om hur man hittar svar när man slutar jaga dem och istället skapar rum för att höra det subtila.</p>
-          </div>
-        </div>
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0 18px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-weight: 500;
+      transition: 0.25s ease;
+    }
 
-        <div class="si">
-          <div class="si-icon">🌀</div>
-          <div>
-            <span class="si-pos">Post 03</span>
-            <h3>Att minnas naturens rytm</h3>
-            <div class="si-tags">
-              <span class="si-tag">cykler</span>
-              <span class="si-tag">måne</span>
-              <span class="si-tag">jord</span>
-            </div>
-            <p>En text om hur människan blir lugnare när livet får följa naturliga vågor istället för ständig press.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-</div>
+    .btn-primary {
+      background: var(--gold);
+      color: #111;
+    }
 
-<div class="tab-panel" id="blogg">
-  <section class="sec">
-    <span class="label">Blogg</span>
-    <h2>Anteckningar från resan inåt</h2>
-    <div class="line"></div>
-    <p>Här kan du lägga dina senaste inlägg, tankar och reflektioner. Bloggfliken är gjord för att kunna växa med dina texter utan att sidan känns rörig.</p>
+    .btn-primary:hover {
+      background: #d7b67a;
+      transform: translateY(-1px);
+    }
 
-    <div class="action-grid">
-      <div class="action-card">
-        <div class="a-num">01</div>
-        <h3>Starta med en känsla</h3>
-        <p>Skriv kort om vad som rör sig i dig just nu. Det gör sidan mänsklig och nära.</p>
-      </div>
-      <div class="action-card">
-        <div class="a-num">02</div>
-        <h3>Lägg in en serie</h3>
-        <p>Till exempel “Veckans spegel”, “Nattliga notiser” eller “Mina tecken”.</p>
-      </div>
-      <div class="action-card">
-        <div class="a-num">03</div>
-        <h3>Bygg vidare senare</h3>
-        <p>Du kan enkelt lägga till fler kort, bilder eller en riktig bloggplattform senare.</p>
-      </div>
-    </div>
-  </section>
-</div>
+    .btn-secondary {
+      border-color: var(--line);
+      color: var(--text);
+      background: rgba(255,255,255,0.02);
+    }
 
-<div class="tab-panel" id="ljus">
-  <section class="sec">
-    <span class="label">Ljus</span>
-    <h2>Det som håller dig uppe i mörkret</h2>
-    <div class="line"></div>
-    <div class="mamma-card">
-      <h3>En stilla påminnelse</h3>
-      <p>Det är okej att vara mitt i processen. Inte allt behöver vara löst för att vara sant, och inte allt behöver förstås direkt för att vara helande.</p>
-      <p>Du kan låta sidan bära en mjukare ton här: citat, meditationer, korta texter eller länkar till ljud, video och ritualer.</p>
-    </div>
-  </section>
-</div>
+    .btn-secondary:hover {
+      border-color: rgba(200,169,107,0.25);
+      background: rgba(255,255,255,0.04);
+    }
 
-<section class="sec-alt" id="om">
-  <div class="sec-alt-in">
-    <span class="label">Om mig</span>
-    <h2>En sida om att minnas vem man är</h2>
-    <div class="line"></div>
-    <p>Det här utrymmet kan vara din personliga berättelse. Skriv om din väg, vad du har gått igenom, och varför den här bloggen finns.</p>
-    <p>Du kan också nämna din relation till teknik, intuition, meditation, natur, eller allt det där som du känner att andra borde få se hos dig.</p>
-  </div>
-</section>
+    .panel {
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
 
-<section class="sec" id="kontakt">
-  <span class="label">Kontakt</span>
-  <h2>Hör av dig</h2>
-  <div class="line"></div>
+    .quote {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.55rem;
+      color: var(--text);
+      line-height: 1.25;
+      margin-bottom: 18px;
+    }
 
-  <div class="contact-box">
-    <form class="form">
-      <input class="input" type="text" placeholder="Ditt namn">
-      <input class="input" type="email" placeholder="Din e-post">
-      <textarea placeholder="Skriv ditt meddelande här..."></textarea>
-      <button class="send" type="button">Skicka</button>
-    </form>
+    .small {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
 
-    <div class="contact-info">
-      <h3>Kontaktvägar</h3>
-      <p><strong>E-post:</strong> kontakt@inrespegel.se</p>
-      <p><strong>Teman:</strong> andlighet, uppvaknande, medvetande, naturens rytm</p>
-      <p><strong>Stil:</strong> mörk, kosmisk, lugn och lite mystisk</p>
-      <p>Du kan senare koppla formuläret till Formspree, Netlify Forms eller ett eget backend-system.</p>
-    </div>
-  </div>
-</section>
+    section {
+      padding: 24px 0 72px;
+    }
 
-<footer>
-  &copy; 2026 Inre Spegel · En galaktisk portal för reflektion
-</footer>
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 22px;
+    }
 
-<script>
-const tabs=document.querySelectorAll('.ts-btn');
-const panels=document.querySelectorAll('.tab-panel');
-tabs.forEach(btn=>{
-  btn.addEventListener('click',()=>{
-    tabs.forEach(b=>b.classList.remove('active'));
-    btn.classList.add('active');
-    panels.forEach(p=>p.classList.remove('active'));
-    document.getElementById(btn.dataset.tab).classList.add('active');
-  });
-});
-document.querySelectorAll('.nav-links a').forEach(a=>{
-  a.addEventListener('click',()=>{
-    document.querySelectorAll('.nav-links a').forEach(x=>x.classList.remove('active'));
-    a.classList.add('active');
-  });
-});
-</script>
-
-</body>
-</html>
+    .section-head p {
+      max-width: 65ch;
+      color: 
