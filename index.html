@@ -4,8 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Inre Spegel — Galaktisk Portal</title>
-//fonts.googleapis.com">
-//fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{--gold:#c9a84c;--gold-light:#e8d5a3;--white:#f0ece4;--dark:#07070f;--dark2:#0e0e1c;--dark3:#141428}
@@ -51,7 +50,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:999;display:flex;justify-content
 .scroll-hint::after{content:'';width:1px;height:38px;background:var(--gold);display:block}
 
 /* TABS */
-.tab-panel{display:none}.tab-panel.active{display:block}
+.tab-panel{display:none}
+.tab-panel.active{display:block}
 
 /* SECTIONS */
 .sec{padding:7rem 2rem;max-width:1060px;margin:0 auto}
@@ -111,4 +111,284 @@ p{line-height:1.95;opacity:.62;font-size:.87rem;margin-bottom:.9rem}
 .a-num{font-family:'Cormorant Garamond',serif;font-size:2.5rem;color:var(--gold);opacity:.25;line-height:1;margin-bottom:.5rem}
 
 /* MAMMA CARD */
-.mamma-card{background:linear-gradient(135deg,rgba(20,14
+.mamma-card{background:linear-gradient(135deg,rgba(20,14,35,.96),rgba(10,10,22,.98));border:1px solid rgba(201,168,76,.16);border-radius:18px;padding:2rem;margin-top:2rem}
+
+/* CONTACT */
+.contact-box{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2rem}
+.form, .contact-info{background:rgba(18,18,36,.75);border:1px solid rgba(201,168,76,.1);border-radius:14px;padding:2rem}
+.input, textarea{width:100%;padding:1rem 1.1rem;margin-bottom:1rem;background:rgba(255,255,255,.03);border:1px solid rgba(201,168,76,.14);border-radius:10px;color:var(--white);font-family:'Jost',sans-serif;font-size:.9rem;outline:none}
+.input:focus, textarea:focus{border-color:rgba(201,168,76,.45)}
+textarea{min-height:140px;resize:vertical}
+button.send{padding:.9rem 1.4rem;background:var(--gold);border:none;color:var(--dark);font-weight:400;letter-spacing:.18em;text-transform:uppercase;border-radius:30px;cursor:pointer}
+.contact-info p{margin-bottom:1rem}
+
+/* FOOTER */
+footer{padding:2.5rem 2rem;text-align:center;border-top:1px solid rgba(201,168,76,.08);opacity:.45;font-size:.78rem}
+
+@media (max-width: 800px){
+  nav{padding:1rem 1.2rem;flex-direction:column;gap:1rem}
+  .nav-links{gap:1rem;flex-wrap:wrap;justify-content:center}
+  .hero h1{font-size:3rem}
+  .contact-box{grid-template-columns:1fr}
+  .si{grid-template-columns:1fr;gap:1rem}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="#hem">Inre Spegel</a>
+  <ul class="nav-links">
+    <li><a class="active" href="#hem">Hem</a></li>
+    <li><a href="#om">Om mig</a></li>
+    <li><a href="#skrift">Skrift</a></li>
+    <li><a href="#kontakt">Kontakt</a></li>
+  </ul>
+</nav>
+
+<section class="hero" id="hem">
+  <div class="stars"></div>
+  <div class="orb"></div>
+  <div class="hero-inner">
+    <span class="eyebrow">Andlighet · Uppvaknande · Inre Sanning</span>
+    <h1>Inre <em>Spegel</em><br>Galaktisk portal för själen</h1>
+    <div class="hero-sub">Betrakta det som alltid har sett dig</div>
+    <div class="tab-switcher">
+      <button class="ts-btn active" data-tab="portal">Portal</button>
+      <button class="ts-btn" data-tab="blogg">Blogg</button>
+      <button class="ts-btn" data-tab="ljus">Ljus</button>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <span>scrolla ner</span>
+  </div>
+</section>
+
+<div class="tab-panel active" id="portal">
+  <section class="sec">
+    <span class="label">Inledning</span>
+    <h2>En plats för reflektion, minne och uppvaknande</h2>
+    <div class="line"></div>
+    <p>Välkommen till Inre Spegel, en blogg för dig som känner att livet är mer än ytan. Här möts kosmisk symbolik, självrannsakan och frågor om medvetande, mening och naturliga cykler.</p>
+    <p>Sidan är byggd för att kännas som en stilla nattlig portal: mörk, varm, mystisk och öppen för det osynliga. Den fungerar lika bra som en personlig blogg, som ett andligt nav eller som en plats för texter, meditationer och insikter.</p>
+
+    <div class="chips">
+      <div class="chip"><b>01</b> Medvetande</div>
+      <div class="chip"><b>02</b> Drömmar</div>
+      <div class="chip"><b>03</b> Symboler</div>
+      <div class="chip"><b>04</b> Stillhet</div>
+      <div class="chip"><b>05</b> Naturens rytm</div>
+    </div>
+
+    <div class="sig-card">
+      <span class="kin-label">Galaktisk spegel</span>
+      <div class="kin-name">Din inre signal</div>
+      <div class="kin-date">Lyssna på det som redan vet</div>
+
+      <div class="cross">
+        <div class="ci guide">
+          <div class="seal">✦</div>
+          <div class="ci-lbl">Guide</div>
+          <div class="ci-nm">Det som vägleder dig</div>
+        </div>
+        <div class="ci anti">
+          <div class="seal">◌</div>
+          <div class="ci-lbl">Anti</div>
+          <div class="ci-nm">Det som utmanar dig</div>
+        </div>
+        <div class="ci dest">
+          <div class="seal">◈</div>
+          <div class="ci-lbl">Destiny</div>
+          <div class="ci-nm">Din kärnväg</div>
+        </div>
+        <div class="ci ana">
+          <div class="seal">◍</div>
+          <div class="ci-lbl">Analog</div>
+          <div class="ci-nm">Det som speglar dig</div>
+        </div>
+        <div class="ci occ">
+          <div class="seal">✧</div>
+          <div class="ci-lbl">Occult</div>
+          <div class="ci-nm">Det dolda skiktet</div>
+        </div>
+      </div>
+
+      <div class="mantra">
+        <span class="m-lbl">Mantra</span>
+        <div class="m-txt">“När jag stannar upp ser jag tydligare. När jag lyssnar inåt minns jag vem jag är.”</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec-alt" id="skrift">
+    <div class="sec-alt-in">
+      <span class="label">Skrift</span>
+      <h2>Tre vägar genom bloggen</h2>
+      <div class="line"></div>
+
+      <div class="ae-grid">
+        <div class="ae-card">
+          <span class="ae-icon">🌙</span>
+          <span class="ae-role">Reflektion</span>
+          <h3>Inre frågor</h3>
+          <p>Texter om sorg, helande, tystnad och hur man hittar tillbaka till sig själv när livet skakar.</p>
+        </div>
+        <div class="ae-card">
+          <span class="ae-icon">✨</span>
+          <span class="ae-role">Uppvaknande</span>
+          <h3>Medvetenhet</h3>
+          <p>Inlägg om intuition, mönster, energi och den där känslan av att verkligheten är mer än vi först tror.</p>
+        </div>
+        <div class="ae-card">
+          <span class="ae-icon">🪐</span>
+          <span class="ae-role">Kosmos</span>
+          <h3>Galaktiska rytmer</h3>
+          <p>Symbolik, stjärnspår och idéer om att leva mer i takt med naturens och själens cykler.</p>
+        </div>
+      </div>
+
+      <div class="sigill-list">
+        <div class="si">
+          <div class="si-icon">📖</div>
+          <div>
+            <span class="si-pos">Post 01</span>
+            <h3>Dagbok från gränslandet</h3>
+            <div class="si-tags">
+              <span class="si-tag">sorg</span>
+              <span class="si-tag">hopp</span>
+              <span class="si-tag">läkning</span>
+            </div>
+            <p>En ärlig text om att bära saknad och samtidigt låta något nytt långsamt växa fram i samma hjärta.</p>
+          </div>
+        </div>
+
+        <div class="si">
+          <div class="si-icon">🕯️</div>
+          <div>
+            <span class="si-pos">Post 02</span>
+            <h3>När tystnaden börjar tala</h3>
+            <div class="si-tags">
+              <span class="si-tag">intuition</span>
+              <span class="si-tag">stillhet</span>
+              <span class="si-tag">inre lyssnande</span>
+            </div>
+            <p>Om hur man hittar svar när man slutar jaga dem och istället skapar rum för att höra det subtila.</p>
+          </div>
+        </div>
+
+        <div class="si">
+          <div class="si-icon">🌀</div>
+          <div>
+            <span class="si-pos">Post 03</span>
+            <h3>Att minnas naturens rytm</h3>
+            <div class="si-tags">
+              <span class="si-tag">cykler</span>
+              <span class="si-tag">måne</span>
+              <span class="si-tag">jord</span>
+            </div>
+            <p>En text om hur människan blir lugnare när livet får följa naturliga vågor istället för ständig press.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="tab-panel" id="blogg">
+  <section class="sec">
+    <span class="label">Blogg</span>
+    <h2>Anteckningar från resan inåt</h2>
+    <div class="line"></div>
+    <p>Här kan du lägga dina senaste inlägg, tankar och reflektioner. Bloggfliken är gjord för att kunna växa med dina texter utan att sidan känns rörig.</p>
+
+    <div class="action-grid">
+      <div class="action-card">
+        <div class="a-num">01</div>
+        <h3>Starta med en känsla</h3>
+        <p>Skriv kort om vad som rör sig i dig just nu. Det gör sidan mänsklig och nära.</p>
+      </div>
+      <div class="action-card">
+        <div class="a-num">02</div>
+        <h3>Lägg in en serie</h3>
+        <p>Till exempel “Veckans spegel”, “Nattliga notiser” eller “Mina tecken”.</p>
+      </div>
+      <div class="action-card">
+        <div class="a-num">03</div>
+        <h3>Bygg vidare senare</h3>
+        <p>Du kan enkelt lägga till fler kort, bilder eller en riktig bloggplattform senare.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="tab-panel" id="ljus">
+  <section class="sec">
+    <span class="label">Ljus</span>
+    <h2>Det som håller dig uppe i mörkret</h2>
+    <div class="line"></div>
+    <div class="mamma-card">
+      <h3>En stilla påminnelse</h3>
+      <p>Det är okej att vara mitt i processen. Inte allt behöver vara löst för att vara sant, och inte allt behöver förstås direkt för att vara helande.</p>
+      <p>Du kan låta sidan bära en mjukare ton här: citat, meditationer, korta texter eller länkar till ljud, video och ritualer.</p>
+    </div>
+  </section>
+</div>
+
+<section class="sec-alt" id="om">
+  <div class="sec-alt-in">
+    <span class="label">Om mig</span>
+    <h2>En sida om att minnas vem man är</h2>
+    <div class="line"></div>
+    <p>Det här utrymmet kan vara din personliga berättelse. Skriv om din väg, vad du har gått igenom, och varför den här bloggen finns.</p>
+    <p>Du kan också nämna din relation till teknik, intuition, meditation, natur, eller allt det där som du känner att andra borde få se hos dig.</p>
+  </div>
+</section>
+
+<section class="sec" id="kontakt">
+  <span class="label">Kontakt</span>
+  <h2>Hör av dig</h2>
+  <div class="line"></div>
+
+  <div class="contact-box">
+    <form class="form">
+      <input class="input" type="text" placeholder="Ditt namn">
+      <input class="input" type="email" placeholder="Din e-post">
+      <textarea placeholder="Skriv ditt meddelande här..."></textarea>
+      <button class="send" type="button">Skicka</button>
+    </form>
+
+    <div class="contact-info">
+      <h3>Kontaktvägar</h3>
+      <p><strong>E-post:</strong> kontakt@inrespegel.se</p>
+      <p><strong>Teman:</strong> andlighet, uppvaknande, medvetande, naturens rytm</p>
+      <p><strong>Stil:</strong> mörk, kosmisk, lugn och lite mystisk</p>
+      <p>Du kan senare koppla formuläret till Formspree, Netlify Forms eller ett eget backend-system.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  &copy; 2026 Inre Spegel · En galaktisk portal för reflektion
+</footer>
+
+<script>
+const tabs=document.querySelectorAll('.ts-btn');
+const panels=document.querySelectorAll('.tab-panel');
+tabs.forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    tabs.forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    panels.forEach(p=>p.classList.remove('active'));
+    document.getElementById(btn.dataset.tab).classList.add('active');
+  });
+});
+document.querySelectorAll('.nav-links a').forEach(a=>{
+  a.addEventListener('click',()=>{
+    document.querySelectorAll('.nav-links a').forEach(x=>x.classList.remove('active'));
+    a.classList.add('active');
+  });
+});
+</script>
+
+</body>
+</html>
