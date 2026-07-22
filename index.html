@@ -829,7 +829,15 @@
 
   <!-- ══════════ JAVASCRIPT ══════════ -->
   <script>
-    const SEALS = [
+    const SIGNATUR_FORKLARING = {
+"Elektrisk Froet": "Din energi triggar igang processer. Du mar som bast nar du far satta saker i rorelse: projekt, relationer, skapande. Du ser mojligheter dar andra bara ser begransningar. Nar du stannar upp och fragar dig varfor du gor detta innan du agerar, forstarks din kraft. Du planterar framtidens fron genom hur du tanker, kanner, skapar och valjer i vardagen."
+};
+
+const KORS_FORKLARING = {
+"Elektrisk Froet": "Som Elektrisk Froet ar du en katalysator for tillvaxt. Ditt hogre jag (Himmelsvandraren) vill att du utforskar nya varldar - tekniska, kreativa och andliga. Din utmaning/dolda kraft (Jorden) ar att landa i kroppen och naturens rytm, ha talamod och hedra livets cykler. Din kraft/antipod (Trollkarlen) vacks nar du litar pa intuition och tidlos visdom istallet for bara logik."
+};
+
+const SEALS = [
       { sv: "Draken",           desc: "Den kosmiska livmoder som bär och uppehåller all skapelse. Du är ursprunget – en vårdnadsgivare av livet självt.", mantra: "Jag vårdar. Jag föder. Jag är källan." },
       { sv: "Vinden",           desc: "Den osynliga ande som förbinder alla varelser. Ditt ord bär kraft – du kommunicerar sanningens ande.", mantra: "Jag andas. Jag talar. Jag är andan." },
       { sv: "Natten",           desc: "Den djupa inre rikedom som finns i mörkret. Du bär drömmarnas och intuitionens gåva.", mantra: "Jag drömmer. Jag ser. Jag är rikedomen." },
@@ -889,6 +897,10 @@
       document.getElementById("cHigher").textContent = higherSelf;
       document.getElementById("cHidden").textContent = hiddenPower;
       document.getElementById("cAnti").textContent   = antipod;
+      
+const signaturKey = `${tone} ${seal.sv}`;
+document.getElementById("rForklaringLang").textContent = SIGNATUR_FORKLARING[signaturKey] || "";
+document.getElementById("rKorsText").textContent = KORS_FORKLARING[signaturKey] || "";
 
       const result = document.getElementById("calcResult");
       result.classList.add("show");
