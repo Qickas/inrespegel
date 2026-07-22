@@ -113,66 +113,61 @@
     }
 
     .hero::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background:
-        url('https://images.unsplash.com/photo-1475274047050-1d0c0975864c?w=1600&q=60&auto=format') center/cover no-repeat;
-      filter: brightness(0.15) saturate(0.6);
-      z-index: -1;
-    }
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 25%, rgba(200,169,107,0.08), transparent 60%);
+  z-index: -1;
+}
 
-    .hero-eyebrow {
-      text-transform: uppercase;
-      letter-spacing: 0.22em;
-      font-size: 0.72rem;
-      color: var(--gold);
-      margin-bottom: 28px;
-    }
+/* ─── COSMIC BACKGROUND ─── */
+.stars-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background:
+    radial-gradient(1.5px 1.5px at 20px 30px, #fff, transparent),
+    radial-gradient(1px 1px at 90px 120px, #fff, transparent),
+    radial-gradient(1.5px 1.5px at 160px 60px, #fff, transparent),
+    radial-gradient(1px 1px at 230px 180px, #fff, transparent),
+    radial-gradient(1.5px 1.5px at 300px 40px, #fff, transparent),
+    radial-gradient(1px 1px at 340px 220px, #fff, transparent),
+    radial-gradient(1px 1px at 400px 100px, #fff, transparent),
+    radial-gradient(1.5px 1.5px at 60px 250px, #fff, transparent),
+    radial-gradient(1px 1px at 130px 300px, #fff, transparent),
+    radial-gradient(1px 1px at 270px 320px, #fff, transparent);
+  background-repeat: repeat;
+  background-size: 420px 420px;
+  opacity: 0.55;
+  animation: twinkle 6s ease-in-out infinite alternate;
+}
+.stars-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 50% 20%, rgba(200,169,107,0.10), transparent 60%),
+    radial-gradient(ellipse at 80% 70%, rgba(120,80,160,0.12), transparent 55%);
+}
+@keyframes twinkle { from { opacity: 0.35; } to { opacity: 0.75; } }
 
-    .hero h1 {
-      font-family: "Cormorant Garamond", serif;
-      font-size: clamp(2.6rem, 7vw, 6rem);
-      line-height: 1.0;
-      font-weight: 400;
-      max-width: 14ch;
-      margin: 0 auto 28px;
-      letter-spacing: 0.01em;
-    }
-
-    .hero-sub {
-      color: var(--muted);
-      font-size: 1rem;
-      max-width: 50ch;
-      margin: 0 auto 40px;
-      line-height: 1.8;
-      font-weight: 300;
-    }
-
-    .hero-sub strong { color: var(--text); font-weight: 400; }
-
-    .hero-cta a {
-      display: inline-block;
-      margin: 0 8px 12px;
-      padding: 13px 32px;
-      border: 1px solid rgba(255,255,255,0.25);
-      font-size: 0.82rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--text);
-      transition: .2s;
-    }
-
-    .hero-cta a:hover {
-      background: rgba(255,255,255,0.07);
-      border-color: rgba(255,255,255,0.5);
-    }
-
-    .hero-cta a.btn-main {
-      background: rgba(255,255,255,0.08);
-      border-color: rgba(255,255,255,0.35);
-    }
-
+/* ─── ZODIAC RING ─── */
+.zodiac-ring { position: relative; width: 300px; height: 300px; margin: 0 auto 32px; }
+.zodiac-ring .z-sym {
+  position: absolute; top: 50%; left: 50%;
+  width: 26px; height: 26px; margin: -13px 0 0 -13px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.9rem; color: var(--gold);
+  border: 1px solid var(--line); border-radius: 50%;
+  background: rgba(255,255,255,0.02);
+}
+.zodiac-ring .z-center {
+  position: absolute; inset: 60px;
+  display: flex; align-items: center; justify-content: center;
+  border: 1px solid var(--line); border-radius: 50%;
+  font-family: "Cormorant Garamond", serif; font-size: 0.7rem;
+  letter-spacing: 0.1em; color: var(--muted); text-transform: uppercase;
+}
     /* ─── SECTIONS ─── */
     section { padding: 80px 0; }
 
@@ -590,6 +585,8 @@
 </head>
 <body>
 
+  <div class="stars-bg"></div>
+
   <!-- ══════════ TOP NAV ══════════ -->
   <nav class="top-nav">
     <div class="wrap top-nav-inner">
@@ -614,7 +611,8 @@
 
   <!-- ══════════ HERO ══════════ -->
   <section class="hero">
-    <div class="hero-eyebrow">Lev i galaktisk tid</div>
+    <div class="zodiac-ring" id="zodiacRing"><div class="z-center">Galaktisk Tid</div></div>
+  <div class="hero-eyebrow">Lev i galaktisk tid</div>
     <h1>Lev den högsta potentialen av varje dag</h1>
     <p class="hero-sub">
       Bli ett med naturen och kosmos.<br>
@@ -918,6 +916,23 @@
       if (journal.length > 0) response += " Läs gärna dina egna ord igen, långsamt. Svaret gömmer sig ofta redan där.";
 
       output.textContent = response;
+
+      const ringSymbols = ["🐉","🌬","☾","🌱","🐍","🌉","✋","★","🌊","🐕","🐒","🧬","🚀","🔮","🦅","⚔","🌍","🪞","🌀","☀"];
+      const ring = document.getElementById("zodiacRing");
+      if (ring) {
+        ringSymbols.forEach((sym, i) => {
+          const angle = (i / ringSymbols.length) * 2 * Math.PI - Math.PI / 2;
+          const radius = 140;
+          const x = 150 + radius * Math.cos(angle);
+          const y = 150 + radius * Math.sin(angle);
+          const el = document.createElement("div");
+          el.className = "z-sym";
+          el.style.left = x + "px";
+          el.style.top = y + "px";
+          el.textContent = sym;
+          ring.appendChild(el);
+        });
+      }
     }
   </script>
 </body>
