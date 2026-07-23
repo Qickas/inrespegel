@@ -37,18 +37,8 @@
 
     .wrap { width: min(100% - 40px, var(--max)); margin: 0 auto; }
 
-    /* ─── TOP NAV ─── */
-    .top-nav {
-      border-bottom: 1px solid var(--line);
-      padding: 0;
-    }
-
-    .top-nav-inner {
-      display: flex;
-      justify-content: center;
-      gap: 0;
-    }
-
+    .top-nav { border-bottom: 1px solid var(--line); padding: 0; }
+    .top-nav-inner { display: flex; justify-content: center; gap: 0; }
     .top-nav-inner a {
       padding: 18px 28px;
       font-size: 0.82rem;
@@ -58,14 +48,12 @@
       transition: color .2s;
       border-bottom: 2px solid transparent;
     }
-
     .top-nav-inner a:hover,
     .top-nav-inner a.active {
       color: var(--text);
       border-bottom-color: var(--gold);
     }
 
-    /* ─── SOCIAL NAV ─── */
     .social-nav {
       border-bottom: 1px solid var(--line);
       padding: 0;
@@ -100,7 +88,6 @@
 
     .social-nav-inner a.social-link:hover { color: var(--text); }
 
-    /* ─── HERO ─── */
     .hero {
       min-height: 85vh;
       display: flex;
@@ -113,62 +100,123 @@
     }
 
     .hero::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background: radial-gradient(ellipse at 50% 25%, rgba(200,169,107,0.08), transparent 60%);
-  z-index: -1;
-}
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 25%, rgba(200,169,107,0.08), transparent 60%);
+      z-index: -1;
+    }
 
-/* ─── COSMIC BACKGROUND ─── */
-.stars-bg {
-  position: fixed;
-  inset: 0;
-  z-index: -2;
-  background:
-    radial-gradient(1.5px 1.5px at 20px 30px, #fff, transparent),
-    radial-gradient(1px 1px at 90px 120px, #fff, transparent),
-    radial-gradient(1.5px 1.5px at 160px 60px, #fff, transparent),
-    radial-gradient(1px 1px at 230px 180px, #fff, transparent),
-    radial-gradient(1.5px 1.5px at 300px 40px, #fff, transparent),
-    radial-gradient(1px 1px at 340px 220px, #fff, transparent),
-    radial-gradient(1px 1px at 400px 100px, #fff, transparent),
-    radial-gradient(1.5px 1.5px at 60px 250px, #fff, transparent),
-    radial-gradient(1px 1px at 130px 300px, #fff, transparent),
-    radial-gradient(1px 1px at 270px 320px, #fff, transparent);
-  background-repeat: repeat;
-  background-size: 420px 420px;
-  opacity: 0.55;
-  animation: twinkle 6s ease-in-out infinite alternate;
-}
-.stars-bg::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse at 50% 20%, rgba(200,169,107,0.10), transparent 60%),
-    radial-gradient(ellipse at 80% 70%, rgba(120,80,160,0.12), transparent 55%);
-}
-@keyframes twinkle { from { opacity: 0.35; } to { opacity: 0.75; } }
+    .stars-bg {
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      background:
+        radial-gradient(1.5px 1.5px at 20px 30px, #fff, transparent),
+        radial-gradient(1px 1px at 90px 120px, #fff, transparent),
+        radial-gradient(1.5px 1.5px at 160px 60px, #fff, transparent),
+        radial-gradient(1px 1px at 230px 180px, #fff, transparent),
+        radial-gradient(1.5px 1.5px at 300px 40px, #fff, transparent),
+        radial-gradient(1px 1px at 340px 220px, #fff, transparent),
+        radial-gradient(1px 1px at 400px 100px, #fff, transparent),
+        radial-gradient(1.5px 1.5px at 60px 250px, #fff, transparent),
+        radial-gradient(1px 1px at 130px 300px, #fff, transparent),
+        radial-gradient(1px 1px at 270px 320px, #fff, transparent);
+      background-repeat: repeat;
+      background-size: 420px 420px;
+      opacity: 0.55;
+      animation: twinkle 6s ease-in-out infinite alternate;
+    }
 
-/* ─── ZODIAC RING ─── */
-.zodiac-ring { position: relative; width: 300px; height: 300px; margin: 0 auto 32px; }
-.zodiac-ring .z-sym {
-  position: absolute; top: 50%; left: 50%;
-  width: 26px; height: 26px; margin: -13px 0 0 -13px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 0.9rem; color: var(--gold);
-  border: 1px solid var(--line); border-radius: 50%;
-  background: rgba(255,255,255,0.02);
-}
-.zodiac-ring .z-center {
-  position: absolute; inset: 60px;
-  display: flex; align-items: center; justify-content: center;
-  border: 1px solid var(--line); border-radius: 50%;
-  font-family: "Cormorant Garamond", serif; font-size: 0.7rem;
-  letter-spacing: 0.1em; color: var(--muted); text-transform: uppercase;
-}
-    /* ─── SECTIONS ─── */
+    .stars-bg::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 50% 20%, rgba(200,169,107,0.10), transparent 60%),
+        radial-gradient(ellipse at 80% 70%, rgba(120,80,160,0.12), transparent 55%);
+    }
+
+    @keyframes twinkle { from { opacity: 0.35; } to { opacity: 0.75; } }
+
+    .zodiac-ring { position: relative; width: 300px; height: 300px; margin: 0 auto 32px; }
+    .zodiac-ring .z-sym {
+      position: absolute; top: 50%; left: 50%;
+      width: 26px; height: 26px; margin: -13px 0 0 -13px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.9rem; color: var(--gold);
+      border: 1px solid var(--line); border-radius: 50%;
+      background: rgba(255,255,255,0.02);
+    }
+
+    .zodiac-ring .z-center {
+      position: absolute; inset: 60px;
+      display: flex; align-items: center; justify-content: center;
+      border: 1px solid var(--line); border-radius: 50%;
+      font-family: "Cormorant Garamond", serif; font-size: 0.7rem;
+      letter-spacing: 0.1em; color: var(--muted); text-transform: uppercase;
+    }
+
+    .hero-eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      font-size: 0.75rem;
+      color: var(--gold);
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-family: "Cormorant Garamond", serif;
+      font-weight: 400;
+      line-height: 1.1;
+      font-size: clamp(2.4rem, 6vw, 4.2rem);
+      max-width: 820px;
+      margin: 0 auto 22px;
+    }
+
+    .hero-sub {
+      color: var(--muted);
+      font-size: 1.05rem;
+      font-weight: 300;
+      max-width: 620px;
+      margin: 0 auto 40px;
+      line-height: 1.85;
+    }
+
+    .hero-sub strong { color: var(--text); font-weight: 500; }
+
+    .hero-cta {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn-main {
+      padding: 16px 32px;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-size: 0.8rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      transition: .2s;
+    }
+
+    .btn-main:hover { background: var(--gold); color: #0d0d0d; }
+
+    .hero-cta a:not(.btn-main) {
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border-bottom: 1px solid transparent;
+      padding-bottom: 4px;
+      transition: .2s;
+    }
+
+    .hero-cta a:not(.btn-main):hover { color: var(--text); border-bottom-color: var(--text); }
+
     section { padding: 80px 0; }
 
     .section-label {
@@ -204,17 +252,13 @@
 
     .body-text + .body-text { margin-top: 18px; }
 
-    /* ─── DIVIDER ─── */
     .divider {
       border: none;
       border-top: 1px solid var(--line);
       margin: 0;
     }
 
-    /* ─── KALKYLATOR ─── */
-    .calc-section {
-      text-align: center;
-    }
+    .calc-section { text-align: center; }
 
     .calc-section > .wrap > .body-text {
       margin: 0 auto 52px;
@@ -357,7 +401,6 @@
       font-weight: 400;
     }
 
-    /* ─── INTRO SECTION ─── */
     .intro-section .inner {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -384,7 +427,6 @@
       text-transform: uppercase;
     }
 
-    /* ─── TRIBES & TONES ─── */
     .seals-section, .tones-section {
       border-top: 1px solid var(--line);
     }
@@ -459,7 +501,6 @@
       line-height: 1.65;
     }
 
-    /* ─── MIRROR / DAGLIG SPEGEL ─── */
     .mirror-section { border-top: 1px solid var(--line); }
 
     .mirror-section .inner {
@@ -544,7 +585,6 @@
 
     .reflection-panel p:last-child { border-bottom: none; }
 
-    /* ─── FOOTER ─── */
     footer {
       padding: 36px 0;
       border-top: 1px solid var(--line);
@@ -568,7 +608,6 @@
       letter-spacing: 0.06em;
     }
 
-    /* ─── RESPONSIVE ─── */
     @media (max-width: 860px) {
       .intro-section .inner,
       .mirror-section .inner { grid-template-columns: 1fr; gap: 36px; }
@@ -587,7 +626,6 @@
 
   <div class="stars-bg"></div>
 
-  <!-- ══════════ TOP NAV ══════════ -->
   <nav class="top-nav">
     <div class="wrap top-nav-inner">
       <a href="#" class="active">Hem</a>
@@ -598,7 +636,6 @@
     </div>
   </nav>
 
-  <!-- ══════════ SOCIAL NAV ══════════ -->
   <nav class="social-nav">
     <div class="wrap social-nav-inner">
       <a class="social-link" href="#">Instagram</a>
@@ -609,10 +646,9 @@
     </div>
   </nav>
 
-  <!-- ══════════ HERO ══════════ -->
   <section class="hero">
     <div class="zodiac-ring" id="zodiacRing"><div class="z-center">Galaktisk Tid</div></div>
-  <div class="hero-eyebrow">Lev i galaktisk tid</div>
+    <div class="hero-eyebrow">Lev i galaktisk tid</div>
     <h1>Lev den högsta potentialen av varje dag</h1>
     <p class="hero-sub">
       Bli ett med naturen och kosmos.<br>
@@ -627,7 +663,6 @@
 
   <hr class="divider">
 
-  <!-- ══════════ OM ══════════ -->
   <section id="om" class="intro-section">
     <div class="wrap">
       <div class="inner">
@@ -663,7 +698,7 @@
           <div style="margin-top:40px;border-top:1px solid var(--line);padding-top:32px;">
             <div class="section-label">Varför galaktisk tid?</div>
             <p class="body-text">
-              Vår kalender förvrängdes ursprungligen när forntida ledare ersatte naturliga månscykler
+              Vår kalender förvrängdes ursprungligen när forntida ledare ersatte naturliga måncykler
               med politisk tid. Julius Caesar tog bort månen för att skapa en fast solkalender för
               militär och administrativ kontroll.
             </p>
@@ -680,7 +715,6 @@
 
   <hr class="divider">
 
-  <!-- ══════════ KALKYLATOR ══════════ -->
   <section id="kalkylator" class="calc-section">
     <div class="wrap">
       <div class="section-label" style="text-align:center;">Din galaktiska signatur</div>
@@ -705,6 +739,7 @@
           <div class="result-seal" id="rSeal"></div>
           <div class="result-mantra" id="rMantra"></div>
           <div class="result-desc" id="rDesc"></div>
+          <div class="result-desc" id="rForklaringLang" style="margin-top:18px;"></div>
 
           <div class="result-cross">
             <h4>Ditt Galaktiska Kors</h4>
@@ -726,6 +761,7 @@
                 <div class="ci-val" id="cAnti"></div>
               </div>
             </div>
+            <div class="result-desc" id="rKorsText" style="margin-top:18px;"></div>
           </div>
         </div>
       </div>
@@ -734,7 +770,6 @@
 
   <hr class="divider">
 
-  <!-- ══════════ SIGILL ══════════ -->
   <section id="sigill">
     <div class="wrap">
       <div class="section-label">De 20 solarsigillet</div>
@@ -764,7 +799,6 @@
         <div class="seal-card"><h4>Solen</h4><p>Det strålande uttrycket av vårt högsta jag.</p></div>
       </div>
 
-      <!-- TONER -->
       <div style="margin-top:72px;">
         <div class="section-label">De 13 tonerna</div>
         <h2>Tonerna</h2>
@@ -789,7 +823,6 @@
 
   <hr class="divider">
 
-  <!-- ══════════ DAGLIG SPEGEL ══════════ -->
   <section id="spegel" class="mirror-section">
     <div class="wrap">
       <div class="section-label">Daglig reflektion</div>
@@ -818,7 +851,6 @@
     </div>
   </section>
 
-  <!-- ══════════ FOOTER ══════════ -->
   <footer>
     <div class="wrap footer-inner">
       <div class="footer-brand">Inre Spegel</div>
@@ -827,37 +859,36 @@
     </div>
   </footer>
 
-  <!-- ══════════ JAVASCRIPT ══════════ -->
   <script>
     const SIGNATUR_FORKLARING = {
-"Elektrisk Froet": "Din energi triggar igang processer. Du mar som bast nar du far satta saker i rorelse: projekt, relationer, skapande. Du ser mojligheter dar andra bara ser begransningar. Nar du stannar upp och fragar dig varfor du gor detta innan du agerar, forstarks din kraft. Du planterar framtidens fron genom hur du tanker, kanner, skapar och valjer i vardagen."
-};
+      "Elektrisk Froet": "Din energi triggar igång processer. Du mår bäst när du får sätta saker i rörelse: projekt, relationer, skapande. Du ser möjligheter där andra bara ser begränsningar. När du stannar upp och frågar dig varför du gör detta innan du agerar, förstärks din kraft. Du planterar framtidens frön genom hur du tänker, känner, skapar och väljer i vardagen."
+    };
 
-const KORS_FORKLARING = {
-"Elektrisk Froet": "Som Elektrisk Froet ar du en katalysator for tillvaxt. Ditt hogre jag (Himmelsvandraren) vill att du utforskar nya varldar - tekniska, kreativa och andliga. Din utmaning/dolda kraft (Jorden) ar att landa i kroppen och naturens rytm, ha talamod och hedra livets cykler. Din kraft/antipod (Trollkarlen) vacks nar du litar pa intuition och tidlos visdom istallet for bara logik."
-};
+    const KORS_FORKLARING = {
+      "Elektrisk Froet": "Som Elektrisk Froet är du en katalysator för tillväxt. Ditt högre jag (Himmelsvandraren) vill att du utforskar nya världar - tekniska, kreativa och andliga. Din utmaning/dolda kraft (Jorden) är att landa i kroppen och naturens rytm, ha tålamod och hedra livets cykler. Din kraft/antipod (Trollkarlen) väcks när du litar på intuition och tidlös visdom istället för bara logik."
+    };
 
-const SEALS = [
-      { sv: "Draken",           desc: "Den kosmiska livmoder som bär och uppehåller all skapelse. Du är ursprunget – en vårdnadsgivare av livet självt.", mantra: "Jag vårdar. Jag föder. Jag är källan." },
-      { sv: "Vinden",           desc: "Den osynliga ande som förbinder alla varelser. Ditt ord bär kraft – du kommunicerar sanningens ande.", mantra: "Jag andas. Jag talar. Jag är andan." },
-      { sv: "Natten",           desc: "Den djupa inre rikedom som finns i mörkret. Du bär drömmarnas och intuitionens gåva.", mantra: "Jag drömmer. Jag ser. Jag är rikedomen." },
-      { sv: "Fröet",            desc: "Potentialens uppvaknande genom medveten intention. Du planterar framtidens frön med visdom.", mantra: "Jag blomstrar. Jag sätter. Jag är målmedvetenheten." },
-      { sv: "Ormen",            desc: "Uppvaknandet av primordiala kroppsenergier. Du bär livskraftens och vitalitetens eld.", mantra: "Jag lever. Jag överlever. Jag är livsenergin." },
+    const SEALS = [
+      { sv: "Draken", desc: "Den kosmiska livmoder som bär och uppehåller all skapelse. Du är ursprunget – en vårdnadsgivare av livet självt.", mantra: "Jag vårdar. Jag föder. Jag är källan." },
+      { sv: "Vinden", desc: "Den osynliga ande som förbinder alla varelser. Ditt ord bär kraft – du kommunicerar sanningens ande.", mantra: "Jag andas. Jag talar. Jag är andan." },
+      { sv: "Natten", desc: "Den djupa inre rikedom som finns i mörkret. Du bär drömmarnas och intuitionens gåva.", mantra: "Jag drömmer. Jag ser. Jag är rikedomen." },
+      { sv: "Fröet", desc: "Potentialens uppvaknande genom medveten intention. Du planterar framtidens frön med visdom.", mantra: "Jag blomstrar. Jag sätter. Jag är målmedvetenheten." },
+      { sv: "Ormen", desc: "Uppvaknandet av primordiala kroppsenergier. Du bär livskraftens och vitalitetens eld.", mantra: "Jag lever. Jag överlever. Jag är livsenergin." },
       { sv: "Världsbrobyggaren", desc: "Konsten att släppa taget för att röra sig mellan världar. Du är en överbryggare av verkligheter.", mantra: "Jag jämnar. Jag frigör. Jag är möjligheten." },
-      { sv: "Handen",           desc: "Kraften av medveten handling ledd av medvetenhet. Du läker och skapar med dina händers visdom.", mantra: "Jag vet. Jag läker. Jag är prestationens hand." },
-      { sv: "Stjärnan",         desc: "Den naturliga ordning som uppstår när vi lever i alignment. Du strålar skönhet och harmoni.", mantra: "Jag pryder. Jag strålar. Jag är elegansen." },
-      { sv: "Månen",            desc: "Vattnets kraft att återställa balans och sanning. Du är en kosmisk strömlinjeformare.", mantra: "Jag renar. Jag flödar. Jag är det universella vattnet." },
-      { sv: "Hunden",           desc: "Sanningen att kontakt är vår största medicin. Du är en ledare av kärlek och lojalitet.", mantra: "Jag älskar. Jag är lojal. Jag är hjärtats kärlek." },
-      { sv: "Apan",             desc: "Den oskyldiga glädje som frigör transformation. Du mästrar magien i lekfullhet och skapande.", mantra: "Jag leker. Jag skapar. Jag är illusionens magiker." },
-      { sv: "Människan",        desc: "Kraften att forma verkligheten genom fri vilja. Du bär visdom och kunskapens gåva.", mantra: "Jag vet. Jag väljer. Jag är den fria viljans människa." },
+      { sv: "Handen", desc: "Kraften av medveten handling ledd av medvetenhet. Du läker och skapar med dina händers visdom.", mantra: "Jag vet. Jag läker. Jag är prestationens hand." },
+      { sv: "Stjärnan", desc: "Den naturliga ordning som uppstår när vi lever i alignment. Du strålar skönhet och harmoni.", mantra: "Jag pryder. Jag strålar. Jag är elegansen." },
+      { sv: "Månen", desc: "Vattnets kraft att återställa balans och sanning. Du är en kosmisk strömlinjeformare.", mantra: "Jag renar. Jag flödar. Jag är det universella vattnet." },
+      { sv: "Hunden", desc: "Sanningen att kontakt är vår största medicin. Du är en ledare av kärlek och lojalitet.", mantra: "Jag älskar. Jag är lojal. Jag är hjärtats kärlek." },
+      { sv: "Apan", desc: "Den oskyldiga glädje som frigör transformation. Du mästrar magien i lekfullhet och skapande.", mantra: "Jag leker. Jag skapar. Jag är illusionens magiker." },
+      { sv: "Människan", desc: "Kraften att forma verkligheten genom fri vilja. Du bär visdom och kunskapens gåva.", mantra: "Jag vet. Jag väljer. Jag är den fria viljans människa." },
       { sv: "Himmelsvandraren", desc: "Modet att vandra nya stigar i kosmos. Du utforskar och expanderar dimensioner av verkligheten.", mantra: "Jag utforskar. Jag vaknar. Jag är rymdutforskarens ande." },
-      { sv: "Trollkarlen",      desc: "Kraften av andlig insikt och tidlös visdom. Du är en tidlös magiker med helig kraftens receptivitet.", mantra: "Jag förtrollar. Jag vet. Jag är trollkarlen." },
-      { sv: "Örnen",            desc: "Perceptionens klarhet som leder till målmedveten handling. Du ser med kosmisk klarhet.", mantra: "Jag skapar. Jag ser. Jag är det kreativa sinnet." },
-      { sv: "Krigaren",         desc: "Disciplinerat fokus för att manifestera syfte. Du är en kosmisk frågare med intelligensens sköld.", mantra: "Jag frågar. Jag utforskar. Jag är den galaktiska krigaren." },
-      { sv: "Jorden",           desc: "Manifestationens cykler som vårdar allt liv. Du navigerar med synkronitetens kraft.", mantra: "Jag navigerar. Jag uthärdar. Jag är den evolutionära jordkraften." },
-      { sv: "Spegeln",          desc: "Klarheten att se sig själv och andra utan illusion. Du är en tidlös spegel av den oändliga ordningen.", mantra: "Jag reflekterar. Jag ordnar. Jag är den reflekterande spegeln." },
-      { sv: "Stormen",          desc: "Den katalytiska energi som rensar det gamla. Du bär självgenerationens och transformationens kraft.", mantra: "Jag katalyserar. Jag transformerar. Jag är stormens energi." },
-      { sv: "Solen",            desc: "Det strålande uttrycket av vårt högsta jag. Du strålar universell eld och upplyst medvetenhet.", mantra: "Jag lyser. Jag integrerar. Jag är den universella solelden." }
+      { sv: "Trollkarlen", desc: "Kraften av andlig insikt och tidlös visdom. Du är en tidlös magiker med helig kraftens receptivitet.", mantra: "Jag förtrollar. Jag vet. Jag är trollkarlen." },
+      { sv: "Örnen", desc: "Perceptionens klarhet som leder till målmedveten handling. Du ser med kosmisk klarhet.", mantra: "Jag skapar. Jag ser. Jag är det kreativa sinnet." },
+      { sv: "Krigaren", desc: "Disciplinerat fokus för att manifestera syfte. Du är en kosmisk frågare med intelligensens sköld.", mantra: "Jag frågar. Jag utforskar. Jag är den galaktiska krigaren." },
+      { sv: "Jorden", desc: "Manifestationens cykler som vårdar allt liv. Du navigerar med synkronitetens kraft.", mantra: "Jag navigerar. Jag uthärdar. Jag är den evolutionära jordkraften." },
+      { sv: "Spegeln", desc: "Klarheten att se sig själv och andra utan illusion. Du är en tidlös spegel av den oändliga ordningen.", mantra: "Jag reflekterar. Jag ordnar. Jag är den reflekterande spegeln." },
+      { sv: "Stormen", desc: "Den katalytiska energi som rensar det gamla. Du bär självgenerationens och transformationens kraft.", mantra: "Jag katalyserar. Jag transformerar. Jag är stormens energi." },
+      { sv: "Solen", desc: "Det strålande uttrycket av vårt högsta jag. Du strålar universell eld och upplyst medvetenhet.", mantra: "Jag lyser. Jag integrerar. Jag är den universella solelden." }
     ];
 
     const TONES = [
@@ -868,11 +899,8 @@ const SEALS = [
     function calcSignature() {
       const input = document.getElementById("birthdate").value;
       if (!input) { alert("Ange ett födelsedatum!"); return; }
-      const parts = input.split("-");
-      const year = parseInt(parts[0]);
-      const month = parseInt(parts[1]);
-      const day = parseInt(parts[2]);
 
+      const [year, month, day] = input.split("-").map(Number);
       const refDate = new Date(1987, 6, 26);
       const bDate = new Date(year, month - 1, day);
       const diffDays = Math.round((bDate - refDate) / 86400000);
@@ -884,23 +912,23 @@ const SEALS = [
       const seal = SEALS[sealIndex];
       const tone = TONES[toneIndex];
 
-      const higherSelf  = SEALS[(sealIndex + 9)  % 20].sv;
+      const higherSelf = SEALS[(sealIndex + 9) % 20].sv;
       const hiddenPower = SEALS[(19 - sealIndex + 20) % 20].sv;
-      const antipod     = SEALS[(sealIndex + 10) % 20].sv;
+      const antipod = SEALS[(sealIndex + 10) % 20].sv;
 
-      document.getElementById("rTone").textContent   = `Ton ${toneIndex + 1} · ${tone}`;
-      document.getElementById("rSeal").textContent   = `${tone} ${seal.sv}`;
+      document.getElementById("rTone").textContent = `Ton ${toneIndex + 1} · ${tone}`;
+      document.getElementById("rSeal").textContent = `${tone} ${seal.sv}`;
       document.getElementById("rMantra").textContent = seal.mantra;
-      document.getElementById("rDesc").textContent   = seal.desc;
+      document.getElementById("rDesc").textContent = seal.desc;
 
-      document.getElementById("cSelf").textContent   = `${tone} ${seal.sv}`;
+      document.getElementById("cSelf").textContent = `${tone} ${seal.sv}`;
       document.getElementById("cHigher").textContent = higherSelf;
       document.getElementById("cHidden").textContent = hiddenPower;
-      document.getElementById("cAnti").textContent   = antipod;
-      
-const signaturKey = `${tone} ${seal.sv}`;
-document.getElementById("rForklaringLang").textContent = SIGNATUR_FORKLARING[signaturKey] || "";
-document.getElementById("rKorsText").textContent = KORS_FORKLARING[signaturKey] || "";
+      document.getElementById("cAnti").textContent = antipod;
+
+      const signaturKey = `${tone} ${seal.sv}`;
+      document.getElementById("rForklaringLang").textContent = SIGNATUR_FORKLARING[signaturKey] || "";
+      document.getElementById("rKorsText").textContent = KORS_FORKLARING[signaturKey] || "";
 
       const result = document.getElementById("calcResult");
       result.classList.add("show");
@@ -910,20 +938,20 @@ document.getElementById("rKorsText").textContent = KORS_FORKLARING[signaturKey] 
     function reflectMessage() {
       const feeling = document.getElementById("feeling").value.trim().toLowerCase();
       const journal = document.getElementById("journal").value.trim();
-      const output  = document.getElementById("output");
+      const output = document.getElementById("output");
 
       let response = "Det du känner just nu bär ett budskap. Stanna upp och fråga vad det vill visa dig.";
 
-      if (feeling.includes("sorg"))                              response = "Sorgen visar att något har älskats på djupet. Låt den bli en bro mellan kärlek, minne och mognad.";
+      if (feeling.includes("sorg")) response = "Sorgen visar att något har älskats på djupet. Låt den bli en bro mellan kärlek, minne och mognad.";
       else if (feeling.includes("press") || feeling.includes("stress")) response = "Pressen kan vara ett tecken på att du bär för mycket. Fråga vad som verkligen är ditt att hålla just nu.";
-      else if (feeling.includes("hopp"))                        response = "Hoppet är själens sätt att känna en framtid innan sinnet hinner förstå den. Skydda det som ett inre ljus.";
-      else if (feeling.includes("tomhet"))                      response = "Tomheten är inte alltid frånvaro – ibland är den mellanrummet där något gammalt lämnat, och något nytt ännu inte landat.";
-      else if (feeling.includes("kärlek"))                      response = "Kärleken ber dig inte bara känna mer – den ber dig bli sannare, öppnare och modigare.";
-      else if (feeling.includes("väntan"))                      response = "Väntan kan vara en övning i tillit. Vissa saker vill mogna innan de visar sig fullt ut.";
+      else if (feeling.includes("hopp")) response = "Hoppet är själens sätt att känna en framtid innan sinnet hinner förstå den. Skydda det som ett inre ljus.";
+      else if (feeling.includes("tomhet")) response = "Tomheten är inte alltid frånvaro – ibland är den mellanrummet där något gammalt lämnat, och något nytt ännu inte landat.";
+      else if (feeling.includes("kärlek")) response = "Kärleken ber dig inte bara känna mer – den ber dig bli sannare, öppnare och modigare.";
+      else if (feeling.includes("väntan")) response = "Väntan kan vara en övning i tillit. Vissa saker vill mogna innan de visar sig fullt ut.";
       else if (feeling.includes("rädsla") || feeling.includes("oro")) response = "Rädslan pekar ofta mot det som är viktigast. Fråga vad den skyddar – och om det skyddet fortfarande tjänar dig.";
-      else if (feeling.includes("glädje"))                      response = "Glädjen är ett kosmiskt tecken att du är i alignment. Låt den vara hel och oinskränkt.";
-      else if (feeling.includes("ilska"))                       response = "Ilskan bär ofta en djup gräns under sig. Vad är det som behöver respekteras, erkännas eller förändras?";
-      else if (feeling.includes("tacksamhet"))                  response = "Tacksamhet är en av de mäktigaste vibrationerna. Du alignar dig med flödet av det som är.";
+      else if (feeling.includes("glädje")) response = "Glädjen är ett kosmiskt tecken att du är i alignment. Låt den vara hel och oinskränkt.";
+      else if (feeling.includes("ilska")) response = "Ilskan bär ofta en djup gräns under sig. Vad är det som behöver respekteras, erkännas eller förändras?";
+      else if (feeling.includes("tacksamhet")) response = "Tacksamhet är en av de mäktigaste vibrationerna. Du alignar dig med flödet av det som är.";
 
       if (journal.length > 0) response += " Läs gärna dina egna ord igen, långsamt. Svaret gömmer sig ofta redan där.";
 
@@ -931,7 +959,8 @@ document.getElementById("rKorsText").textContent = KORS_FORKLARING[signaturKey] 
 
       const ringSymbols = ["🐉","🌬","☾","🌱","🐍","🌉","✋","★","🌊","🐕","🐒","🧬","🚀","🔮","🦅","⚔","🌍","🪞","🌀","☀"];
       const ring = document.getElementById("zodiacRing");
-      if (ring) {
+      if (ring && !ring.dataset.filled) {
+        ring.dataset.filled = "true";
         ringSymbols.forEach((sym, i) => {
           const angle = (i / ringSymbols.length) * 2 * Math.PI - Math.PI / 2;
           const radius = 140;
