@@ -4,77 +4,87 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Inre Spegel</title>
-  <meta name="description" content="Inre Spegel – lev i galaktisk tid. Hitta din galaktiska signatur, ditt galaktiska kors och din kosmiska rytm.">
+  <meta name="description" content="Inre Spegel – en orakelbaserad galaktisk signaturkalkylator med sigill, toner och daglig reflektion.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    :root{--bg:#0c0c0f;--panel:#121217;--panel2:#16161d;--text:#f4efe7;--muted:#a5a1a0;--line:rgba(255,255,255,.1);--gold:#c8a96b;--gold2:#e0c080;--accent:#8d7aff;--max:1120px}
+    :root{--bg:#0b0b0e;--panel:#121219;--line:rgba(255,255,255,.09);--text:#f5efe7;--muted:#a9a29d;--gold:#c8a96b;--gold2:#e0c080;--max:1080px}
     *{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth}
-    body{font-family:Inter,sans-serif;background:radial-gradient(circle at 20% 0%,rgba(200,169,107,.07),transparent 30%),var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden}
+    body{font-family:Inter,sans-serif;background:radial-gradient(circle at 20% 0%,rgba(200,169,107,.08),transparent 30%),radial-gradient(circle at 80% 70%,rgba(140,120,255,.08),transparent 25%),var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden;opacity:0;animation:fadeIn .7s ease forwards}
+    @keyframes fadeIn{to{opacity:1}}
+    @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+    @keyframes twinkle{from{opacity:.3}to{opacity:.8}}
     a{color:inherit;text-decoration:none}
     .wrap{width:min(100% - 32px,var(--max));margin:0 auto}
-    .topbar{position:sticky;top:0;z-index:20;background:rgba(12,12,15,.78);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-    .topbar .inner{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 0}
-    .brand{font-family:"Cormorant Garamond",serif;font-size:1.6rem;letter-spacing:.08em}
-    .nav{display:flex;flex-wrap:wrap;gap:14px;justify-content:flex-end}
-    .nav a{font-size:.74rem;text-transform:uppercase;letter-spacing:.14em;color:var(--muted)}
+    .bg-stars{position:fixed;inset:0;z-index:-2;pointer-events:none;background-image:radial-gradient(1px 1px at 20px 30px,#fff,transparent 2px),radial-gradient(1px 1px at 120px 90px,#fff,transparent 2px),radial-gradient(1px 1px at 260px 200px,#fff,transparent 2px),radial-gradient(1px 1px at 380px 40px,#fff,transparent 2px);background-size:420px 420px;opacity:.45;animation:twinkle 8s ease-in-out infinite alternate}
+    .top{position:sticky;top:0;z-index:20;background:rgba(11,11,14,.74);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+    .top .inner{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:16px 0;flex-wrap:wrap}
+    .brand{font-family:"Cormorant Garamond",serif;font-size:1.5rem;letter-spacing:.08em}
+    .nav{display:flex;gap:16px;flex-wrap:wrap}
+    .nav a{font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
     .nav a:hover{color:var(--text)}
-    .hero{padding:48px 0 24px;border-bottom:1px solid var(--line)}
-    .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:24px;align-items:center}
-    .eyebrow{text-transform:uppercase;letter-spacing:.2em;color:var(--gold);font-size:.72rem;margin-bottom:14px}
-    h1{font-family:"Cormorant Garamond",serif;font-weight:400;line-height:1.05;font-size:clamp(2.6rem,6vw,5rem);max-width:12ch;margin-bottom:18px}
-    .lead{color:var(--muted);font-size:1.03rem;max-width:60ch}
-    .hero-card{background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.01));border:1px solid var(--line);padding:22px;border-radius:18px}
-    .ring{position:relative;width:min(100%,360px);aspect-ratio:1;margin:0 auto;border-radius:50%;border:1px solid var(--line);background:radial-gradient(circle at center,rgba(200,169,107,.08),transparent 58%)}
-    .ring:before{content:"";position:absolute;inset:18px;border-radius:50%;border:1px solid rgba(255,255,255,.08)}
-    .ring-center{position:absolute;inset:78px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-align:center;font-family:"Cormorant Garamond",serif;font-size:.92rem;letter-spacing:.12em;color:var(--muted);text-transform:uppercase;padding:18px}
-    .sym{position:absolute;left:50%;top:50%;width:30px;height:30px;margin:-15px 0 0 -15px;border-radius:50%;border:1px solid rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;font-size:.95rem;color:var(--gold);background:rgba(255,255,255,.02)}
-    section{padding:72px 0}
-    .section-title{font-family:"Cormorant Garamond",serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:400;line-height:1.08;margin-bottom:14px}
+    .hero{padding:58px 0 28px;border-bottom:1px solid var(--line)}
+    .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;align-items:center}
+    .eyebrow{text-transform:uppercase;letter-spacing:.22em;font-size:.72rem;color:var(--gold);margin-bottom:14px}
+    h1{font-family:"Cormorant Garamond",serif;font-weight:400;line-height:1.05;font-size:clamp(2.8rem,6vw,5.2rem);max-width:12ch;margin-bottom:18px;animation:rise .8s ease both}
+    .lead{color:var(--muted);font-size:1.02rem;max-width:60ch;animation:rise .9s ease .12s both}
+    .hero-card{position:relative;background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.01));border:1px solid var(--line);border-radius:18px;padding:24px;overflow:hidden;animation:rise .9s ease .14s both}
+    .orb{position:relative;width:min(100%,360px);aspect-ratio:1;border-radius:50%;margin:0 auto;border:1px solid var(--line);background:radial-gradient(circle at center,rgba(200,169,107,.08),transparent 58%);animation:spin 42s linear infinite}
+    @keyframes spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+    .orb-center{position:absolute;inset:78px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-align:center;font-family:"Cormorant Garamond",serif;font-size:.94rem;letter-spacing:.12em;color:var(--muted);text-transform:uppercase;padding:18px;border:1px solid rgba(255,255,255,.08)}
+    .sym{position:absolute;left:50%;top:50%;width:30px;height:30px;margin:-15px 0 0 -15px;border-radius:50%;border:1px solid rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;font-size:.95rem;color:var(--gold);background:rgba(255,255,255,.02);animation:pulse 4s ease-in-out infinite alternate}
+    @keyframes pulse{from{transform:translateZ(0) scale(.96);opacity:.72}to{transform:translateZ(0) scale(1.08);opacity:1}}
+    section{padding:72px 0;opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+    section.in-view{opacity:1;transform:none}
     .section-kicker{text-transform:uppercase;letter-spacing:.18em;font-size:.72rem;color:var(--gold);margin-bottom:10px}
-    .sub{color:var(--muted);max-width:72ch}
-    .calc-shell{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start;margin-top:28px}
-    .panel{background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,.01));border:1px solid var(--line);border-radius:18px;padding:22px}
+    .title{font-family:"Cormorant Garamond",serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:400;line-height:1.08;margin-bottom:14px}
+    .sub{color:var(--muted);max-width:74ch}
+    .panel{background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,.01));border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:0 12px 40px rgba(0,0,0,.18);transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease}
+    .panel:hover{transform:translateY(-3px);border-color:rgba(200,169,107,.24);box-shadow:0 18px 52px rgba(0,0,0,.26)}
+    .calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start;margin-top:28px}
     .field{margin-top:14px}
     label{display:block;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
     input[type="date"],input[type="text"],textarea{width:100%;background:transparent;border:1px solid var(--line);color:var(--text);padding:14px 16px;font:inherit;outline:none;border-radius:12px}
     input:focus,textarea:focus{border-color:rgba(200,169,107,.55)}
     textarea{min-height:120px;resize:vertical}
-    .btn{width:100%;margin-top:14px;padding:14px 16px;border:1px solid rgba(200,169,107,.55);background:linear-gradient(180deg,rgba(200,169,107,.12),rgba(200,169,107,.04));color:var(--text);text-transform:uppercase;letter-spacing:.14em;font-size:.78rem;cursor:pointer;border-radius:12px;transition:.2s}
-    .btn:hover{transform:translateY(-1px);border-color:rgba(200,169,107,.8)}
-    .result{display:none;margin-top:18px;background:linear-gradient(180deg,rgba(200,169,107,.05),rgba(255,255,255,.02));border:1px solid rgba(200,169,107,.2);border-radius:18px;padding:22px}
+    .btn{width:100%;margin-top:14px;padding:14px 16px;border:1px solid rgba(200,169,107,.55);background:linear-gradient(180deg,rgba(200,169,107,.12),rgba(200,169,107,.04));color:var(--text);text-transform:uppercase;letter-spacing:.14em;font-size:.78rem;cursor:pointer;border-radius:12px;transition:.25s}
+    .btn:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(200,169,107,.12)}
+    .result{display:none;margin-top:18px;background:linear-gradient(180deg,rgba(200,169,107,.06),rgba(255,255,255,.02));border:1px solid rgba(200,169,107,.22);border-radius:18px;padding:22px;animation:rise .5s ease both;position:relative}
     .result.show{display:block}
     .kin{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
-    .sig{font-family:"Cormorant Garamond",serif;font-size:clamp(2rem,4vw,3.3rem);line-height:1.05;margin-bottom:10px}
+    .sig{font-family:"Cormorant Garamond",serif;font-size:clamp(2rem,4vw,3.2rem);line-height:1.05;margin-bottom:10px}
     .mantra{font-family:"Cormorant Garamond",serif;font-size:1.2rem;font-style:italic;color:var(--gold2);margin-bottom:14px}
     .desc{color:var(--muted);font-size:.95rem;line-height:1.8}
-    .reading-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-top:18px}
-    .reading-item{background:var(--panel);padding:16px 14px}
-    .reading-item .k{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
-    .reading-item .v{font-family:"Cormorant Garamond",serif;font-size:1.15rem}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-top:18px}
+    .cell{background:var(--panel);padding:16px 14px}
+    .cell .k{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+    .cell .v{font-family:"Cormorant Garamond",serif;font-size:1.12rem}
     .cross-text{margin-top:14px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:.94rem;line-height:1.8}
-    .info-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-top:24px}
-    .info-card{background:var(--panel);padding:18px}
-    .info-card h4{font-family:"Cormorant Garamond",serif;font-size:1.2rem;font-weight:400;margin-bottom:8px}
-    .info-card p{font-size:.86rem;color:var(--muted);line-height:1.65}
-    .tones-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-top:24px}
-    .tone-card{background:var(--panel);padding:16px}
-    .tone-card .n{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:4px}
-    .tone-card h4{font-family:"Cormorant Garamond",serif;font-size:1.15rem;font-weight:400;margin-bottom:6px}
-    .tone-card p{font-size:.85rem;color:var(--muted);line-height:1.65}
+    .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-top:24px}
+    .cards .card{background:var(--panel);padding:18px;transition:transform .25s ease,background .25s ease}
+    .cards .card:hover{transform:translateY(-3px);background:#171722}
+    .card h4{font-family:"Cormorant Garamond",serif;font-size:1.2rem;font-weight:400;margin-bottom:8px}
+    .card p{font-size:.86rem;color:var(--muted);line-height:1.65}
+    .tones{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-top:24px}
+    .tone{background:var(--panel);padding:16px;transition:transform .25s ease,background .25s ease}
+    .tone:hover{transform:translateY(-3px);background:#171722}
+    .tone .n{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:4px}
+    .tone h4{font-family:"Cormorant Garamond",serif;font-size:1.15rem;font-weight:400;margin-bottom:6px}
+    .tone p{font-size:.85rem;color:var(--muted);line-height:1.65}
     .mirror-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start;margin-top:28px}
     .mirror-output{margin-top:14px;padding:16px;border:1px solid var(--line);border-radius:12px;color:var(--muted);font-style:italic;min-height:68px}
     .questions p{padding:14px 0;border-bottom:1px solid var(--line);color:var(--muted);font-style:italic}
     .questions p:last-child{border-bottom:none}
     footer{padding:28px 0 42px;border-top:1px solid var(--line);color:var(--muted);font-size:.78rem}
     .footer-inner{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center}
-    @media (max-width:900px){.hero-grid,.calc-shell,.mirror-grid{grid-template-columns:1fr}.nav{justify-content:flex-start}}
+    @media (max-width:900px){.hero-grid,.calc-grid,.mirror-grid{grid-template-columns:1fr}.nav{justify-content:flex-start}.orb{margin-top:12px}}
   </style>
 </head>
 <body>
-  <div class="topbar">
+  <div class="bg-stars"></div>
+  <header class="top">
     <div class="wrap inner">
       <div class="brand">Inre Spegel</div>
       <nav class="nav">
@@ -84,63 +94,63 @@
         <a href="#spegel">Spegel</a>
       </nav>
     </div>
-  </div>
+  </header>
 
-  <header class="hero">
+  <section class="hero">
     <div class="wrap hero-grid">
       <div>
         <div class="eyebrow">Galaktisk tid · kosmisk spegel</div>
-        <h1>Lev den högsta potentialen av varje dag</h1>
-        <p class="lead">Här kan du räkna ut din galaktiska signatur, läsa ditt galaktiska kors och använda en enkel daglig spegel för reflektion. Layouten är byggd för att kännas ren, tydlig och mer kalkylator-fokuserad.</p>
+        <h1>Lyssna till din högsta rytm varje dag</h1>
+        <p class="lead">Det här är ett stilla orakelrum för läsning av signatur, kors och daglig reflektion. Låt datum, ord och känsla tala i sin egen takt.</p>
       </div>
       <div class="hero-card">
-        <div class="ring" id="zodiacRing"><div class="ring-center">Galaktisk Tid</div></div>
+        <div class="orb" id="zodiacRing"><div class="orb-center">Galaktisk Tid</div></div>
       </div>
     </div>
-  </header>
+  </section>
 
   <main>
     <section id="kalkylator">
       <div class="wrap">
         <div class="section-kicker">Din galaktiska signatur</div>
-        <h2 class="section-title">Vad är din Galaktiska Signatur?</h2>
-        <p class="sub">Fyll i ditt födelsedatum så räknar sidan ut kin, ton, sigill och galaktiskt kors. Resultatet visas i ett läsbart kort med en tydlig uppdelning av signatur och kors.</p>
+        <h2 class="title">Vad visar din Galaktiska Signatur?</h2>
+        <p class="sub">Ange ditt födelsedatum så låter sidan datumet tala. Resultatet visar kin, ton, sigill och kors i ett läsbart orakelkort.</p>
+        <div class="panel" style="margin-top:18px;border-color:rgba(200,169,107,.18)">
+          <div class="section-kicker">Orakelsättet</div>
+          <p class="sub" style="max-width:none">Det här verktyget är byggt för avläsning, inte prestation. Läs resultatet som en spegling av frekvens, riktning och mönster.</p>
+        </div>
 
-        <div class="calc-shell">
+        <div class="calc-grid">
           <div class="panel">
             <div class="field">
               <label for="birthdate">Ange ditt födelsedatum</label>
               <input type="date" id="birthdate" max="2026-12-31">
             </div>
-            <button class="btn" onclick="calcSignature()">Beräkna min galaktiska signatur</button>
-
+            <button class="btn" onclick="calcSignature()">Låt oraklet tala</button>
             <div class="result" id="calcResult">
               <div class="kin" id="rKin"></div>
               <div class="sig" id="rSeal"></div>
               <div class="mantra" id="rMantra"></div>
               <div class="desc" id="rDesc"></div>
               <div class="desc" id="rForklaringLang" style="margin-top:14px;"></div>
-
-              <div class="reading-grid">
-                <div class="reading-item"><div class="k">Ton</div><div class="v" id="rTone"></div></div>
-                <div class="reading-item"><div class="k">Din signatur</div><div class="v" id="cSelf"></div></div>
-                <div class="reading-item"><div class="k">Ditt Högre Jag</div><div class="v" id="cHigher"></div></div>
-                <div class="reading-item"><div class="k">Dold kraft</div><div class="v" id="cHidden"></div></div>
+              <div class="grid">
+                <div class="cell"><div class="k">Din signatur</div><div class="v" id="cSelf"></div></div>
+                <div class="cell"><div class="k">Ditt Högre Jag</div><div class="v" id="cHigher"></div></div>
+                <div class="cell"><div class="k">Dold kraft / Utmaning</div><div class="v" id="cHidden"></div></div>
+                <div class="cell"><div class="k">Antipod / Kraft</div><div class="v" id="cAnti"></div></div>
               </div>
-
-              <div class="cross-text" id="rKorsText"></div>
+              <div class="cross-text" id="cCrossText"></div>
             </div>
           </div>
-
           <div class="panel">
-            <div class="section-kicker">Galaktiskt kors</div>
-            <h3>Ditt inre kors</h3>
-            <p class="sub">Den här rutan kompletterar signaturen med högre jag, dold kraft och antipod. Det gör sidan mer läsbar och mer lik den layout du visade som referens.</p>
-            <div class="reading-grid" style="margin-top:16px;">
-              <div class="reading-item"><div class="k">Antipod / Kraft</div><div class="v" id="cAnti"></div></div>
-              <div class="reading-item"><div class="k">Resultat</div><div class="v" id="cSigShort">—</div></div>
+            <div class="section-kicker">Avläsning</div>
+            <h3 class="title" style="font-size:2rem;margin-bottom:10px;">Hur det läses</h3>
+            <p class="sub">Ton + sigill visar din aktiva frekvens. Högre Jag pekar mot din riktning av expansion. Dold kraft visar det som vill mognas. Antipoden visar den stödjande motpolen som hjälper dig att förstå helheten.</p>
+            <div class="grid" style="margin-top:16px;">
+              <div class="cell"><div class="k">Signatur</div><div class="v" id="cSigShort">—</div></div>
+              <div class="cell"><div class="k">Kors</div><div class="v" id="cCrossShort">—</div></div>
             </div>
-            <div class="cross-text">När resultatet räknas ut fylls den här ytan med din tolkning. Ton och sigill placeras först, sedan korsets riktningar och slutligen en längre reading-text.</div>
+            <div class="cross-text">När du fyller i ditt datum kommer oraklet att skriva ut en hel läsning, inte bara en etikett.</div>
           </div>
         </div>
       </div>
@@ -149,29 +159,29 @@
     <section id="sigill">
       <div class="wrap">
         <div class="section-kicker">De 20 solarsigillet</div>
-        <h2 class="section-title">Stammarna</h2>
-        <p class="sub">Varje sigill bär en arketypisk energi. Sidan visar dem i ett rent kort-grid för att likna ett tydligt referensverktyg.</p>
-        <div class="info-grid">
-          <div class="info-card"><h4>Draken</h4><p>Den kosmiska livmodern som bär och uppehåller all skapelse.</p></div>
-          <div class="info-card"><h4>Vinden</h4><p>Den osynliga ande som förbinder alla varelser.</p></div>
-          <div class="info-card"><h4>Natten</h4><p>Den djupa inre rikedom som finns i mörkret.</p></div>
-          <div class="info-card"><h4>Fröet</h4><p>Potentialens uppvaknande genom medveten intention.</p></div>
-          <div class="info-card"><h4>Ormen</h4><p>Uppvaknandet av primordiala kroppsenergier.</p></div>
-          <div class="info-card"><h4>Världsbrobyggaren</h4><p>Konsten att släppa taget för att röra sig mellan världar.</p></div>
-          <div class="info-card"><h4>Handen</h4><p>Kraften av medveten handling ledd av medvetenhet.</p></div>
-          <div class="info-card"><h4>Stjärnan</h4><p>Den naturliga ordning som uppstår när vi lever i alignment.</p></div>
-          <div class="info-card"><h4>Månen</h4><p>Vattnets kraft att återställa balans och sanning.</p></div>
-          <div class="info-card"><h4>Hunden</h4><p>Sanningen att kontakt är vår största medicin.</p></div>
-          <div class="info-card"><h4>Apan</h4><p>Den oskyldiga glädje som frigör transformation.</p></div>
-          <div class="info-card"><h4>Människan</h4><p>Kraften att forma verkligheten genom fri vilja.</p></div>
-          <div class="info-card"><h4>Himmelsvandraren</h4><p>Modet att vandra nya stigar i kosmos.</p></div>
-          <div class="info-card"><h4>Trollkarlen</h4><p>Kraften av andlig insikt och tidlös visdom.</p></div>
-          <div class="info-card"><h4>Örnen</h4><p>Perceptionens klarhet som leder till målmedveten handling.</p></div>
-          <div class="info-card"><h4>Krigaren</h4><p>Disciplinerat fokus för att manifestera syfte.</p></div>
-          <div class="info-card"><h4>Jorden</h4><p>Manifestationens cykler som vårdar allt liv.</p></div>
-          <div class="info-card"><h4>Spegeln</h4><p>Klarheten att se sig själv och andra utan illusion.</p></div>
-          <div class="info-card"><h4>Stormen</h4><p>Den katalytiska energi som rensar det gamla.</p></div>
-          <div class="info-card"><h4>Solen</h4><p>Det strålande uttrycket av vårt högsta jag.</p></div>
+        <h2 class="title">Stammarna</h2>
+        <p class="sub">Varje sigill bär en arketypisk kvalitet. Här får de en ren, läsbar form så att symbol och mening möts tydligt.</p>
+        <div class="cards">
+          <div class="card"><h4>Draken</h4><p>Omsorg och ovillkorlig närvaro.</p></div>
+          <div class="card"><h4>Vinden</h4><p>Kommunikation och sammanlänkning.</p></div>
+          <div class="card"><h4>Natten</h4><p>Dröm, intuition och inre rikedom.</p></div>
+          <div class="card"><h4>Fröet</h4><p>Målmedveten tillväxt.</p></div>
+          <div class="card"><h4>Ormen</h4><p>Livskraft och kroppslig vitalitet.</p></div>
+          <div class="card"><h4>Världsbrobyggaren</h4><p>Övergång och att släppa taget.</p></div>
+          <div class="card"><h4>Handen</h4><p>Handling och läkning.</p></div>
+          <div class="card"><h4>Stjärnan</h4><p>Skönhet och harmoni.</p></div>
+          <div class="card"><h4>Månen</h4><p>Rening och känslomässigt flöde.</p></div>
+          <div class="card"><h4>Hunden</h4><p>Kärlek och lojalitet.</p></div>
+          <div class="card"><h4>Apan</h4><p>Lek, humor och skapande.</p></div>
+          <div class="card"><h4>Människan</h4><p>Fri vilja och visdom.</p></div>
+          <div class="card"><h4>Himmelsvandraren</h4><p>Utforskande och mod.</p></div>
+          <div class="card"><h4>Trollkarlen</h4><p>Tidlös visdom och receptivitet.</p></div>
+          <div class="card"><h4>Örnen</h4><p>Vision och klarhet.</p></div>
+          <div class="card"><h4>Krigaren</h4><p>Mod, fokus och frågande intelligens.</p></div>
+          <div class="card"><h4>Jorden</h4><p>Synkronicitet och riktning.</p></div>
+          <div class="card"><h4>Spegeln</h4><p>Klarhet och sanning.</p></div>
+          <div class="card"><h4>Stormen</h4><p>Transformation och rening.</p></div>
+          <div class="card"><h4>Solen</h4><p>Ljus, helhet och syfte.</p></div>
         </div>
       </div>
     </section>
@@ -179,22 +189,22 @@
     <section id="toner">
       <div class="wrap">
         <div class="section-kicker">De 13 tonerna</div>
-        <h2 class="section-title">Tonerna</h2>
-        <p class="sub">Tonerna presenterar cykelns dynamik och kan användas i samma tydliga gridstil som referenssidan.</p>
-        <div class="tones-grid">
-          <div class="tone-card"><div class="n">Ton 1</div><h4>Magnetisk</h4><p>Syftes kraft, attraktion och initiering av en ny cykel.</p></div>
-          <div class="tone-card"><div class="n">Ton 2</div><h4>Lunar</h4><p>Utmaning och lärande genom reflektion och mönsterigenkänning.</p></div>
-          <div class="tone-card"><div class="n">Ton 3</div><h4>Elektrisk</h4><p>Aktivering, koppling och katalytisk energi som tänder rörelse.</p></div>
-          <div class="tone-card"><div class="n">Ton 4</div><h4>Självexisterande</h4><p>Stabilitet, integritet och grundande kraft för manifestation.</p></div>
-          <div class="tone-card"><div class="n">Ton 5</div><h4>Övertonen</h4><p>Strålglans, bemyndigande och fokuserad aktivering av syfte.</p></div>
-          <div class="tone-card"><div class="n">Ton 6</div><h4>Rytmisk</h4><p>Jämlikhet, balans och harmoniserat energiflöde.</p></div>
-          <div class="tone-card"><div class="n">Ton 7</div><h4>Resonant</h4><p>Kanalisering, inspiration, intonning och djup självacceptans.</p></div>
-          <div class="tone-card"><div class="n">Ton 8</div><h4>Galaktisk</h4><p>Harmonisering, integritet och alignment med galaktiska flödet.</p></div>
-          <div class="tone-card"><div class="n">Ton 9</div><h4>Solar</h4><p>Livets puls, insikt, intention och syftes fullbordan.</p></div>
-          <div class="tone-card"><div class="n">Ton 10</div><h4>Planetär</h4><p>Manifestation, stabilitet och kraft att bringa idéer till form.</p></div>
-          <div class="tone-card"><div class="n">Ton 11</div><h4>Spektral</h4><p>Frigörelse, befrielse och att släppa det som inte längre tjänar dig.</p></div>
-          <div class="tone-card"><div class="n">Ton 12</div><h4>Kristall</h4><p>Samarbete och klarhet från alignment med kollektivt syfte.</p></div>
-          <div class="tone-card"><div class="n">Ton 13</div><h4>Kosmisk</h4><p>Transcendens, närvaro och medvetenhet om det oändliga.</p></div>
+        <h2 class="title">Tonerna</h2>
+        <p class="sub">Tonerna beskriver hur energin rör sig genom cykeln. De ger den andra halvan av din signatur.</p>
+        <div class="tones">
+          <div class="tone"><div class="n">Ton 1</div><h4>Magnetisk</h4><p>Attraherar och sätter syfte i rörelse.</p></div>
+          <div class="tone"><div class="n">Ton 2</div><h4>Lunar</h4><p>Utmanar och lär genom spänning.</p></div>
+          <div class="tone"><div class="n">Ton 3</div><h4>Elektrisk</h4><p>Aktiverar och tänder liv.</p></div>
+          <div class="tone"><div class="n">Ton 4</div><h4>Självexisterande</h4><p>Ger form och håller struktur.</p></div>
+          <div class="tone"><div class="n">Ton 5</div><h4>Övertonen</h4><p>Förstärker och lyser upp.</p></div>
+          <div class="tone"><div class="n">Ton 6</div><h4>Rytmisk</h4><p>Balanserar och jämnar ut.</p></div>
+          <div class="tone"><div class="n">Ton 7</div><h4>Resonant</h4><p>Lyssnar in och kanaliserar.</p></div>
+          <div class="tone"><div class="n">Ton 8</div><h4>Galaktisk</h4><p>Håller integritet och renhet.</p></div>
+          <div class="tone"><div class="n">Ton 9</div><h4>Solar</h4><p>Fullbordar och ger mening.</p></div>
+          <div class="tone"><div class="n">Ton 10</div><h4>Planetär</h4><p>Gör verkligt och praktiskt.</p></div>
+          <div class="tone"><div class="n">Ton 11</div><h4>Spektral</h4><p>Löser upp och frigör.</p></div>
+          <div class="tone"><div class="n">Ton 12</div><h4>Kristall</h4><p>Samlar och delar i gemenskap.</p></div>
+          <div class="tone"><div class="n">Ton 13</div><h4>Kosmisk</h4><p>Vilar i det tidlösa och gränslösa.</p></div>
         </div>
       </div>
     </section>
@@ -202,22 +212,22 @@
     <section id="spegel">
       <div class="wrap">
         <div class="section-kicker">Daglig reflektion</div>
-        <h2 class="section-title">Dagens Spegel</h2>
-        <p class="sub">En liten daglig check-in för känsla och anteckning.</p>
+        <h2 class="title">Dagens Orakel</h2>
+        <p class="sub">En enkel spegel för dagens känsla och din egen anteckning.</p>
         <div class="mirror-grid">
           <div class="panel">
             <div class="field"><label for="feeling">Vad visar livet dig idag?</label><input id="feeling" type="text" placeholder="t.ex. sorg, hopp, press, väntan, kärlek"></div>
             <div class="field"><label for="journal">Anteckning</label><textarea id="journal" placeholder="Skriv några rader om vad som rör sig i dig..."></textarea></div>
-            <button class="btn" onclick="reflectMessage()">Spegla tillbaka</button>
-            <div class="mirror-output" id="output">Din reflektion visas här...</div>
+            <button class="btn" onclick="reflectMessage()">Låt spegeln tala</button>
+            <div class="mirror-output" id="output">Ditt svar visas här...</div>
           </div>
           <div class="panel questions">
-            <div class="section-kicker">Frågor att sitta med</div>
-            <p>Vad i mitt liv försöker få min uppmärksamhet just nu?</p>
-            <p>Vad håller jag fast i som egentligen vill bli frigjort?</p>
-            <p>Var behöver jag mer sanning, mer ömhet och mer närvaro?</p>
-            <p>Hur kan jag idag leva i harmoni med min galaktiska signatur?</p>
-            <p>Vad vill min själ skapa i det här ögonblicket?</p>
+            <div class="section-kicker">Frågor att hålla i stillhet</div>
+            <p>Vad försöker livet visa mig just nu?</p>
+            <p>Vad håller jag fast i som vill släppas?</p>
+            <p>Var behöver jag mer sanning, ömhet och närvaro?</p>
+            <p>Hur lever jag idag i linje med min signatur?</p>
+            <p>Vad vill min själ skapa härnäst?</p>
           </div>
         </div>
       </div>
@@ -232,355 +242,133 @@
   </footer>
 
   <script>
-    const SIGNATUR_FORKLARING = {
-      "Magnetisk Draken": "Som Magnetisk Draken attraherar och sätter syfte i rörelse, och din väg handlar om omvårdnad och ovillkorlig närvaro. Din uppgift är att fråga vad du verkligen vill locka in i ditt liv, och sedan rikta din intention dit. Din utmaning är att lita på att du får ta emot, inte bara ge, men när du står i din kraft uttrycker du modersinstinktens urkraft genom tonens magnetiska kvalitet – attraherar och sätter syfte i rörelse.",
-      "Lunar Draken": "Som Lunar Draken utmanar du att växa genom polaritet och lärande, och din väg handlar om omvårdnad och ovillkorlig närvaro. Din uppgift är att möta motstånd som en lärare snarare än ett hinder. Din utmaning är att lita på att du får ta emot, inte bara ge, men när du står i din kraft uttrycker du modersinstinktens urkraft genom tonens lunara kvalitet – utmanar och lär dig genom spänning.",
-      "Elektrisk Draken": "Som Elektrisk Draken aktiverar du tillväxt genom rörelse, och din väg handlar om omvårdnad och ovillkorlig närvaro. Du ser vad som behöver sättas i gång och kan inspirera andra att ta första steget. Din utmaning är att inte rusa förbi din egen kropp, men när du står i din kraft uttrycker du modersinstinktens urkraft genom tonens elektriska kvalitet – aktiverar och tänder liv.",
-      "Självexisterande Draken": "Som Självexisterande Draken bär du en naturlig struktur i omsorg och närvaro. Din uppgift är att ge form åt det du vårdar så att det blir hållbart. Du trivs när du får bygga stabila ramar, och din kraft växer när du väljer det som är sant och enkelt.",
-      "Övertonen Draken": "Som Övertonen Draken strålar du fram ledarskap genom omsorg. Du förhöjer rummet bara genom att vara närvarande. Din uppgift är att använda kraften varsamt, så att din värme inte blir tung. När du är balanserad blir du en källa som andra gärna samlas kring.",
-      "Rytmisk Draken": "Som Rytmisk Draken skapar du balans genom att ge och ta emot i jämvikt. Du mår bäst när omsorgen också omfattar dig själv. Din uppgift är att organisera ditt flöde så att du inte tömmer dig i onödan. När du är i rytm blir din närvaro läkande.",
-      "Resonant Draken": "Som Resonant Draken lyssnar du in livets signaler med en mjuk och intuitiv känsla. Du är kallad att intonera med det som verkligen vill växa. Din uppgift är att stanna upp och höra vad kroppen och hjärtat redan vet. När du litar på din inre ton blir din omsorg klar och tydlig.",
-      "Galaktisk Draken": "Som Galaktisk Draken bär du integritet i omsorgens form. Du vill att det du ger ska vara sant, rent och i linje med din högsta natur. Din uppgift är att låta handling och värde samverka. När du gör det blir du en pålitlig kraft för skapelse.",
-      "Solar Draken": "Som Solar Draken lyser du med livets fullbordan genom omsorg. Din uppgift är att bringa syftet till klarhet och ge det form. Du blir stark när du vet vad som verkligen är ditt att vårda. Då blir din närvaro varm, hel och inspirerande.",
-      "Planetär Draken": "Som Planetär Draken manifesterar du omsorg i praktisk form. Du vill bygga något som faktiskt bär andra. Din uppgift är att göra kärlek konkret i vardagen. När du gör det blir din omsorg inte bara känsla utan handling.",
-      "Spektral Draken": "Som Spektral Draken hjälper du liv att släppa det som blivit tungt. Din omsorg renar snarare än håller fast. Din uppgift är att frigöra det som inte längre behöver bäras. När du vågar släppa taget blir din närvaro lätt och sann.",
-      "Kristall Draken": "Som Kristall Draken samlar du andra genom omsorg och gemensamt syfte. Du är bra på att skapa trygghet där människor kan mötas. Din uppgift är att låta ditt hjärta bli en samlande punkt. När du delar din riktning blir din kraft kollektiv.",
-      "Kosmisk Draken": "Som Kosmisk Draken vilar du i omsorgens yttersta form: att vara källa snarare än kontroll. Din uppgift är att lita på att livet vet hur det ska växa. När du står i denna nivå blir din kärlek rymlig, tidlös och gränslös.",
-      "Magnetisk Vinden": "Som Magnetisk Vinden attraherar du genom ord, andning och riktning. Din väg handlar om kommunikation, sammanlänkning och klar intention. Du drar människor närmare genom hur du uttrycker sanningen. När du samlar din andning blir ditt ord kraftfullt.",
-      "Lunar Vinden": "Som Lunar Vinden lär du genom kontrast i kommunikation. Du märker snabbt när något är osant eller oklart. Din uppgift är att förstå vad som behöver sägas och vad som behöver tystnad. När du gör det blir din röst renare och mer läkande.",
-      "Elektrisk Vinden": "Som Elektrisk Vinden sätter du ord i rörelse. Du kan skapa kontakt, förändring och inspiration bara genom att tala från hjärtat. Din uppgift är att vara tydlig innan du sänder ut energi. När du gör det blir din kommunikation katalytisk.",
-      "Självexisterande Vinden": "Som Självexisterande Vinden ger du form åt idéer genom språk och närvaro. Du mår bra när dina ord har struktur och riktning. Din uppgift är att bygga en stabil bro mellan tanke och uttryck. Då blir ditt ord en pålitlig bärare av sanning.",
-      "Övertonen Vinden": "Som Övertonen Vinden förstärker du atmosfären omkring dig. Din närvaro kan fylla ett rum och göra andra mer lyhörda. Din uppgift är att använda ditt inflytande med medkänsla. När du gör det blir din röst både stark och mjuk.",
-      "Rytmisk Vinden": "Som Rytmisk Vinden söker du balans mellan att tala och att lyssna. Du mår bäst när kommunikationen går åt båda håll. Din uppgift är att inte överta samtalet utan att skapa jämlikhet i utbytet. Då blir ditt ord relationellt klokt.",
-      "Resonant Vinden": "Som Resonant Vinden är du särskilt känslig för ton, vibration och betydelsen bakom orden. Du lyssnar efter det som ligger mellan raderna. Din uppgift är att tala sant utan att förlora känslighet. När du gör det blir du en naturlig vägvisare.",
-      "Galaktisk Vinden": "Som Galaktisk Vinden bär du integritet i kommunikation. Du vill att ord, handling och värde ska stämma överens. Din uppgift är att tala så att din inre sanning blir synlig i världen. Då blir du en klar kanal för riktning.",
-      "Solar Vinden": "Som Solar Vinden lyser ditt ord med mening och syfte. Du kan inspirera andra genom tydlighet och hjärta. Din uppgift är att låta ditt språk bära det du verkligen vill förverkliga. När du gör det blir din kommunikation fullbordande.",
-      "Planetär Vinden": "Som Planetär Vinden förverkligar du kontakt i praktisk form. Du kan bygga relationer, nätverk och samtal som faktiskt fungerar. Din uppgift är att göra kommunikationen användbar och jordad. Då blir din röst en tydlig kraft i världen.",
-      "Spektral Vinden": "Som Spektral Vinden löser du upp det som blivit blockerat i kommunikationen. Du hjälper ord att bli fria igen. Din uppgift är att släppa kontrollen och låta sanningen andas. När du gör det blir du en befriande röst.",
-      "Kristall Vinden": "Som Kristall Vinden binder du samman människor genom tydlig och samarbetsinriktad kommunikation. Du kan skapa förståelse där det annars finns splittring. Din uppgift är att dela ord som bygger gemensam riktning. Då blir din röst samlande och klar.",
-      "Kosmisk Vinden": "Som Kosmisk Vinden blir du ett rent uttryck för ande. Du talar inte bara för att förklara utan för att påminna om vad som är sant. Din uppgift är att låta tystnad och ord vara lika heliga. Då blir din kommunikation tidlös.",
-      "Magnetisk Natten": "Som Magnetisk Natten attraherar du genom dröm, intuition och inre rikedom. Din väg handlar om att följa det som väcker din själs djupare känsla av mening. Du dras mot det som ger näring åt det omedvetna. När du lyssnar inåt blir din vision tydlig.",
-      "Lunar Natten": "Som Lunar Natten lär du genom mörker, drömmar och inre kontraster. Du bär förmågan att se värdet i det som andra missar. Din uppgift är att skilja mellan rädsla och genuin intuition. Då blir din inre värld en skattkammare.",
-      "Elektrisk Natten": "Som Elektrisk Natten sätter du drömmar i rörelse. Du kan få en vision att börja leva i verkligheten. Din uppgift är att visa vad som faktiskt går att göra med det du känner in. När du gör det blir din fantasi skapande.",
-      "Självexisterande Natten": "Som Självexisterande Natten ger du form åt ditt inre landskap. Du mår bra när drömmar och struktur möts. Din uppgift är att bygga en trygg plats för din vision. Då blir din rikedom stabil och användbar.",
-      "Övertonen Natten": "Som Övertonen Natten förhöjer du andras kontakt med det osynliga. Du kan göra dröm, intuition och självkännedom mer levande för människor omkring dig. Din uppgift är att använda din känslighet som en gåva. Då blir din närvaro djupt magnetisk.",
-      "Rytmisk Natten": "Som Rytmisk Natten behöver du balans mellan yttre aktivitet och inre drömvärld. Din uppgift är att ge lika mycket plats åt vila som åt handling. När du gör det blir din intuition mer tillförlitlig. Du blir en väktare av jämvikt mellan världar.",
-      "Resonant Natten": "Som Resonant Natten lyssnar du till drömmarnas vibrationer. Du kan uppfatta subtila signaler innan de blir tydliga för andra. Din uppgift är att tolka det du känner utan att förlora fotfästet. Då blir din intuition en vägledare.",
-      "Galaktisk Natten": "Som Galaktisk Natten vill du att din inre rikedom ska vara i linje med din integritet. Du söker renhet i dröm, känsla och syfte. Din uppgift är att leva sant även när världen är otydlig. Då blir din inre rikedom ett stabilt ljus.",
-      "Solar Natten": "Som Solar Natten lyser du upp det som är dolt. Din uppgift är att låta din vision bära klarhet till andra. Du gör drömmen mer begriplig genom att ge den syfte. Då blir din inre värld en fullbordad gåva.",
-      "Planetär Natten": "Som Planetär Natten förvandlar du inre rikedom till konkret verklighet. Du kan göra vision till struktur och mening. Din uppgift är att omsätta det du ser i drömmen till något som fungerar här och nu. Då blir din rikedom levd.",
-      "Spektral Natten": "Som Spektral Natten löser du upp det som inte längre tillhör din drömväv. Du kan frigöra gamla inre bilder och göra plats för nytt. Din uppgift är att släppa taget om det som tynger. Då blir din intuition lättare att följa.",
-      "Kristall Natten": "Som Kristall Natten delar du din inre rikedom i gemenskap. Du kan hjälpa andra att känna sig trygga i det dolda. Din uppgift är att ge av din visdom utan att stänga dig. Då blir din dröm en kollektiv gåva.",
-      "Kosmisk Natten": "Som Kosmisk Natten vilar du i den oändliga rikedomen bakom allt. Din uppgift är att lita på att drömmen redan bär sin egen intelligens. När du gör det blir du ett öppet fält för djup visdom.",
-      "Magnetisk Fröet": "Som Magnetisk Fröet attraherar du genom intention och riktning. Din väg handlar om att veta vad du vill växa in i och hålla fast vid det i hjärtat. Du dras till möjligheter där något nytt kan gro. När du fokuserar blir din kraft naturligt samlande.",
-      "Lunar Fröet": "Som Lunar Fröet lär du genom spänningen mellan potential och motstånd. Du märker när något ännu inte är redo att blomma. Din uppgift är att inte stressa fram tillväxten. När du gör det blir du en klok odlarenergi.",
-      "Elektrisk Fröet": "Som Elektrisk Fröet triggar du igång processer. Du mår bäst när du får sätta saker i rörelse: projekt, relationer, skapande. Du ser möjligheter där andra bara ser begränsningar. När du stannar upp och frågar dig varför du gör detta innan du agerar, förstärks din kraft. Du planterar framtidens frön genom hur du tänker, känner, skapar och väljer i vardagen.",
-      "Självexisterande Fröet": "Som Självexisterande Fröet ger du form åt tillväxt. Du har lätt för att se vad som behöver byggas för att något ska bära. Din uppgift är att skapa struktur utan att kväva livet i den. Då blir din växtkraft både stabil och levande.",
-      "Övertonen Fröet": "Som Övertonen Fröet strålar du fram utveckling genom tydlig riktning. Du kan ge andra mod att börja. Din uppgift är att använda din kraft som en uppmuntrande gnista, inte ett tryck. Då blir du en inspirerande startpunkt.",
-      "Rytmisk Fröet": "Som Rytmisk Fröet växer du bäst i balans. Du vet att tillväxt kräver både disciplin och vila. Din uppgift är att vårda fröet utan att övervattna det. När du hittar rytmen blir din utveckling hållbar.",
-      "Resonant Fröet": "Som Resonant Fröet lyssnar du in när det är rätt tid att växa. Du känner ofta när något i livet kallar på dig. Din uppgift är att följa den inre signalen och låta den bli tydlig. Då blir din växtkraft intuitiv.",
-      "Galaktisk Fröet": "Som Galaktisk Fröet vill du att din tillväxt ska vara sann. Du söker integritet i hur du utvecklas och vad du väljer att plantera. Din uppgift är att låta handling och värde samverka. Då blir din riktning klar.",
-      "Solar Fröet": "Som Solar Fröet bär du tillväxtens fulla ljus. Du kan se potentialen i det som ännu inte blivit form. Din uppgift är att låta syftet vara tydligt. När du gör det blir din utveckling målmedveten och levande.",
-      "Planetär Fröet": "Som Planetär Fröet förverkligar du tillväxt i konkret form. Du har förmåga att bygga det som behövs för att något ska blomma. Din uppgift är att ge näring till det som ska bäras av verkligheten. Då blir din kraft praktisk och fruktbar.",
-      "Spektral Fröet": "Som Spektral Fröet hjälper du gamla strukturer att släppa taget så att nytt kan växa. Din uppgift är att frigöra det som stelnat. När du vågar säga nej till det som inte längre hör till blir din växtkraft renare.",
-      "Kristall Fröet": "Som Kristall Fröet växer du i samklang med andra. Du kan vara en del av en gemenskap där framtid byggs tillsammans. Din uppgift är att dela din riktning så att fler kan blomstra. Då blir din tillväxt kollektiv.",
-      "Kosmisk Fröet": "Som Kosmisk Fröet vilar du i potentialens oändlighet. Din uppgift är att lita på att tillväxten redan pågår även när du inte ser allt. När du släpper kontrollen blir ditt frö en del av ett större mönster.",
-      "Magnetisk Ormen": "Som Magnetisk Ormen attraherar du genom livskraft och kroppslig närvaro. Din väg handlar om att känna vad som verkligen väcker energi i dig. Du dras till det som känns levande i hela kroppen. När du lyssnar till din vitalitet blir riktningen klar.",
-      "Lunar Ormen": "Som Lunar Ormen lär du genom spänningen mellan instinkt och kontroll. Du märker snabbt när du håller tillbaka din livskraft. Din uppgift är att låta kroppen tala utan att överstyra den. Då blir din energi klokare.",
-      "Elektrisk Ormen": "Som Elektrisk Ormen sätter du livskraft i rörelse. Du kan väcka energi hos dig själv och andra genom att vara närvarande i kroppen. Din uppgift är att använda din intensitet med medvetenhet. Då blir din kraft katalytisk.",
-      "Självexisterande Ormen": "Som Självexisterande Ormen ger du form åt din vitalitet. Du mår bra när kroppen har tydliga ramar och en stabil rytm. Din uppgift är att bygga ett liv där energi kan cirkulera fritt. Då blir din kraft hållbar.",
-      "Övertonen Ormen": "Som Övertonen Ormen bär du stark närvaro som kan fylla ett rum. Du har förmågan att väcka andra till liv. Din uppgift är att låta din intensitet vara varm och medveten. Då blir du en kraftfull katalysator.",
-      "Rytmisk Ormen": "Som Rytmisk Ormen behöver du balans mellan rörelse och vila. Du blir stark när kroppen får det den behöver i rätt dos. Din uppgift är att inte pressa din vitalitet för hårt. Då blir energin stabil och naturlig.",
-      "Resonant Ormen": "Som Resonant Ormen känner du rytmen i kropp och instinkt mycket tydligt. Du hör ofta vad kroppen försöker säga innan sinnet hinner ikapp. Din uppgift är att lita på den signalen. Då blir din livskraft intuitiv.",
-      "Galaktisk Ormen": "Som Galaktisk Ormen vill du att din vitalitet ska vara i linje med din inre sanning. Du mår bra när kropp och värde pekar åt samma håll. Din uppgift är att agera med integritet. Då blir din kraft ren.",
-      "Solar Ormen": "Som Solar Ormen lyser du med livskraftens fulla medvetenhet. Du kan inspirera genom att visa vad det innebär att leva helt och hållet. Din uppgift är att följa hjärtats syfte. Då blir din energi strålande.",
-      "Planetär Ormen": "Som Planetär Ormen förverkligar du vitalitet i vardagen. Du vet hur kroppen behöver stöd för att orka bära själen. Din uppgift är att skapa konkreta vanor som stärker dig. Då blir din kraft levd.",
-      "Spektral Ormen": "Som Spektral Ormen löser du upp det som hämmar din livskraft. Du kan se när något inte längre tjänar kroppen. Din uppgift är att släppa det gamla så att energin kan flöda igen. Då blir din vitalitet fri.",
-      "Kristall Ormen": "Som Kristall Ormen delar du din energi i gemenskap. Du kan hjälpa andra att komma tillbaka till kroppen. Din uppgift är att visa att livskraft också kan vara trygg och samlande. Då blir du en stödjande närvaro.",
-      "Kosmisk Ormen": "Som Kosmisk Ormen vilar du i livets råa och tidlösa puls. Din uppgift är att lita på att kroppen bär sin egen intelligens. När du gör det blir du ett med den djupaste livskraften.",
-      "Magnetisk Världsbrobyggaren": "Som Magnetisk Världsbrobyggaren attraherar du genom att släppa taget om det gamla. Din väg handlar om övergång, avsked och att öppna dörrar mellan världar. Du dras mot det som vill förvandlas. När du vågar gå vidare blir din riktning tydlig.",
-      "Lunar Världsbrobyggaren": "Som Lunar Världsbrobyggaren lär du genom gränser och övergångar. Du känner när något har tjänat ut sin roll. Din uppgift är att möta förändring utan rädsla. Då blir du en klok vägvisare mellan faser.",
-      "Elektrisk Världsbrobyggaren": "Som Elektrisk Världsbrobyggaren sätter du transformation i rörelse. Du kan hjälpa människor att kliva över en tröskel. Din uppgift är att vara modig i det nya. Då blir din energi katalytisk.",
-      "Självexisterande Världsbrobyggaren": "Som Självexisterande Världsbrobyggaren ger du form åt övergång. Du mår bra när förändring får struktur. Din uppgift är att bygga hållbara broar mellan det som var och det som ska bli. Då blir din kraft stabil.",
-      "Övertonen Världsbrobyggaren": "Som Övertonen Världsbrobyggaren förstärker du transformationens kraft. Du kan göra förändring tydlig för andra. Din uppgift är att använda din närvaro för att öppna nya rum. Då blir din energi ledande.",
-      "Rytmisk Världsbrobyggaren": "Som Rytmisk Världsbrobyggaren balanserar du mellan att släppa och att hålla. Du vet att övergång behöver både mod och vila. Din uppgift är att låta varje steg vara lagom stort. Då blir din rörelse trygg.",
-      "Resonant Världsbrobyggaren": "Som Resonant Världsbrobyggaren känner du när det är dags att kliva över gränsen. Du lyssnar efter det som kallat på dig länge. Din uppgift är att följa den inre signalen. Då blir din förflyttning naturlig.",
-      "Galaktisk Världsbrobyggaren": "Som Galaktisk Världsbrobyggaren vill du att övergången ska vara sann. Du söker integritet när du lämnar något bakom dig. Din uppgift är att gå med värdighet genom förändring. Då blir din väg klar.",
-      "Solar Världsbrobyggaren": "Som Solar Världsbrobyggaren bringar du fullbordan till övergångar. Du kan avsluta saker med mening och börja nya med syfte. Din uppgift är att se att varje avsked också bär ett frö. Då blir din transformation lysande.",
-      "Planetär Världsbrobyggaren": "Som Planetär Världsbrobyggaren gör du förändring praktisk. Du kan bygga det som behövs för att en ny fas ska fungera. Din uppgift är att omsätta gränsövergång till något konkret. Då blir din kraft användbar.",
-      "Spektral Världsbrobyggaren": "Som Spektral Världsbrobyggaren hjälper du gammal form att lösas upp. Din uppgift är att frigöra det som hindrar rörelse mellan världar. När du gör det blir din väg lätt och öppen.",
-      "Kristall Världsbrobyggaren": "Som Kristall Världsbrobyggaren delar du förändring med andra. Du kan hjälpa grupper att gå igenom skiften tillsammans. Din uppgift är att göra övergångar gemensamma och tydliga. Då blir din bro samlande.",
-      "Kosmisk Världsbrobyggaren": "Som Kosmisk Världsbrobyggaren vilar du i att alla världar är en del av helheten. Din uppgift är att lita på att slut och början är samma rörelse i större skala. När du gör det blir din transformation tidlös.",
-      "Magnetisk Handen": "Som Magnetisk Handen attraherar du genom handling och läkning. Din väg handlar om att veta vad du verkligen vill göra med dina händer och ditt hjärta. Du dras till det som kan förbättras eller helas. När du agerar med syfte blir din kraft tydlig.",
-      "Lunar Handen": "Som Lunar Handen lär du genom kontrast mellan att veta och att göra. Du känner när något behöver praktisk omsorg. Din uppgift är att inte fastna i analys när handling behövs. Då blir din förmåga läkande.",
-      "Elektrisk Handen": "Som Elektrisk Handen aktiverar du förändring genom praktisk handling. Du kan få saker att hända, bygga och hela samtidigt. Din uppgift är att använda din energi med medveten precision. Då blir din kraft mycket verksam.",
-      "Självexisterande Handen": "Som Självexisterande Handen ger du form åt läkning och handling. Du mår bra när dina verktyg, rutiner och metoder är tydliga. Din uppgift är att skapa struktur för det du vill hjälpa till att växa. Då blir din kompetens stabil.",
-      "Övertonen Handen": "Som Övertonen Handen strålar du genom handling. Du kan ge andra mod att göra det de vet behöver göras. Din uppgift är att använda din kraft varsamt men tydligt. Då blir din närvaro effektiv och läkande.",
-      "Rytmisk Handen": "Som Rytmisk Handen arbetar du bäst i balans. Du vet att läkning kräver både aktivitet och återhämtning. Din uppgift är att hålla rätt tempo. Då blir din hand fast men mjuk.",
-      "Resonant Handen": "Som Resonant Handen känner du när det är dags att agera. Du lyssnar efter kroppens och hjärtats signaler. Din uppgift är att låta handling komma ur inre samklang. Då blir ditt görande träffsäkert.",
-      "Galaktisk Handen": "Som Galaktisk Handen vill du att dina handlingar ska vara i linje med din integritet. Du mår bra när det du gör speglar det du tror på. Din uppgift är att vara konsekvent i din hjälp. Då blir din kraft trovärdig.",
-      "Solar Handen": "Som Solar Handen fullbordar du genom att göra det som behöver göras. Du kan vara den som får något att komma i mål. Din uppgift är att hålla syftet klart. Då blir din handling fylld av mening.",
-      "Planetär Handen": "Som Planetär Handen omsätter du kunskap i konkret resultat. Du är skicklig när du får bygga, reparera, förbättra och hela. Din uppgift är att använda dina händer med riktning. Då blir din förmåga verkligt värdefull.",
-      "Spektral Handen": "Som Spektral Handen löser du upp det som hindrar verklig läkning. Du kan se vad som behöver släppas för att något ska fungera igen. Din uppgift är att släppa kontroll och låta processen rena sig. Då blir din hand frigörande.",
-      "Kristall Handen": "Som Kristall Handen samarbetar du för läkning och skapande. Du kan bli en naturlig del av ett team där alla bidrar. Din uppgift är att låta dina färdigheter bli gemensamma resurser. Då blir din hand samlande.",
-      "Kosmisk Handen": "Som Kosmisk Handen vilar du i att handling och helande är samma sak på en djupare nivå. Din uppgift är att lita på att det du gör kan bära mer än du ser. När du gör det blir din förmåga tidlös.",
-      "Magnetisk Stjärnan": "Som Magnetisk Stjärnan attraherar du genom skönhet och harmoni. Din väg handlar om att lockas mot det som är estetiskt, rent och i balans. Du dras till ordning som känns sann. När du följer den dragningen blir din energi vacker.",
-      "Lunar Stjärnan": "Som Lunar Stjärnan lär du genom kontraster i skönhet och kaos. Du märker snabbt vad som stör harmonin. Din uppgift är att förstå vad som verkligen är vackert och vad som bara är yta. Då blir din smak djupare.",
-      "Elektrisk Stjärnan": "Som Elektrisk Stjärnan sätter du harmoni i rörelse. Du kan få ett rum att kännas bättre bara genom att ta ansvar för helheten. Din uppgift är att använda din känsla för estetik som en aktiv kraft. Då blir du en skapare av flöde.",
-      "Självexisterande Stjärnan": "Som Självexisterande Stjärnan ger du form åt skönhet. Du mår bra när det finns struktur i det estetiska. Din uppgift är att bygga harmoni som håller över tid. Då blir din elegans både lugn och stabil.",
-      "Övertonen Stjärnan": "Som Övertonen Stjärnan förhöjer du det vackra omkring dig. Din närvaro kan göra världen mer sammanhållen. Din uppgift är att använda din strålglans utan att bli ytlig. Då blir din energi inspirerande.",
-      "Rytmisk Stjärnan": "Som Rytmisk Stjärnan söker du balans mellan form och frihet. Du vill att skönhet ska vara levbar och inte bara dekorativ. Din uppgift är att hålla harmoni i vardagliga val. Då blir din stil naturlig.",
-      "Resonant Stjärnan": "Som Resonant Stjärnan känner du när något är estetiskt sant. Du kan höra när en miljö eller handling är i harmoni. Din uppgift är att följa den inre tonen. Då blir din skapande kraft intuitiv.",
-      "Galaktisk Stjärnan": "Som Galaktisk Stjärnan vill du att skönhet ska vara i linje med integritet. Du söker renhet i form och uttryck. Din uppgift är att låta det vackra också vara sant. Då blir din närvaro elegant och trovärdig.",
-      "Solar Stjärnan": "Som Solar Stjärnan lyser du genom fullbordad harmoni. Du kan visa andra hur skönhet blir mening när den tjänar syftet. Din uppgift är att låta ditt ljus vara välordnat. Då blir din energi sammanhängande.",
-      "Planetär Stjärnan": "Som Planetär Stjärnan skapar du skönhet som fungerar i verkligheten. Du kan göra vardagen mer harmonisk genom konkreta val. Din uppgift är att bygga miljöer och relationer som bär. Då blir din estetik praktisk.",
-      "Spektral Stjärnan": "Som Spektral Stjärnan löser du upp det som blivit stelt i form och skönhet. Du kan frigöra gamla ideal så att något mer levande kan träda fram. Din uppgift är att låta perfektion släppa taget. Då blir din harmoni lätt.",
-      "Kristall Stjärnan": "Som Kristall Stjärnan delar du skönhet i gemenskap. Du kan skapa plats där andra känner sig mer hela. Din uppgift är att låta din smak bli en samlande kvalitet. Då blir din närvaro vacker på djupet.",
-      "Kosmisk Stjärnan": "Som Kosmisk Stjärnan vilar du i skönhetens tidlösa ordning. Din uppgift är att veta att harmoni finns redan innan formen blir tydlig. När du gör det blir din skaparkraft stilla och stor.",
-      "Magnetisk Månen": "Som Magnetisk Månen attraherar du genom rening och känslomässigt flöde. Din väg handlar om att följa det som vill tvätta bort det gamla. Du dras till situationer där något kan återställas. När du lyssnar på flödet blir du tydlig.",
-      "Lunar Månen": "Som Lunar Månen lär du genom känslans kontraster. Du känner snabbt vad som är blockerat eller överfullt. Din uppgift är att förstå vad som behöver renas. Då blir din känsla en vägvisare.",
-      "Elektrisk Månen": "Som Elektrisk Månen sätter du rening i rörelse. Du kan få saker att klarna genom att agera snabbt och med hjärta. Din uppgift är att låta det som ska bort få lämna. Då blir din energi frigörande.",
-      "Självexisterande Månen": "Som Självexisterande Månen ger du form åt känslornas ordning. Du mår bra när det finns tydliga rutiner för återställning. Din uppgift är att bygga en struktur för flöde. Då blir din känslovärld stabil.",
-      "Övertonen Månen": "Som Övertonen Månen förstärker du reningens kraft. Du kan göra omgivningen tydligare och renare bara genom att vara närvarande. Din uppgift är att använda din känslighet som en resurs. Då blir din närvaro läkande.",
-      "Rytmisk Månen": "Som Rytmisk Månen söker du balans mellan känsla och handling. Du vet att rening fungerar bäst i rätt takt. Din uppgift är att inte pressa processen. Då blir ditt flöde jämnt.",
-      "Resonant Månen": "Som Resonant Månen känner du när något behöver släppas. Du hör inre signaler om vad som stör balansen. Din uppgift är att lita på den känslan och följa den. Då blir din rening intuitiv.",
-      "Galaktisk Månen": "Som Galaktisk Månen vill du att dina känslor ska vara i linje med din integritet. Du söker klarhet i vad som är ditt och vad som inte är det. Din uppgift är att rena utan kompromiss med sanningen. Då blir din känsla ren.",
-      "Solar Månen": "Som Solar Månen lyser du genom att återställa balans. Du kan visa andra hur det känns när något blir rent och helat. Din uppgift är att fullborda reningen så att syftet blir klart. Då blir ditt flöde solklart.",
-      "Planetär Månen": "Som Planetär Månen förverkligar du rening i vardagen. Du kan skapa praktiska sätt att hålla balans. Din uppgift är att göra känslor hanterbara. Då blir ditt flöde användbart.",
-      "Spektral Månen": "Som Spektral Månen löser du upp känslomässiga blockeringar. Du kan frigöra gamla mönster som hindrat flödet. Din uppgift är att låta vattnet rinna vidare. Då blir du fri.",
-      "Kristall Månen": "Som Kristall Månen samlar du andra i en renare känsla av gemenskap. Du kan vara den som hjälper grupper att återställas. Din uppgift är att dela din klarhet. Då blir din närvaro samlande.",
-      "Kosmisk Månen": "Som Kosmisk Månen vilar du i den universella reningen. Din uppgift är att lita på att allt som ska lösas upp kommer att göra det. När du gör det blir du ett stilla flöde av helhet.",
-      "Magnetisk Hunden": "Som Magnetisk Hunden attraherar du genom kärlek och lojalitet. Din väg handlar om hjärtats riktning och vad du väljer att hålla nära. Du dras till relationer som känns sanna. När ditt hjärta leder blir din väg enkel.",
-      "Lunar Hunden": "Som Lunar Hunden lär du genom kontrasten mellan kärlek och rädsla. Du märker snabbt när något inte är äkta i relationer. Din uppgift är att förstå vad som verkligen är lojalitet. Då blir ditt hjärta klokt.",
-      "Elektrisk Hunden": "Som Elektrisk Hunden sätter du kärlek i rörelse. Du kan bygga kontakt och tillit genom att agera varmt och tydligt. Din uppgift är att låta hjärtat vara aktivt. Då blir din närvaro sammanbindande.",
-      "Självexisterande Hunden": "Som Självexisterande Hunden ger du form åt kärlekens struktur. Du mår bra när relationer är tydliga och hållbara. Din uppgift är att skapa trygga ramar för hjärtat. Då blir din lojalitet stabil.",
-      "Övertonen Hunden": "Som Övertonen Hunden förhöjer du kärlekens kraft. Din närvaro kan få andra att känna sig sedda. Din uppgift är att använda din värme med balans. Då blir din kärlek ledande.",
-      "Rytmisk Hunden": "Som Rytmisk Hunden söker du balans mellan att ge och ta emot kärlek. Du vet att relationer behöver jämlikhet. Din uppgift är att inte överge dig själv i lojalitet. Då blir ditt hjärta hållbart.",
-      "Resonant Hunden": "Som Resonant Hunden lyssnar du till hjärtats vibration. Du känner ofta vad som är sant i relationer innan du kan förklara det. Din uppgift är att lita på den signalen. Då blir din kärlek intuitiv.",
-      "Galaktisk Hunden": "Som Galaktisk Hunden vill du att kärleken ska vara i linje med din integritet. Du söker äkthet i allt du håller kärt. Din uppgift är att låta hjärtat och sanningen samverka. Då blir din lojalitet ren.",
-      "Solar Hunden": "Som Solar Hunden lyser du genom kärlekens fullbordan. Du kan visa andra hur det känns att vara hel i hjärtat. Din uppgift är att låta relationer bära syfte. Då blir din kärlek strålande.",
-      "Planetär Hunden": "Som Planetär Hunden gör du kärlek praktisk. Du kan bygga relationer som fungerar i vardagen. Din uppgift är att visa omtanke i handling. Då blir din lojalitet levd.",
-      "Spektral Hunden": "Som Spektral Hunden löser du upp gamla bindningar som inte längre bär kärlek. Din uppgift är att släppa det som blivit tungt. Då blir ditt hjärta friare.",
-      "Kristall Hunden": "Som Kristall Hunden samlar du människor genom kärlek. Du kan skapa rum där tillit växer. Din uppgift är att dela hjärtats klokhet. Då blir din relationella kraft gemensam.",
-      "Kosmisk Hunden": "Som Kosmisk Hunden vilar du i hjärtats gränslöshet. Din uppgift är att lita på att kärlekens intelligens är större än kontroll. När du gör det blir din närvaro tidlös.",
-      "Magnetisk Apan": "Som Magnetisk Apan attraherar du genom lek, humor och skapande. Din väg handlar om att följa glädjen som vill väcka dig. Du dras till det som känns levande och öppet. När du leker blir din väg tydlig.",
-      "Lunar Apan": "Som Lunar Apan lär du genom kontrasten mellan lek och allvar. Du märker snabbt när något blivit för stelt. Din uppgift är att förstå vad som behöver mjukna. Då blir din kreativitet friare.",
-      "Elektrisk Apan": "Som Elektrisk Apan sätter du transformation i rörelse genom lekfullhet. Du kan få andra att släppa tyngd och öppna sig. Din uppgift är att använda ditt skapande som en gnista. Då blir din energi lätt och dynamisk.",
-      "Självexisterande Apan": "Som Självexisterande Apan ger du form åt lekfullhet och kreativt uttryck. Du mår bra när skapandet har tydliga ramar. Din uppgift är att göra glädjen hållbar. Då blir din kreativitet stabil.",
-      "Övertonen Apan": "Som Övertonen Apan förhöjer du rummets glädje. Du kan göra världen lättare bara genom att vara närvarande. Din uppgift är att använda din charm med hjärta. Då blir din energi inspirerande.",
-      "Rytmisk Apan": "Som Rytmisk Apan söker du balans mellan lek och struktur. Du vet att kreativitet behöver både frihet och form. Din uppgift är att inte överdriva någon av polerna. Då blir din skapande kraft jämn.",
-      "Resonant Apan": "Som Resonant Apan känner du när något vill bli lekfullt igen. Du hör tonen i rummet och vet hur du ska mjuka upp den. Din uppgift är att lita på leken som vägvisare. Då blir din kreativitet intuitiv.",
-      "Galaktisk Apan": "Som Galaktisk Apan vill du att din lekfullhet ska vara sann. Du söker integritet även i humor och skapande. Din uppgift är att låta glädjen vara ren. Då blir din energi fri.",
-      "Solar Apan": "Som Solar Apan lyser du genom kreativ fullbordan. Du kan inspirera andra att återvända till sin egen skaparglädje. Din uppgift är att fullborda det lekfulla med syfte. Då blir din magi tydlig.",
-      "Planetär Apan": "Som Planetär Apan gör du skapande praktiskt. Du kan förvandla idéer till något som faktiskt fungerar och gläder. Din uppgift är att bygga glädje i verkligheten. Då blir din lek användbar.",
-      "Spektral Apan": "Som Spektral Apan löser du upp det som hindrar spontanitet. Din uppgift är att släppa det som kväver din kreativitet. Då blir din lek lätt och levande.",
-      "Kristall Apan": "Som Kristall Apan delar du glädje i gemenskap. Du kan skapa en gruppkänsla där andra vågar vara sig själva. Din uppgift är att låta leken binda samman. Då blir din kreativitet kollektiv.",
-      "Kosmisk Apan": "Som Kosmisk Apan vilar du i den tidlösa lekens intelligens. Din uppgift är att lita på att glädje också är visdom. När du gör det blir din skaparkraft gränslös.",
-      "Magnetisk Människan": "Som Magnetisk Människan attraherar du genom fri vilja och visdom. Din väg handlar om att välja det som verkligen stämmer för dig. Du dras till sanning och riktning. När du väljer med hjärtat blir din väg tydlig.",
-      "Lunar Människan": "Som Lunar Människan lär du genom kontrasten mellan vilja och begränsning. Du känner snabbt när du inte lever i linje med dig själv. Din uppgift är att förstå vilka val som stärker din sanning. Då blir din visdom djupare.",
-      "Elektrisk Människan": "Som Elektrisk Människan sätter du val i rörelse. Du kan påverka verkligheten genom att välja medvetet. Din uppgift är att låta din frihet bli skapande. Då blir din energi handlingskraftig.",
-      "Självexisterande Människan": "Som Självexisterande Människan ger du form åt din identitet och dina val. Du mår bra när livet har tydliga värderamar. Din uppgift är att bygga en stabil grund för din frihet. Då blir din vilja hållbar.",
-      "Övertonen Människan": "Som Övertonen Människan förhöjer du andras förmåga att välja. Du kan inspirera människor till större mod. Din uppgift är att använda din intelligens med värme. Då blir din närvaro ledande.",
-      "Rytmisk Människan": "Som Rytmisk Människan söker du balans i hur du använder din fria vilja. Du vet att val fungerar bäst när de är hållbara. Din uppgift är att inte gå till ytterlighet. Då blir din kraft jämn.",
-      "Resonant Människan": "Som Resonant Människan känner du in det sanna valet. Du hör ofta innan du vet. Din uppgift är att lita på den inre signalen och följa den. Då blir din visdom intuitiv.",
-      "Galaktisk Människan": "Som Galaktisk Människan vill du att dina val ska vara i linje med din integritet. Du söker klarhet i vad som verkligen är ditt. Din uppgift är att välja med sanningen som riktning. Då blir din frihet ren.",
-      "Solar Människan": "Som Solar Människan lyser du genom kloka och fullbordade val. Du kan visa andra hur fri vilja blir meningsfull när den används med syfte. Din uppgift är att fullborda ditt väljande. Då blir din väg tydlig.",
-      "Planetär Människan": "Som Planetär Människan omsätter du visdom i konkreta val. Du kan bygga ett liv som faktiskt speglar din inre riktning. Din uppgift är att välja det som fungerar i verkligheten. Då blir din frihet levd.",
-      "Spektral Människan": "Som Spektral Människan löser du upp gamla identiteter och valmönster. Din uppgift är att släppa det som inte längre representerar dig. Då blir din vilja mer fri.",
-      "Kristall Människan": "Som Kristall Människan delar du visdom i gemenskap. Du kan hjälpa andra att förstå att val påverkar helheten. Din uppgift är att låta din frihet bli kollektivt klar. Då blir din mänsklighet samlande.",
-      "Kosmisk Människan": "Som Kosmisk Människan vilar du i den fria viljans oändlighet. Din uppgift är att lita på att sanningen i dig är större än varje enskilt val. När du gör det blir din visdom tidlös.",
-      "Magnetisk Himmelsvandraren": "Som Magnetisk Himmelsvandraren attraherar du genom utforskande och mod. Din väg handlar om att röra dig mot nya horisonter. Du dras till det okända som kallar på dig. När du följer den dragningen blir du levande.",
-      "Lunar Himmelsvandraren": "Som Lunar Himmelsvandraren lär du genom gränsöverskridande. Du märker snabbt var du behöver stanna upp och var du behöver gå vidare. Din uppgift är att förstå när expansionen är sann. Då blir ditt mod klokt.",
-      "Elektrisk Himmelsvandraren": "Som Elektrisk Himmelsvandraren sätter du utforskandet i rörelse. Du kan öppna nya världar bara genom att våga ta steg. Din uppgift är att låta nyfikenhet bli handling. Då blir din energi expansiv.",
-      "Självexisterande Himmelsvandraren": "Som Självexisterande Himmelsvandraren ger du form åt utforskandet. Du mår bra när äventyr har en tydlig struktur. Din uppgift är att bygga en hållbar väg in i det nya. Då blir din frihet stabil.",
-      "Övertonen Himmelsvandraren": "Som Övertonen Himmelsvandraren förhöjer du känslan av möjligheter. Du kan inspirera andra att våga mer. Din uppgift är att använda din rymdkänsla med klarhet. Då blir din energi ledande.",
-      "Rytmisk Himmelsvandraren": "Som Rytmisk Himmelsvandraren söker du balans mellan trygghet och äventyr. Du vet att expansion behöver rytm. Din uppgift är att inte kasta dig för långt bort från dig själv. Då blir ditt steg stabilt.",
-      "Resonant Himmelsvandraren": "Som Resonant Himmelsvandraren känner du när det är dags att gå utanför ramen. Du hör kallelsen från nya världar tydligt. Din uppgift är att lita på det. Då blir din resa intuitiv.",
-      "Galaktisk Himmelsvandraren": "Som Galaktisk Himmelsvandraren vill du att ditt utforskande ska vara i linje med din sanning. Du söker integritet när du går bortom det välkända. Din uppgift är att våga och samtidigt vara sann. Då blir din väg ren.",
-      "Solar Himmelsvandraren": "Som Solar Himmelsvandraren lyser du genom modigt utforskande. Du kan inspirera andra att ta sina egna steg ut i det okända. Din uppgift är att fullborda dina rörelser med syfte. Då blir din expansion strålande.",
-      "Planetär Himmelsvandraren": "Som Planetär Himmelsvandraren förverkligar du äventyr i konkret form. Du kan bygga broar till nya världar på ett praktiskt sätt. Din uppgift är att göra expansion användbar. Då blir din kraft jordad.",
-      "Spektral Himmelsvandraren": "Som Spektral Himmelsvandraren löser du upp gamla gränser. Du kan frigöra dig från det som håller dig tillbaka. Din uppgift är att släppa taget och röra dig vidare. Då blir din frihet tydlig.",
-      "Kristall Himmelsvandraren": "Som Kristall Himmelsvandraren delar du utforskande med andra. Du kan skapa gemensamma resor och upptäckter. Din uppgift är att låta expansion bli kollektiv. Då blir din väg samlande.",
-      "Kosmisk Himmelsvandraren": "Som Kosmisk Himmelsvandraren vilar du i den oändliga rörelsen mellan världar. Din uppgift är att lita på att du alltid kan växa in i något större. När du gör det blir din frihet tidlös.",
-      "Magnetisk Trollkarlen": "Som Magnetisk Trollkarlen attraherar du genom tidlös visdom och receptivitet. Din väg handlar om att lyssna till det osynliga. Du dras till det som bär magi utan att kräva bevis. När du följer det blir din närvaro stark.",
-      "Lunar Trollkarlen": "Som Lunar Trollkarlen lär du genom kontrasten mellan illusion och insikt. Du känner snabbt när något inte är sant. Din uppgift är att skilja mellan yta och essens. Då blir din visdom djup.",
-      "Elektrisk Trollkarlen": "Som Elektrisk Trollkarlen sätter du andlig insikt i rörelse. Du kan väcka andra till ett nytt sätt att se tiden. Din uppgift är att använda din magi praktiskt och tydligt. Då blir din kraft katalytisk.",
-      "Självexisterande Trollkarlen": "Som Självexisterande Trollkarlen ger du form åt tidlös visdom. Du mår bra när andlighet har struktur och riktning. Din uppgift är att bygga en stabil grund för intuition. Då blir din insikt hållbar.",
-      "Övertonen Trollkarlen": "Som Övertonen Trollkarlen förhöjer du rummet med din tysta kraft. Du kan göra det osynliga mer påtagligt för andra. Din uppgift är att använda din inre stil med varsamhet. Då blir din närvaro magisk.",
-      "Rytmisk Trollkarlen": "Som Rytmisk Trollkarlen söker du balans mellan mottaglighet och handling. Du vet att magi behöver rytm för att fungera i livet. Din uppgift är att hålla både stillhet och rörelse. Då blir din visdom praktisk.",
-      "Resonant Trollkarlen": "Som Resonant Trollkarlen känner du in den osynliga tonen i allt. Du hör när något verkligen stämmer. Din uppgift är att lita på den frekvensen. Då blir din magi intuitiv.",
-      "Galaktisk Trollkarlen": "Som Galaktisk Trollkarlen vill du att din visdom ska vara i linje med din integritet. Du söker sanning i allt andligt. Din uppgift är att låta magin vara ren. Då blir din närvaro klar.",
-      "Solar Trollkarlen": "Som Solar Trollkarlen lyser du genom tidlös förståelse. Du kan visa andra hur man bär visdom med lugn. Din uppgift är att fullborda det du vet. Då blir din kraft strålande.",
-      "Planetär Trollkarlen": "Som Planetär Trollkarlen förverkligar du andlig insikt i vardagen. Du kan göra din visdom användbar i verkliga situationer. Din uppgift är att omsätta intuition till form. Då blir din kraft jordad.",
-      "Spektral Trollkarlen": "Som Spektral Trollkarlen löser du upp illusioner som inte längre håller. Din uppgift är att släppa det som skymmer sanningen. Då blir din magi frigörande.",
-      "Kristall Trollkarlen": "Som Kristall Trollkarlen delar du visdom i gemenskap. Du kan skapa rum där andra känner sig sedda. Din uppgift är att låta din kunskap bli kollektiv. Då blir din närvaro samlande.",
-      "Kosmisk Trollkarlen": "Som Kosmisk Trollkarlen vilar du i tidlöshetens kraft. Din uppgift är att lita på att din insikt redan är en del av helheten. När du gör det blir din magi gränslös.",
-      "Magnetisk Örnen": "Som Magnetisk Örnen attraherar du genom vision och riktning. Din väg handlar om att se det större mönstret. Du dras till det som kan bli något större än det är. När du följer visionen blir din väg klar.",
-      "Lunar Örnen": "Som Lunar Örnen lär du genom kontrasten mellan klarhet och osäkerhet. Du ser snabbt när något saknar riktning. Din uppgift är att förstå vad som är verklig vision. Då blir ditt seende skarpare.",
-      "Elektrisk Örnen": "Som Elektrisk Örnen sätter du vision i rörelse. Du kan få idéer att börja flyga. Din uppgift är att inte bara se utan också agera. Då blir din kraft skapande.",
-      "Självexisterande Örnen": "Som Självexisterande Örnen ger du form åt klar vision. Du mår bra när idéer har struktur. Din uppgift är att bygga en stabil ram för det du ser. Då blir din blick användbar.",
-      "Övertonen Örnen": "Som Övertonen Örnen förhöjer du andras perspektiv. Du kan lyfta ett rum bara genom hur du ser på världen. Din uppgift är att använda din klarsyn med hjärta. Då blir din energi inspirerande.",
-      "Rytmisk Örnen": "Som Rytmisk Örnen söker du balans mellan dröm och handling. Du vet att vision behöver rytm för att bli verklig. Din uppgift är att hålla blicken klar utan att pressa resultat. Då blir din väg jämn.",
-      "Resonant Örnen": "Som Resonant Örnen känner du visionens ton. Du vet ofta vad som vill hända innan det blivit tydligt. Din uppgift är att lita på den signalen. Då blir ditt seende intuitivt.",
-      "Galaktisk Örnen": "Som Galaktisk Örnen vill du att din vision ska vara i linje med din integritet. Du söker sanning i det du ser. Din uppgift är att låta klarhet och värde samverka. Då blir din blick ren.",
-      "Solar Örnen": "Som Solar Örnen lyser du genom tydlig vision. Du kan visa andra vägen framåt med ditt seende. Din uppgift är att fullborda det du uppfattar. Då blir din vision strålande.",
-      "Planetär Örnen": "Som Planetär Örnen omsätter du vision i konkret riktning. Du kan få idéer att bli verklighet. Din uppgift är att göra det du ser användbart. Då blir din kraft praktisk.",
-      "Spektral Örnen": "Som Spektral Örnen löser du upp gamla perspektiv. Du kan frigöra dig från det som begränsar din syn. Din uppgift är att se vidare. Då blir din klarhet fri.",
-      "Kristall Örnen": "Som Kristall Örnen delar du vision i gemenskap. Du kan hjälpa andra att se större möjligheter. Din uppgift är att låta perspektiv bli kollektivt. Då blir din blick samlande.",
-      "Kosmisk Örnen": "Som Kosmisk Örnen vilar du i den oändliga visionen. Din uppgift är att lita på att du redan är en del av det större seendet. När du gör det blir din klarsyn tidlös.",
-      "Magnetisk Krigaren": "Som Magnetisk Krigaren attraherar du genom mod och frågor. Din väg handlar om att veta vad du verkligen vill förstå. Du dras till det som kallar på din intelligens. När du frågar sant blir din riktning tydlig.",
-      "Lunar Krigaren": "Som Lunar Krigaren lär du genom att möta osäkerhet med mod. Du känner snabbt när något behöver granskas. Din uppgift är att skilja mellan rädsla och sann nyfikenhet. Då blir din styrka skarpare.",
-      "Elektrisk Krigaren": "Som Elektrisk Krigaren sätter du frågande kraft i rörelse. Du kan väcka andra till att tänka djupare. Din uppgift är att använda din intelligens aktivt. Då blir din energi katalytisk.",
-      "Självexisterande Krigaren": "Som Självexisterande Krigaren ger du form åt ditt fokus. Du mår bra när frågor har tydlig struktur. Din uppgift är att bygga en stabil metod för att förstå. Då blir din kraft konsekvent.",
-      "Övertonen Krigaren": "Som Övertonen Krigaren förstärker du mod hos andra. Du kan göra ett rum mer självsäkert bara genom att vara där. Din uppgift är att använda din skärpa med omtanke. Då blir din energi ledande.",
-      "Rytmisk Krigaren": "Som Rytmisk Krigaren söker du balans mellan ifrågasättande och lyssnande. Du vet att mod behöver rytm. Din uppgift är att inte bli hård i din jakt på sanning. Då blir din intelligens stabil.",
-      "Resonant Krigaren": "Som Resonant Krigaren känner du när en fråga verkligen är rätt. Du hör ofta vad som måste undersökas. Din uppgift är att följa den inre signalen. Då blir din kraft intuitiv.",
-      "Galaktisk Krigaren": "Som Galaktisk Krigaren vill du att ditt mod ska vara i linje med din integritet. Du söker sanning i allt du frågar om. Din uppgift är att använda intelligensen rent. Då blir din kraft klar.",
-      "Solar Krigaren": "Som Solar Krigaren lyser du genom modigt tänkande. Du kan inspirera andra att våga fråga mer. Din uppgift är att fullborda din undersökning. Då blir din kraft strålande.",
-      "Planetär Krigaren": "Som Planetär Krigaren omsätter du mod i konkret handling. Du kan göra frågor användbara i verkligheten. Din uppgift är att låta intelligensen få form. Då blir din kraft praktisk.",
-      "Spektral Krigaren": "Som Spektral Krigaren löser du upp gamla rädslor och tankemönster. Du kan frigöra dig från det som hindrar mod. Din uppgift är att släppa det som inte längre behövs. Då blir din kraft fri.",
-      "Kristall Krigaren": "Som Kristall Krigaren delar du mod i gemenskap. Du kan hjälpa andra att våga fråga. Din uppgift är att låta intelligens bli kollektiv. Då blir din närvaro samlande.",
-      "Kosmisk Krigaren": "Som Kosmisk Krigaren vilar du i frågans tidlöshet. Din uppgift är att lita på att sann intelligens redan är större än svaren. När du gör det blir din kraft gränslös.",
-      "Magnetisk Jorden": "Som Magnetisk Jorden attraherar du genom synkronicitet och riktning. Din väg handlar om att känna vart livet vill föra dig. Du dras till det som känns meningsfullt i det större flödet. När du följer tecknen blir din väg klar.",
-      "Lunar Jorden": "Som Lunar Jorden lär du genom kontraster i navigering. Du märker snabbt när du är ur fas med livet. Din uppgift är att förstå vad som återställer riktning. Då blir ditt steg säkrare.",
-      "Elektrisk Jorden": "Som Elektrisk Jorden sätter du rörelse i synkronicitet. Du kan få saker att hända genom att följa livets flöde aktivt. Din uppgift är att lita på det du märker längs vägen. Då blir din energi levande.",
-      "Självexisterande Jorden": "Som Självexisterande Jorden ger du form åt navigation. Du mår bra när du har tydliga kartor och rutiner. Din uppgift är att bygga struktur för riktning. Då blir din väg stabil.",
-      "Övertonen Jorden": "Som Övertonen Jorden förstärker du känslan av att allt hänger ihop. Du kan hjälpa andra att se mönster. Din uppgift är att använda din kraft med jorden i hjärtat. Då blir din närvaro vägledande.",
-      "Rytmisk Jorden": "Som Rytmisk Jorden söker du balans i hur du rör dig genom livet. Du vet att navigation kräver både lyssnande och handling. Din uppgift är att hålla tempot hållbart. Då blir din riktning jämn.",
-      "Resonant Jorden": "Som Resonant Jorden känner du när livet försöker visa dig vägen. Du hör ofta synkronicitetens ton tydligt. Din uppgift är att lita på signalerna. Då blir din navigation intuitiv.",
-      "Galaktisk Jorden": "Som Galaktisk Jorden vill du att din riktning ska vara i linje med din integritet. Du söker sanning i hur du navigerar. Din uppgift är att följa livet ärligt. Då blir din väg ren.",
-      "Solar Jorden": "Som Solar Jorden lyser du genom fullbordad riktning. Du kan hjälpa andra att hitta sin plats i helheten. Din uppgift är att göra din väg tydlig och meningsfull. Då blir din navigation strålande.",
-      "Planetär Jorden": "Som Planetär Jorden omsätter du synkronicitet i konkret handling. Du kan göra din riktning användbar i vardagen. Din uppgift är att följa den väg som fungerar här och nu. Då blir din kraft praktisk.",
-      "Spektral Jorden": "Som Spektral Jorden löser du upp gamla kartor som inte längre stämmer. Du kan frigöra dig från riktningar som tappat sin sanning. Din uppgift är att släppa det som inte leder vidare. Då blir din väg fri.",
-      "Kristall Jorden": "Som Kristall Jorden delar du navigation i gemenskap. Du kan hjälpa andra att se att vi rör oss tillsammans. Din uppgift är att låta riktning bli kollektiv. Då blir din närvaro samlande.",
-      "Kosmisk Jorden": "Som Kosmisk Jorden vilar du i att hela livet redan är en väg. Din uppgift är att lita på att du alltid är på väg hem och fram samtidigt. När du gör det blir din riktning tidlös.",
-      "Magnetisk Spegeln": "Som Magnetisk Spegeln attraherar du genom klar reflektion. Din väg handlar om att se sanningen och låta den dra dig rätt. Du dras till det som speglar ditt innersta. När du möter sanningen blir din väg tydlig.",
-      "Lunar Spegeln": "Som Lunar Spegeln lär du genom kontrasten mellan sanning och illusion. Du märker snabbt vad som inte stämmer. Din uppgift är att stå kvar när spegeln visar något oväntat. Då blir din klarhet djup.",
-      "Elektrisk Spegeln": "Som Elektrisk Spegeln sätter du klarhet i rörelse. Du kan få andra att se sanningen snabbare. Din uppgift är att använda spegeln för att väcka medvetenhet. Då blir din kraft avslöjande.",
-      "Självexisterande Spegeln": "Som Självexisterande Spegeln ger du form åt klarhet. Du mår bra när sanningen är strukturerad och begriplig. Din uppgift är att skapa ordning som gör reflektion möjlig. Då blir din kraft tydlig.",
-      "Övertonen Spegeln": "Som Övertonen Spegeln förhöjer du sanningsfältet omkring dig. Du kan göra det osynliga mer synligt för andra. Din uppgift är att använda din klarhet med varsamhet. Då blir din energi stark.",
-      "Rytmisk Spegeln": "Som Rytmisk Spegeln söker du balans mellan att se och att vara. Du vet att sanning behöver jämvikt för att inte bli hård. Din uppgift är att hålla spegeln stilla och klar. Då blir din reflektion användbar.",
-      "Resonant Spegeln": "Som Resonant Spegeln känner du när sanningen rör sig genom rummet. Du hör ofta det som andra inte vill säga. Din uppgift är att lita på den ton som visar vad som är sant. Då blir din spegel intuitiv.",
-      "Galaktisk Spegeln": "Som Galaktisk Spegeln vill du att din klarhet ska vara i linje med integritet. Du söker renhet i det du ser och visar. Din uppgift är att vara sann även när spegeln är obekväm. Då blir din kraft ren.",
-      "Solar Spegeln": "Som Solar Spegeln lyser du genom fullbordad klarhet. Du kan visa andra vad som är sant utan att gömma dig bakom illusion. Din uppgift är att stå i sanningen helt. Då blir din närvaro strålande.",
-      "Planetär Spegeln": "Som Planetär Spegeln omsätter du klarhet i konkret ordning. Du kan skapa system där sanning blir användbar. Din uppgift är att göra reflektion praktisk. Då blir din kraft jordad.",
-      "Spektral Spegeln": "Som Spektral Spegeln frigör du ordning för att reflektera sanningen. Du låter det som inte längre är sant lösas upp. Din uppgift är att säga ja till frigörelse och nej till illusion. Då blir din klarhet fri.",
-      "Kristall Spegeln": "Som Kristall Spegeln delar du klarhet i gemenskap. Du kan hjälpa andra att se sig själva tydligare. Din uppgift är att göra sanningen gemensam. Då blir din reflektion samlande.",
-      "Kosmisk Spegeln": "Som Kosmisk Spegeln vilar du i den oändliga reflektionens kraft. Din uppgift är att lita på att sanningen redan finns bakom allt du ser. När du gör det blir din klarhet tidlös.",
-      "Magnetisk Stormen": "Som Magnetisk Stormen attraherar du genom transformation och rening. Din väg handlar om att känna när något behöver byta form. Du dras till det som kan återfödas. När du följer den dragningen blir din kraft tydlig.",
-      "Lunar Stormen": "Som Lunar Stormen lär du genom kontrast och omdaning. Du märker snabbt vad som blivit gammalt och tungt. Din uppgift är att förstå vad som ska släppas så nytt kan uppstå. Då blir din förändring klok.",
-      "Elektrisk Stormen": "Som Elektrisk Stormen sätter du renande kraft i rörelse. Du kan snabbt få saker att transformeras. Din uppgift är att använda intensiteten med medvetenhet. Då blir din energi katalytisk.",
-      "Självexisterande Stormen": "Som Självexisterande Stormen ger du form åt förändring. Du mår bra när transformation har tydlig struktur. Din uppgift är att bygga ett ramverk där nytt kan födas. Då blir din kraft stabil.",
-      "Övertonen Stormen": "Som Övertonen Stormen förhöjer du förändringens tryck. Du kan göra transformation mer påtaglig för andra. Din uppgift är att använda din intensitet varsamt. Då blir din energi stark.",
-      "Rytmisk Stormen": "Som Rytmisk Stormen söker du balans i omvandling. Du vet att rening behöver takt. Din uppgift är att låta förändring ske i hållbara steg. Då blir din kraft jämn.",
-      "Resonant Stormen": "Som Resonant Stormen känner du när det är dags att släppa taget. Du hör ofta den inre signalen om vad som måste förändras. Din uppgift är att lita på det. Då blir din transformativa kraft intuitiv.",
-      "Galaktisk Stormen": "Som Galaktisk Stormen vill du att förändring ska vara i linje med integritet. Du söker sanning i det som bryts ner och byggs upp. Din uppgift är att rena utan att förlora riktningen. Då blir din kraft klar.",
-      "Solar Stormen": "Som Solar Stormen lyser du genom transformationens fullbordan. Du kan visa andra att förändring också är en form av helhet. Din uppgift är att fullborda det gamla så det nya kan lysa. Då blir din energi strålande.",
-      "Planetär Stormen": "Som Planetär Stormen omsätter du förändring i konkret verklighet. Du kan få omdaning att fungera praktiskt. Din uppgift är att låta det nya bli stabilt. Då blir din kraft användbar.",
-      "Spektral Stormen": "Som Spektral Stormen löser du upp det gamla helt. Du kan frigöra det som inte längre tjänar livet. Din uppgift är att låta förstörelsen bli rening. Då blir din transformation fri.",
-      "Kristall Stormen": "Som Kristall Stormen delar du förnyelse i gemenskap. Du kan hjälpa andra igenom skiften tillsammans. Din uppgift är att låta transformation bli kollektiv. Då blir din närvaro samlande.",
-      "Kosmisk Stormen": "Som Kosmisk Stormen vilar du i den tidlösa omdaningen. Din uppgift är att lita på att allt som bryts ner också återvänder i ny form. När du gör det blir din kraft gränslös.",
-      "Magnetisk Solen": "Som Magnetisk Solen attraherar du genom ljus och helhet. Din väg handlar om att låta syftet lysa klart. Du dras till det som känns strålande och sant. När du följer ljuset blir din väg tydlig.",
-      "Lunar Solen": "Som Lunar Solen lär du genom kontrasten mellan ljus och skugga. Du märker snabbt när något inte är i balans. Din uppgift är att förstå vad som behöver integreras. Då blir ditt ljus djupare.",
-      "Elektrisk Solen": "Som Elektrisk Solen sätter du upplysning i rörelse. Du kan få andra att känna mer klarhet och mening. Din uppgift är att använda ditt ljus aktivt. Då blir din energi katalytisk.",
-      "Självexisterande Solen": "Som Självexisterande Solen ger du form åt helhet. Du mår bra när syftet har tydliga ramar. Din uppgift är att bygga en stabil plats för ditt ljus. Då blir din kraft hållbar.",
-      "Övertonen Solen": "Som Övertonen Solen förhöjer du det som är sant och upplyst. Du kan göra hela rummet ljusare genom din närvaro. Din uppgift är att använda din strålglans med medkänsla. Då blir din energi stark.",
-      "Rytmisk Solen": "Som Rytmisk Solen söker du balans i hur du uttrycker din kraft. Du vet att ljus behöver rytm för att bli hållbart. Din uppgift är att inte bränna ut dig själv. Då blir ditt ljus jämnt.",
-      "Resonant Solen": "Som Resonant Solen känner du solens inre ton. Du vet när något verkligen är meningsfullt. Din uppgift är att lita på den signalen. Då blir ditt ljus intuitivt.",
-      "Galaktisk Solen": "Som Galaktisk Solen vill du att ditt ljus ska vara i linje med din integritet. Du söker sanning i vad du uttrycker. Din uppgift är att lysa rent. Då blir din kraft klar.",
-      "Solar Solen": "Som Solar Solen lyser du med syftets fullbordan. Du kan inspirera andra genom att stå helt i ditt ljus. Din uppgift är att fullborda det du är här för att uttrycka. Då blir din energi strålande.",
-      "Planetär Solen": "Som Planetär Solen omsätter du ljus i konkret handling. Du kan göra inspiration användbar i verkligheten. Din uppgift är att låta syftet få form. Då blir din kraft praktisk.",
-      "Spektral Solen": "Som Spektral Solen löser du upp det som skymmer ljuset. Du kan frigöra dig från gamla bilder av vem du är. Din uppgift är att låta solen lysa igenom. Då blir din strålglans fri.",
-      "Kristall Solen": "Som Kristall Solen delar du ljus i gemenskap. Du kan hjälpa andra att minnas sin egen klarhet. Din uppgift är att göra ljuset kollektivt. Då blir din närvaro samlande.",
-      "Kosmisk Solen": "Som Kosmisk Solen vilar du i den oändliga strålningen. Din uppgift är att lita på att ljuset redan är större än formen. När du gör det blir din närvaro tidlös."
-    };
-
-    const KORS_FORKLARING = {
-      "Elektrisk Froet": "Som Elektrisk Froet är du en katalysator för tillväxt. Ditt högre jag (Himmelsvandraren) vill att du utforskar nya världar - tekniska, kreativa och andliga. Din utmaning/dolda kraft (Jorden) är att landa i kroppen och naturens rytm, ha tålamod och hedra livets cykler. Din kraft/antipod (Trollkarlen) väcks när du litar på intuition och tidlös visdom istället för bara logik."
-    };
-
     const SEALS = [
-      { sv: "Draken", desc: "Den kosmiska livmoder som bär och uppehåller all skapelse. Du är ursprunget – en vårdnadsgivare av livet självt.", mantra: "Jag vårdar. Jag föder. Jag är källan." },
-      { sv: "Vinden", desc: "Den osynliga ande som förbinder alla varelser. Ditt ord bär kraft – du kommunicerar sanningens ande.", mantra: "Jag andas. Jag talar. Jag är andan." },
-      { sv: "Natten", desc: "Den djupa inre rikedom som finns i mörkret. Du bär drömmarnas och intuitionens gåva.", mantra: "Jag drömmer. Jag ser. Jag är rikedomen." },
-      { sv: "Fröet", desc: "Potentialens uppvaknande genom medveten intention. Du planterar framtidens frön med visdom.", mantra: "Jag blomstrar. Jag sätter. Jag är målmedvetenheten." },
-      { sv: "Ormen", desc: "Uppvaknandet av primordiala kroppsenergier. Du bär livskraftens och vitalitetens eld.", mantra: "Jag lever. Jag överlever. Jag är livsenergin." },
-      { sv: "Världsbrobyggaren", desc: "Konsten att släppa taget för att röra sig mellan världar. Du är en överbryggare av verkligheter.", mantra: "Jag jämnar. Jag frigör. Jag är möjligheten." },
-      { sv: "Handen", desc: "Kraften av medveten handling ledd av medvetenhet. Du läker och skapar med dina händers visdom.", mantra: "Jag vet. Jag läker. Jag är prestationens hand." },
-      { sv: "Stjärnan", desc: "Den naturliga ordning som uppstår när vi lever i alignment. Du strålar skönhet och harmoni.", mantra: "Jag pryder. Jag strålar. Jag är elegansen." },
-      { sv: "Månen", desc: "Vattnets kraft att återställa balans och sanning. Du är en kosmisk strömlinjeformare.", mantra: "Jag renar. Jag flödar. Jag är det universella vattnet." },
-      { sv: "Hunden", desc: "Sanningen att kontakt är vår största medicin. Du är en ledare av kärlek och lojalitet.", mantra: "Jag älskar. Jag är lojal. Jag är hjärtats kärlek." },
-      { sv: "Apan", desc: "Den oskyldiga glädje som frigör transformation. Du mästrar magien i lekfullhet och skapande.", mantra: "Jag leker. Jag skapar. Jag är illusionens magiker." },
-      { sv: "Människan", desc: "Kraften att forma verkligheten genom fri vilja. Du bär visdom och kunskapens gåva.", mantra: "Jag vet. Jag väljer. Jag är den fria viljans människa." },
-      { sv: "Himmelsvandraren", desc: "Modet att vandra nya stigar i kosmos. Du utforskar och expanderar dimensioner av verkligheten.", mantra: "Jag utforskar. Jag vaknar. Jag är rymdutforskarens ande." },
-      { sv: "Trollkarlen", desc: "Kraften av andlig insikt och tidlös visdom. Du är en tidlös magiker med helig kraftens receptivitet.", mantra: "Jag förtrollar. Jag vet. Jag är trollkarlen." },
-      { sv: "Örnen", desc: "Perceptionens klarhet som leder till målmedveten handling. Du ser med kosmisk klarhet.", mantra: "Jag skapar. Jag ser. Jag är det kreativa sinnet." },
-      { sv: "Krigaren", desc: "Disciplinerat fokus för att manifestera syfte. Du är en kosmisk frågare med intelligensens sköld.", mantra: "Jag frågar. Jag utforskar. Jag är den galaktiska krigaren." },
-      { sv: "Jorden", desc: "Manifestationens cykler som vårdar allt liv. Du navigerar med synkronitetens kraft.", mantra: "Jag navigerar. Jag uthärdar. Jag är den evolutionära jordkraften." },
-      { sv: "Spegeln", desc: "Klarheten att se sig själv och andra utan illusion. Du är en tidlös spegel av den oändliga ordningen.", mantra: "Jag reflekterar. Jag ordnar. Jag är den reflekterande spegeln." },
-      { sv: "Stormen", desc: "Den katalytiska energi som rensar det gamla. Du bär självgenerationens och transformationens kraft.", mantra: "Jag katalyserar. Jag transformerar. Jag är stormens energi." },
-      { sv: "Solen", desc: "Det strålande uttrycket av vårt högsta jag. Du strålar universell eld och upplyst medvetenhet.", mantra: "Jag lyser. Jag integrerar. Jag är den universella solelden." }
+      { sv: 'Draken', desc: 'Omsorg och ovillkorlig närvaro.', mantra: 'Jag vårdar. Jag föder. Jag är källan.' },
+      { sv: 'Vinden', desc: 'Kommunikation och sammanlänkning.', mantra: 'Jag andas. Jag talar. Jag är andan.' },
+      { sv: 'Natten', desc: 'Dröm, intuition och inre rikedom.', mantra: 'Jag drömmer. Jag ser. Jag är rikedomen.' },
+      { sv: 'Fröet', desc: 'Målmedveten tillväxt.', mantra: 'Jag blomstrar. Jag sätter. Jag är målmedvetenheten.' },
+      { sv: 'Ormen', desc: 'Livskraft och kroppslig vitalitet.', mantra: 'Jag lever. Jag överlever. Jag är livsenergin.' },
+      { sv: 'Världsbrobyggaren', desc: 'Övergång och att släppa taget.', mantra: 'Jag jämnar. Jag frigör. Jag är möjligheten.' },
+      { sv: 'Handen', desc: 'Handling och läkning.', mantra: 'Jag vet. Jag läker. Jag är prestationens hand.' },
+      { sv: 'Stjärnan', desc: 'Skönhet och harmoni.', mantra: 'Jag pryder. Jag strålar. Jag är elegansen.' },
+      { sv: 'Månen', desc: 'Rening och känslomässigt flöde.', mantra: 'Jag renar. Jag flödar. Jag är det universella vattnet.' },
+      { sv: 'Hunden', desc: 'Kärlek och lojalitet.', mantra: 'Jag älskar. Jag är lojal. Jag är hjärtats kärlek.' },
+      { sv: 'Apan', desc: 'Lek, humor och skapande.', mantra: 'Jag leker. Jag skapar. Jag är illusionens magiker.' },
+      { sv: 'Människan', desc: 'Fri vilja och visdom.', mantra: 'Jag vet. Jag väljer. Jag är den fria viljans människa.' },
+      { sv: 'Himmelsvandraren', desc: 'Utforskande och mod.', mantra: 'Jag utforskar. Jag vaknar. Jag är rymdutforskarens ande.' },
+      { sv: 'Trollkarlen', desc: 'Tidlös visdom och receptivitet.', mantra: 'Jag förtrollar. Jag vet. Jag är trollkarlen.' },
+      { sv: 'Örnen', desc: 'Vision och klarhet.', mantra: 'Jag skapar. Jag ser. Jag är det kreativa sinnet.' },
+      { sv: 'Krigaren', desc: 'Mod, fokus och frågande intelligens.', mantra: 'Jag frågar. Jag utforskar. Jag är den galaktiska krigaren.' },
+      { sv: 'Jorden', desc: 'Synkronicitet och riktning.', mantra: 'Jag navigerar. Jag uthärdar. Jag är den evolutionära jordkraften.' },
+      { sv: 'Spegeln', desc: 'Klarhet och sanning.', mantra: 'Jag reflekterar. Jag ordnar. Jag är den reflekterande spegeln.' },
+      { sv: 'Stormen', desc: 'Transformation och rening.', mantra: 'Jag katalyserar. Jag transformerar. Jag är stormens energi.' },
+      { sv: 'Solen', desc: 'Ljus, helhet och syfte.', mantra: 'Jag lyser. Jag integrerar. Jag är den universella solelden.' }
     ];
 
-    const TONES = ["Magnetisk","Lunar","Elektrisk","Självexisterande","Övertonen","Rytmisk","Resonant","Galaktisk","Solar","Planetär","Spektral","Kristall","Kosmisk"];
+    const TONES = ['Magnetisk','Lunar','Elektrisk','Självexisterande','Övertonen','Rytmisk','Resonant','Galaktisk','Solar','Planetär','Spektral','Kristall','Kosmisk'];
 
-    function calcSignature(){
-      const input=document.getElementById("birthdate").value;
-      if(!input){alert("Ange ett födelsedatum!");return;}
-      const [year,month,day]=input.split("-").map(Number);
-      const refDate=new Date(1987,6,26);
-      const bDate=new Date(year,month-1,day);
-      const diffDays=Math.round((bDate-refDate)/86400000);
-      const kin=((diffDays%260)+260)%260;
-      const sealIndex=kin%20;
-      const toneIndex=kin%13;
-      const seal=SEALS[sealIndex];
-      const tone=TONES[toneIndex];
-      const higherSelf=SEALS[(sealIndex+9)%20].sv;
-      const hiddenPower=SEALS[(19-sealIndex+20)%20].sv;
-      const antipod=SEALS[(sealIndex+10)%20].sv;
-      document.getElementById("rKin").textContent=`Kin ${kin===0?260:kin}`;
-      document.getElementById("rTone").textContent=`Ton ${toneIndex+1} · ${tone}`;
-      document.getElementById("rSeal").textContent=`${tone} ${seal.sv}`;
-      document.getElementById("rMantra").textContent=seal.mantra;
-      document.getElementById("rDesc").textContent=seal.desc;
-      document.getElementById("cSelf").textContent=`${tone} ${seal.sv}`;
-      document.getElementById("cHigher").textContent=higherSelf;
-      document.getElementById("cHidden").textContent=hiddenPower;
-      document.getElementById("cAnti").textContent=antipod;
-      document.getElementById("cSigShort").textContent=`${tone} ${seal.sv}`;
-      const signaturKey=`${tone} ${seal.sv}`;
-      document.getElementById("rForklaringLang").textContent=SIGNATUR_FORKLARING[signaturKey]||"";
-      document.getElementById("rKorsText").textContent=KORS_FORKLARING[signaturKey]||"";
-      const result=document.getElementById("calcResult");
-      result.classList.add("show");
-      result.scrollIntoView({behavior:"smooth",block:"nearest"});
+    const TONE_CORE = {
+      'Magnetisk':'attraherar och sätter syfte i rörelse',
+      'Lunar':'utmanar och lär genom spänning',
+      'Elektrisk':'aktiverar och tänder liv',
+      'Självexisterande':'ger form och håller struktur',
+      'Övertonen':'förstärker och lyser upp',
+      'Rytmisk':'balanserar och jämnar ut',
+      'Resonant':'lyssnar in och kanaliserar',
+      'Galaktisk':'håller integritet och renhet',
+      'Solar':'fullbordar och ger mening',
+      'Planetär':'gör verkligt och praktiskt',
+      'Spektral':'löser upp och frigör',
+      'Kristall':'samlar och delar i gemenskap',
+      'Kosmisk':'vilar i det tidlösa och gränslösa'
+    };
+
+    const KORS_FORKLARING = {};
+    const SIGNATUR_FORKLARING = {};
+    SEALS.forEach((seal, si) => {
+      const higher = SEALS[(si + 9) % 20].sv;
+      const hidden = SEALS[(19 - si + 20) % 20].sv;
+      const anti = SEALS[(si + 10) % 20].sv;
+      TONES.forEach(tone => {
+        const key = `${tone} ${seal.sv}`;
+        SIGNATUR_FORKLARING[key] = `Som ${tone} ${seal.sv} ${TONE_CORE[tone]}. Din kärnenergi handlar om ${seal.desc.toLowerCase().replace(/\.$/, '')}. När du lever medvetet blir den här frekvensen ett tydligt sätt att förstå hur du verkar i världen.`;
+        KORS_FORKLARING[key] = `Ditt Högre Jag (${higher}) pekar mot samma rörelse som din väg vill utveckla. Din dolda kraft eller utmaning (${hidden}) visar var livet vill mogna i dig. Din antipod eller kraft (${anti}) ger dig stöd när du behöver återvända till balans. Tillsammans bildar de fyra riktningarna ditt galaktiska kors.`;
+      });
+    });
+
+    function calcSignature() {
+      const input = document.getElementById('birthdate').value;
+      if (!input) { alert('Ange ett födelsedatum!'); return; }
+      const [year, month, day] = input.split('-').map(Number);
+      const refDate = new Date(1987, 6, 26);
+      const bDate = new Date(year, month - 1, day);
+      const diffDays = Math.round((bDate - refDate) / 86400000);
+      const kin = ((diffDays % 260) + 260) % 260;
+      const sealIndex = kin % 20;
+      const toneIndex = kin % 13;
+      const seal = SEALS[sealIndex];
+      const tone = TONES[toneIndex];
+      const higherSelf = SEALS[(sealIndex + 9) % 20].sv;
+      const hiddenPower = SEALS[(19 - sealIndex + 20) % 20].sv;
+      const antipod = SEALS[(sealIndex + 10) % 20].sv;
+      const signaturKey = `${tone} ${seal.sv}`;
+      document.getElementById('rKin').textContent = `Kin ${kin === 0 ? 260 : kin} · orakelavläsning`;
+      document.getElementById('rSeal').textContent = `${tone} ${seal.sv}`;
+      document.getElementById('rMantra').textContent = seal.mantra;
+      document.getElementById('rDesc').textContent = seal.desc;
+      document.getElementById('rForklaringLang').textContent = SIGNATUR_FORKLARING[signaturKey];
+      document.getElementById('cSelf').textContent = `${tone} ${seal.sv}`;
+      document.getElementById('cHigher').textContent = higherSelf;
+      document.getElementById('cHidden').textContent = hiddenPower;
+      document.getElementById('cAnti').textContent = antipod;
+      document.getElementById('cSigShort').textContent = `${tone} ${seal.sv}`;
+      document.getElementById('cCrossShort').textContent = `${higherSelf} · ${hiddenPower} · ${antipod}`;
+      document.getElementById('cCrossText').textContent = KORS_FORKLARING[signaturKey];
+      const result = document.getElementById('calcResult');
+      result.classList.remove('show');
+      void result.offsetWidth;
+      result.classList.add('show');
+      result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
 
-    function reflectMessage(){
-      const feeling=document.getElementById("feeling").value.trim().toLowerCase();
-      const journal=document.getElementById("journal").value.trim();
-      const output=document.getElementById("output");
-      let response="Det du känner just nu bär ett budskap. Stanna upp och fråga vad det vill visa dig.";
-      if(feeling.includes("sorg"))response="Sorgen visar att något har älskats på djupet. Låt den bli en bro mellan kärlek, minne och mognad.";
-      else if(feeling.includes("press")||feeling.includes("stress"))response="Pressen kan vara ett tecken på att du bär för mycket. Fråga vad som verkligen är ditt att hålla just nu.";
-      else if(feeling.includes("hopp"))response="Hoppet är själens sätt att känna en framtid innan sinnet hinner förstå den. Skydda det som ett inre ljus.";
-      else if(feeling.includes("tomhet"))response="Tomheten är inte alltid frånvaro – ibland är den mellanrummet där något gammalt lämnat, och något nytt ännu inte landat.";
-      else if(feeling.includes("kärlek"))response="Kärleken ber dig inte bara känna mer – den ber dig bli sannare, öppnare och modigare.";
-      else if(feeling.includes("väntan"))response="Väntan kan vara en övning i tillit. Vissa saker vill mogna innan de visar sig fullt ut.";
-      else if(feeling.includes("rädsla")||feeling.includes("oro"))response="Rädslan pekar ofta mot det som är viktigast. Fråga vad den skyddar – och om det skyddet fortfarande tjänar dig.";
-      else if(feeling.includes("glädje"))response="Glädjen är ett kosmiskt tecken att du är i alignment. Låt den vara hel och oinskränkt.";
-      else if(feeling.includes("ilska"))response="Ilskan bär ofta en djup gräns under sig. Vad är det som behöver respekteras, erkännas eller förändras?";
-      else if(feeling.includes("tacksamhet"))response="Tacksamhet är en av de mäktigaste vibrationerna. Du alignar dig med flödet av det som är.";
-      if(journal.length>0)response+=" Läs gärna dina egna ord igen, långsamt. Svaret gömmer sig ofta redan där.";
-      output.textContent=response;
-      const ringSymbols=["🐉","🌬","☾","🌱","🐍","🌉","✋","★","🌊","🐕","🐒","🧬","🚀","🔮","🦅","⚔","🌍","🪞","🌀","☀"];
-      const ring=document.getElementById("zodiacRing");
-      if(ring&&!ring.dataset.filled){
-        ring.dataset.filled="true";
-        ringSymbols.forEach((sym,i)=>{const angle=(i/ringSymbols.length)*2*Math.PI-Math.PI/2;const radius=142;const x=180+radius*Math.cos(angle);const y=180+radius*Math.sin(angle);const el=document.createElement("div");el.className="sym";el.style.left=x+"px";el.style.top=y+"px";el.textContent=sym;ring.appendChild(el);});
+    function reflectMessage() {
+      const feeling = document.getElementById('feeling').value.trim().toLowerCase();
+      const journal = document.getElementById('journal').value.trim();
+      const output = document.getElementById('output');
+      let response = 'Det du känner just nu bär ett budskap. Stanna upp och fråga vad det vill visa dig.';
+      if (feeling.includes('sorg')) response = 'Sorgen visar att något har älskats på djupet. Låt den bli en bro mellan kärlek, minne och mognad.';
+      else if (feeling.includes('press') || feeling.includes('stress')) response = 'Pressen kan vara ett tecken på att du bär för mycket. Fråga vad som verkligen är ditt att hålla just nu.';
+      else if (feeling.includes('hopp')) response = 'Hoppet är själens sätt att känna en framtid innan sinnet hinner förstå den. Skydda det som ett inre ljus.';
+      else if (feeling.includes('tomhet')) response = 'Tomheten är inte alltid frånvaro – ibland är den mellanrummet där något gammalt lämnat, och något nytt ännu inte landat.';
+      else if (feeling.includes('kärlek')) response = 'Kärleken ber dig inte bara känna mer – den ber dig bli sannare, öppnare och modigare.';
+      else if (feeling.includes('väntan')) response = 'Väntan kan vara en övning i tillit. Vissa saker vill mogna innan de visar sig fullt ut.';
+      else if (feeling.includes('rädsla') || feeling.includes('oro')) response = 'Rädslan pekar ofta mot det som är viktigast. Fråga vad den skyddar – och om det skyddet fortfarande tjänar dig.';
+      else if (feeling.includes('glädje')) response = 'Glädjen är ett kosmiskt tecken att du är i alignment. Låt den vara hel och oinskränkt.';
+      else if (feeling.includes('ilska')) response = 'Ilskan bär ofta en djup gräns under sig. Vad är det som behöver respekteras, erkännas eller förändras?';
+      else if (feeling.includes('tacksamhet')) response = 'Tacksamhet är en av de mäktigaste vibrationerna. Du alignar dig med flödet av det som är.';
+      if (journal.length > 0) response += ' Läs gärna dina egna ord igen, långsamt. Svaret gömmer sig ofta redan där.';
+      output.textContent = response;
+      const ringSymbols = ['🐉','🌬','☾','🌱','🐍','🌉','✋','★','🌊','🐕','🐒','🧬','🚀','🔮','🦅','⚔','🌍','🪞','🌀','☀'];
+      const ring = document.getElementById('zodiacRing');
+      if (ring && !ring.dataset.filled) {
+        ring.dataset.filled = 'true';
+        ringSymbols.forEach((sym, i) => {
+          const angle = (i / ringSymbols.length) * 2 * Math.PI - Math.PI / 2;
+          const radius = 142;
+          const x = 180 + radius * Math.cos(angle);
+          const y = 180 + radius * Math.sin(angle);
+          const el = document.createElement('div');
+          el.className = 'sym';
+          el.style.left = x + 'px';
+          el.style.top = y + 'px';
+          el.textContent = sym;
+          ring.appendChild(el);
+        });
       }
     }
+
+    const io = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in-view'); }); }, { threshold: 0.14 });
+    document.querySelectorAll('section').forEach(s => io.observe(s));
   </script>
 </body>
 </html>
