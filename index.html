@@ -58,8 +58,11 @@ h1{font-family:"Cormorant Garamond",serif;font-weight:400;line-height:1.04;font-
 .grad-text{background:linear-gradient(100deg,var(--gold2) 0%,var(--text) 40%,var(--violet) 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
 .lead{color:var(--muted);font-size:1.04rem;max-width:58ch;animation:rise .9s ease .12s both}
 .hero-cta{margin-top:26px;display:flex;gap:14px;flex-wrap:wrap;animation:rise .9s ease .18s both}
-.pillbtn{display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:999px;border:1px solid rgba(200,169,107,.5);font-size:.76rem;letter-spacing:.12em;text-transform:uppercase;transition:.25s;background:linear-gradient(180deg,rgba(200,169,107,.14),rgba(200,169,107,.03))}
-.pillbtn:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(200,169,107,.14);border-color:var(--gold2)}
+.pillbtn{display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:999px;border:1px solid rgba(200,169,107,.5);font-size:.76rem;letter-spacing:.12em;text-transform:uppercase;transition:transform .3s cubic-bezier(.2,.9,.3,1.3),box-shadow .3s ease,border-color .3s ease;background:linear-gradient(180deg,rgba(200,169,107,.14),rgba(200,169,107,.03));position:relative;overflow:hidden;isolation:isolate}
+.pillbtn::before{content:'';position:absolute;inset:0;background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.35) 48%,transparent 66%);transform:translateX(-120%);transition:transform .6s ease;z-index:-1}
+.pillbtn:hover::before{transform:translateX(120%)}
+.pillbtn:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 16px 38px rgba(200,169,107,.2);border-color:var(--gold2)}
+.pillbtn:active{transform:translateY(-1px) scale(.98)}
 .pillbtn.ghost{border-color:var(--line-strong);background:transparent}
 .pillbtn.ghost:hover{border-color:var(--violet);box-shadow:0 14px 34px rgba(155,139,255,.14)}
 
@@ -76,8 +79,12 @@ section.in-view{opacity:1;transform:none}
 .title{font-family:"Cormorant Garamond",serif;font-size:clamp(2rem,4vw,3.3rem);font-weight:400;line-height:1.08;margin-bottom:16px}
 .sub{color:var(--muted);max-width:74ch}
 
-.panel{background:linear-gradient(180deg,rgba(255,255,255,.025),rgba(255,255,255,.008));border:1px solid var(--line);border-radius:var(--radius);padding:24px;box-shadow:0 14px 44px rgba(0,0,0,.2);transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease}
-.panel:hover{transform:translateY(-3px);border-color:rgba(200,169,107,.26);box-shadow:0 20px 56px rgba(0,0,0,.28)}
+.panel{background:linear-gradient(180deg,rgba(255,255,255,.025),rgba(255,255,255,.008));border:1px solid var(--line);border-radius:var(--radius);padding:24px;box-shadow:0 14px 44px rgba(0,0,0,.2);transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease;transform-style:preserve-3d;will-change:transform;position:relative}
+.panel:hover{border-color:rgba(200,169,107,.26);box-shadow:0 24px 60px rgba(0,0,0,.34)}
+.tilt-glare{position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .3s ease;background:radial-gradient(circle at var(--gx,50%) var(--gy,50%),rgba(255,255,255,.10),transparent 55%);mix-blend-mode:screen}
+.panel:hover .tilt-glare,.seal-detail:hover .tilt-glare,.cards .card:hover .tilt-glare,.tones .tone:hover .tilt-glare{opacity:1}
+body:not(.no-motion) .reveal-stagger{opacity:0;transform:translateY(14px) scale(.985);transition:opacity .55s ease,transform .55s ease}
+body:not(.no-motion) .reveal-stagger.in{opacity:1;transform:none}
 .calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:start;margin-top:30px}
 .field{margin-top:16px}
 label{display:block;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
@@ -114,8 +121,10 @@ textarea{min-height:120px;resize:vertical}
 .copy-note.show{opacity:1}
 
 .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-top:26px}
-.cards .card,.tones .tone{background:var(--panel);padding:20px 18px;transition:transform .25s ease,background .25s ease;cursor:pointer;text-align:left}
-.cards .card:hover,.tones .tone:hover{transform:translateY(-3px);background:var(--panel2)}
+.cards .card,.tones .tone{background:var(--panel);padding:20px 18px;transition:transform .3s ease,background .3s ease,box-shadow .3s ease;cursor:pointer;text-align:left;position:relative;transform-style:preserve-3d;will-change:transform}
+.cards .card:hover,.tones .tone:hover{background:var(--panel2);box-shadow:0 18px 40px rgba(0,0,0,.35);z-index:2}
+.card-icon{transition:transform .35s cubic-bezier(.2,.9,.3,1.4)}
+.cards .card:hover .card-icon{transform:translateZ(18px) scale(1.12) rotate(-4deg)}
 .card-icon{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 30% 30%,rgba(200,169,107,.24),rgba(255,255,255,.02));border:1px solid var(--line);font-size:1.1rem;margin-bottom:12px}
 .card h4{font-family:"Cormorant Garamond",serif;font-size:1.2rem;font-weight:400;margin-bottom:8px}
 .card p{font-size:.86rem;color:var(--muted);line-height:1.65}
@@ -205,6 +214,25 @@ footer{padding:32px 0 46px;border-top:1px solid var(--line);color:var(--muted);f
 <div class="orb" id="zodiacRing"><div class="orb-center">Galaktisk Tid</div></div>
 </div>
 </div>
+</div>
+</section>
+
+<section id="om-tiden" style="padding:48px 0">
+<div class="wrap">
+<div class="section-kicker">Vad bygger detta på?</div>
+<h2 class="title" style="font-size:clamp(1.6rem,3vw,2.2rem)">Galaktisk tid – inte samma sak som din vanliga kalender</h2>
+<p class="sub" style="max-width:72ch">Den galaktiska tidräkningen som används här kommer inte från astronomi eller astrologi i vanlig mening. Den bygger på uråldriga mesoamerikanska tideräkningssystem (bland annat kopplade till maya-kulturen) och deras "heliga räkning" på <strong style="color:var(--text);font-weight:500">260 dagar</strong> – en cykel av 13 toner × 20 sigill, som i denna tolkning kallas Dreamspell/13-månaderskalendern.</p>
+<div class="grid" style="margin-top:22px">
+<div class="cell">
+<div class="k">Gregorianska kalendern</div>
+<div class="v" style="font-size:.95rem;font-family:Inter,sans-serif;color:var(--muted);line-height:1.7">12 ojämnt långa månader, styrd av jordens bana runt solen – solstånd och dagjämningar markerar årets fasta punkter.</div>
+</div>
+<div class="cell">
+<div class="k">Galaktisk (260-dagars) räkning</div>
+<div class="v" style="font-size:.95rem;font-family:Inter,sans-serif;color:var(--muted);line-height:1.7">13 toner × 20 sigill = 260 dagar, en cykel som upprepas oavbrutet oavsett årstid, solstånd eller månfas.</div>
+</div>
+</div>
+<p class="cross-text">Din "galaktiska signatur" är alltså inte en astronomisk position utan din plats i denna symboliska 260-dagarscykel, räknad från ditt födelsedatum. Läs resultatet som ett arketypiskt språk för självreflektion – inte som vetenskaplig eller astrologisk fakta.</p>
 </div>
 </section>
 
@@ -630,6 +658,84 @@ const navObserver = new IntersectionObserver((entries)=>{
   });
 }, { rootMargin: '-40% 0px -50% 0px' });
 document.querySelectorAll('main section[id]').forEach(s=>navObserver.observe(s));
+
+// ---- 3D-tilt + glans på paneler, kort och sigill-detaljvyn ----
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const canHover = window.matchMedia('(hover:hover)').matches;
+function initTilt(el, opts){
+  if (el.dataset.tiltReady) return;
+  el.dataset.tiltReady = 'true';
+  const glare = document.createElement('div');
+  glare.className = 'tilt-glare';
+  el.appendChild(glare);
+  if (prefersReducedMotion || !canHover) return;
+  const maxDeg = (opts && opts.maxDeg) || 5;
+  let raf = null;
+  el.addEventListener('mousemove', (e)=>{
+    const r = el.getBoundingClientRect();
+    const px = (e.clientX - r.left) / r.width;
+    const py = (e.clientY - r.top) / r.height;
+    glare.style.setProperty('--gx', (px*100) + '%');
+    glare.style.setProperty('--gy', (py*100) + '%');
+    if (raf) cancelAnimationFrame(raf);
+    raf = requestAnimationFrame(()=>{
+      const rx = (0.5 - py) * maxDeg * 2;
+      const ry = (px - 0.5) * maxDeg * 2;
+      el.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-4px)`;
+    });
+  });
+  el.addEventListener('mouseleave', ()=>{
+    if (raf) cancelAnimationFrame(raf);
+    el.style.transform = '';
+  });
+}
+function initTiltGroup(selector, maxDeg){
+  document.querySelectorAll(selector).forEach(el=>initTilt(el, { maxDeg }));
+}
+initTiltGroup('.panel', 4);
+initTiltGroup('.seal-detail', 3);
+initTiltGroup('.cards .card', 7);
+initTiltGroup('.tones .tone', 7);
+// Sigillistan byggs om varje gång ett sigill väljs — säkerställ glans/tilt på nya kort
+const tiltRefresh = new MutationObserver(()=>{ initTiltGroup('.cards .card', 7); initTiltGroup('.tones .tone', 7); });
+tiltRefresh.observe(document.body, { childList: true, subtree: true });
+
+// ---- Staggerad framträdande-animation för sigill- och tonlistor ----
+function staggerIn(container, itemSelector, stepMs){
+  const items = container.querySelectorAll(itemSelector);
+  items.forEach((el, i)=>{
+    el.classList.add('reveal-stagger');
+    el.style.transitionDelay = Math.min(i * (stepMs||35), 600) + 'ms';
+  });
+  const obs = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if (entry.isIntersecting){
+        entry.target.querySelectorAll(itemSelector).forEach(el=>el.classList.add('in'));
+        obs.disconnect();
+      }
+    });
+  }, { threshold: 0.1 });
+  obs.observe(container);
+}
+if (!prefersReducedMotion){
+  staggerIn(document.getElementById('sealList'), '.seal-item', 22);
+  staggerIn(document.getElementById('toneCards'), '.tone', 30);
+}
+
+// ---- Lätt parallax-djup på stjärn- och grain-bakgrunden vid scroll ----
+if (!prefersReducedMotion){
+  let ticking = false;
+  window.addEventListener('scroll', ()=>{
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(()=>{
+      const y = window.scrollY;
+      document.querySelector('.bg-stars').style.transform = `translateY(${y*0.06}px)`;
+      document.querySelector('.bg-grain').style.transform = `translateY(${y*0.03}px)`;
+      ticking = false;
+    });
+  }, { passive: true });
+}
 </script>
 </body>
 </html>
