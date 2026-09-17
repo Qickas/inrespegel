@@ -95,6 +95,10 @@ textarea{min-height:120px;resize:vertical}
 .btn:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(200,169,107,.15)}
 .btn.secondary{background:transparent;border-color:var(--line-strong)}
 .btn.secondary:hover{border-color:var(--violet);box-shadow:0 14px 34px rgba(155,139,255,.14)}
+.tema-picker{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+.tema-btn{padding:8px 14px;border-radius:999px;border:1px solid var(--line-strong);background:transparent;color:var(--muted);font-size:.72rem;letter-spacing:.06em;cursor:pointer;transition:.2s ease;font-family:inherit}
+.tema-btn:hover{border-color:var(--gold2);color:var(--text)}
+.tema-btn.active{border-color:var(--gold);color:var(--text);background:linear-gradient(180deg,rgba(200,169,107,.16),rgba(200,169,107,.04))}
 
 .result{display:none;margin-top:20px;background:linear-gradient(180deg,rgba(200,169,107,.07),rgba(255,255,255,.02));border:1px solid rgba(200,169,107,.24);border-radius:var(--radius);padding:24px;animation:rise .5s ease both;position:relative}
 .result.show{display:block}
@@ -257,6 +261,15 @@ footer{padding:32px 0 46px;border-top:1px solid var(--line);color:var(--muted);f
 <label for="birthdate">Ditt födelsedatum</label>
 <input type="date" id="birthdate" max="2026-12-31">
 </div>
+<div class="field">
+<label>Har du en fråga i fokus just nu? (valfritt)</label>
+<div class="tema-picker" id="temaPicker">
+<button type="button" class="tema-btn active" data-tema="">Ingen särskild</button>
+<button type="button" class="tema-btn" data-tema="omstart">Omstart</button>
+<button type="button" class="tema-btn" data-tema="karlek">Kärlek</button>
+<button type="button" class="tema-btn" data-tema="livsriktning">Livsriktning</button>
+</div>
+</div>
 <button class="btn" onclick="calcSignature()">Låt spegeln tolka</button>
 <div class="result" id="calcResult">
 <div class="kin" id="rKin"></div>
@@ -379,26 +392,26 @@ footer{padding:32px 0 46px;border-top:1px solid var(--line);color:var(--muted);f
 
 <script>
 const SEALS = [
-{ sv:'Draken', icon:'🐉', desc:'Omsorg och ovillkorlig närvaro.', mantra:'Jag vårdar. Jag föder. Jag är källan.' },
-{ sv:'Vinden', icon:'🌬', desc:'Kommunikation och sammanlänkning.', mantra:'Jag andas. Jag talar. Jag är andan.' },
-{ sv:'Natten', icon:'☾', desc:'Dröm, intuition och inre rikedom.', mantra:'Jag drömmer. Jag ser. Jag är rikedomen.' },
-{ sv:'Fröet', icon:'🌱', desc:'Målmedveten tillväxt.', mantra:'Jag blomstrar. Jag sätter. Jag är målmedvetenheten.' },
-{ sv:'Ormen', icon:'🐍', desc:'Livskraft och kroppslig vitalitet.', mantra:'Jag lever. Jag överlever. Jag är livsenergin.' },
-{ sv:'Världsbrobyggaren', icon:'🌉', desc:'Övergång och att släppa taget.', mantra:'Jag jämnar. Jag frigör. Jag är möjligheten.' },
-{ sv:'Handen', icon:'✋', desc:'Handling och läkning.', mantra:'Jag vet. Jag läker. Jag är prestationens hand.' },
-{ sv:'Stjärnan', icon:'★', desc:'Skönhet och harmoni.', mantra:'Jag pryder. Jag strålar. Jag är elegansen.' },
-{ sv:'Månen', icon:'🌊', desc:'Rening och känslomässigt flöde.', mantra:'Jag renar. Jag flödar. Jag är det universella vattnet.' },
-{ sv:'Hunden', icon:'🐕', desc:'Kärlek och lojalitet.', mantra:'Jag älskar. Jag är lojal. Jag är hjärtats kärlek.' },
-{ sv:'Apan', icon:'🐒', desc:'Lek, humor och skapande.', mantra:'Jag leker. Jag skapar. Jag är illusionens magiker.' },
-{ sv:'Människan', icon:'🧬', desc:'Fri vilja och visdom.', mantra:'Jag vet. Jag väljer. Jag är den fria viljans människa.' },
-{ sv:'Himmelsvandraren', icon:'🚀', desc:'Utforskande och mod.', mantra:'Jag utforskar. Jag vaknar. Jag är rymdutforskarens ande.' },
-{ sv:'Trollkarlen', icon:'🔮', desc:'Tidlös visdom och receptivitet.', mantra:'Jag förtrollar. Jag vet. Jag är trollkarlen.' },
-{ sv:'Örnen', icon:'🦅', desc:'Vision och klarhet.', mantra:'Jag skapar. Jag ser. Jag är det kreativa sinnet.' },
-{ sv:'Krigaren', icon:'⚔', desc:'Mod, fokus och frågande intelligens.', mantra:'Jag frågar. Jag utforskar. Jag är den galaktiska krigaren.' },
-{ sv:'Jorden', icon:'🌍', desc:'Synkronicitet och riktning.', mantra:'Jag navigerar. Jag uthärdar. Jag är den evolutionära jordkraften.' },
-{ sv:'Spegeln', icon:'🪞', desc:'Klarhet och sanning.', mantra:'Jag reflekterar. Jag ordnar. Jag är den reflekterande spegeln.' },
-{ sv:'Stormen', icon:'🌀', desc:'Transformation och rening.', mantra:'Jag katalyserar. Jag transformerar. Jag är stormens energi.' },
-{ sv:'Solen', icon:'☀', desc:'Ljus, helhet och syfte.', mantra:'Jag lyser. Jag integrerar. Jag är den universella solelden.' }
+{ sv:'Draken', icon:'🐉', desc:'Omsorg och ovillkorlig närvaro.', mantra:'Jag vårdar. Jag föder. Jag är källan.', handling:'skapa trygghet genom att finnas nära' },
+{ sv:'Vinden', icon:'🌬', desc:'Kommunikation och sammanlänkning.', mantra:'Jag andas. Jag talar. Jag är andan.', handling:'säga det som behöver sägas, rakt och tydligt' },
+{ sv:'Natten', icon:'☾', desc:'Dröm, intuition och inre rikedom.', mantra:'Jag drömmer. Jag ser. Jag är rikedomen.', handling:'lyssna inåt innan du bestämmer dig' },
+{ sv:'Fröet', icon:'🌱', desc:'Målmedveten tillväxt.', mantra:'Jag blomstrar. Jag sätter. Jag är målmedvetenheten.', handling:'plantera ett tydligt, avgränsat mål' },
+{ sv:'Ormen', icon:'🐍', desc:'Livskraft och kroppslig vitalitet.', mantra:'Jag lever. Jag överlever. Jag är livsenergin.', handling:'lyssna på kroppens signaler och agera på dem' },
+{ sv:'Världsbrobyggaren', icon:'🌉', desc:'Övergång och att släppa taget.', mantra:'Jag jämnar. Jag frigör. Jag är möjligheten.', handling:'avsluta det som inte längre bär' },
+{ sv:'Handen', icon:'✋', desc:'Handling och läkning.', mantra:'Jag vet. Jag läker. Jag är prestationens hand.', handling:'omsätta en insikt i ett konkret, litet steg' },
+{ sv:'Stjärnan', icon:'★', desc:'Skönhet och harmoni.', mantra:'Jag pryder. Jag strålar. Jag är elegansen.', handling:'göra något vackrare eller mer balanserat' },
+{ sv:'Månen', icon:'🌊', desc:'Rening och känslomässigt flöde.', mantra:'Jag renar. Jag flödar. Jag är det universella vattnet.', handling:'rensa bort det som inte längre känns sant' },
+{ sv:'Hunden', icon:'🐕', desc:'Kärlek och lojalitet.', mantra:'Jag älskar. Jag är lojal. Jag är hjärtats kärlek.', handling:'visa upp det du bryr dig om, i handling' },
+{ sv:'Apan', icon:'🐒', desc:'Lek, humor och skapande.', mantra:'Jag leker. Jag skapar. Jag är illusionens magiker.', handling:'leka fram en lösning istället för att pressa fram den' },
+{ sv:'Människan', icon:'🧬', desc:'Fri vilja och visdom.', mantra:'Jag vet. Jag väljer. Jag är den fria viljans människa.', handling:'göra ett medvetet val istället för ett vanemässigt' },
+{ sv:'Himmelsvandraren', icon:'🚀', desc:'Utforskande och mod.', mantra:'Jag utforskar. Jag vaknar. Jag är rymdutforskarens ande.', handling:'ta ett steg in i det obekanta' },
+{ sv:'Trollkarlen', icon:'🔮', desc:'Tidlös visdom och receptivitet.', mantra:'Jag förtrollar. Jag vet. Jag är trollkarlen.', handling:'vänta ut svaret istället för att jaga det' },
+{ sv:'Örnen', icon:'🦅', desc:'Vision och klarhet.', mantra:'Jag skapar. Jag ser. Jag är det kreativa sinnet.', handling:'zooma ut och se helheten innan nästa steg' },
+{ sv:'Krigaren', icon:'⚔', desc:'Mod, fokus och frågande intelligens.', mantra:'Jag frågar. Jag utforskar. Jag är den galaktiska krigaren.', handling:'ställa den fråga du annars undviker' },
+{ sv:'Jorden', icon:'🌍', desc:'Synkronicitet och riktning.', mantra:'Jag navigerar. Jag uthärdar. Jag är den evolutionära jordkraften.', handling:'lägga märke till vad som redan pekar åt samma håll' },
+{ sv:'Spegeln', icon:'🪞', desc:'Klarhet och sanning.', mantra:'Jag reflekterar. Jag ordnar. Jag är den reflekterande spegeln.', handling:'se situationen som den faktiskt är, utan förskönande' },
+{ sv:'Stormen', icon:'🌀', desc:'Transformation och rening.', mantra:'Jag katalyserar. Jag transformerar. Jag är stormens energi.', handling:'låta något gammalt falla för att göra plats' },
+{ sv:'Solen', icon:'☀', desc:'Ljus, helhet och syfte.', mantra:'Jag lyser. Jag integrerar. Jag är den universella solelden.', handling:'koppla handlingen till ett större syfte' }
 ];
 
 const TONES = ['Magnetisk','Lunar','Elektrisk','Självexisterande','Övertonen','Rytmisk','Resonant','Galaktisk','Solar','Planetär','Spektral','Kristall','Kosmisk'];
@@ -481,43 +494,57 @@ SEALS.forEach((seal, si) => {
   const anti = SEALS[(si + 10) % 20].sv;
   TONES.forEach(tone => {
     const key = `${tone} ${seal.sv}`;
-    SIGNATUR_FORKLARING[key] = `Som ${tone} ${seal.sv} ${TONE_CORE[tone]}. Din kärnenergi handlar om ${seal.desc.toLowerCase().replace(/\.$/, '')}. När du lever medvetet blir den här frekvensen ett tydligt sätt att förstå hur du verkar i världen.`;
-    KORS_FORKLARING[key] = `Ditt Högre Jag (${higher}) pekar mot samma rörelse som din väg vill utveckla. Din dolda kraft eller utmaning (${hidden}) visar var livet vill mogna i dig. Din antipod eller kraft (${anti}) ger dig stöd när du behöver återvända till balans. Tillsammans bildar de fyra riktningarna ditt galaktiska kors.`;
+    SIGNATUR_FORKLARING[key] = `Som ${tone} ${seal.sv} kan detta symbolisera att du ${TONE_CORE[tone]}, med ${seal.desc.toLowerCase().replace(/\.$/, '')} som återkommande tema – ett möjligt sätt att förstå frekvensen, inte en definition av vem du är.`;
+    KORS_FORKLARING[key] = `Högre Jag (${higher}) kan symbolisera en riktning att växa mot. Dold kraft (${hidden}) kan peka på något som vill utvecklas snarare än en brist. Antipod (${anti}) kan fungera som stöd eller motvikt när balansen behöver hittas igen. Tillsammans bildar de fyra en symbolisk helhet – inte ett facit.`;
   });
 });
 
-// ---- Djupläsning: personlig "pseudo-AI"-textgenerator, helt klientbaserad ----
-const OPENERS = [
-  (A)=>`${A} bär en signatur som märks redan innan orden hinner formas kring den.`,
-  (A)=>`Något i ${A==='Du'?'din':A+'s'} sätt att röra sig genom dagarna känns igen så fort kin-numret läses högt.`,
-  (A)=>`${A} lever redan, på ett eller annat sätt, i linje med den här frekvensen — även när ${A==='Du'?'du':'hen'} inte har namn på den.`
-];
-const CLOSERS = [
-  (A)=>`Låt den här läsningen vara en spegel, inte en dom. ${A} väljer själv vad som ska föras vidare från idag.`,
-  (A)=>`Bär signaturen som en påminnelse snarare än ett krav — den är en riktning, inte ett facit.`,
-  (A)=>`Återvänd hit när dagarna känns otydliga. Symbolerna förändras inte, men läsningen av dem fördjupas varje gång.`
-];
+// ---- Djupläsning: strukturerad symbolisk tolkning, helt klientbaserad ----
+const TEMA_LABEL = { omstart:'omstart', karlek:'kärlek', livsriktning:'livsriktning' };
+const TEMA_MALL = {
+  omstart: (h) => `Kopplat till din fråga om omstart kan detta läsas som ett stöd för att lämna något bakom dig och göra nästa steg konkret – till exempel genom att ${h}. Det är en möjlig tolkning, inte ett facit för vad du bör göra.`,
+  karlek: (h) => `Kopplat till din fråga om kärlek kan detta läsas som en fråga om hur du visar det du känner i handling – till exempel genom att ${h}. Vad andra känner kan bara de själva svara på.`,
+  livsriktning: (h) => `Kopplat till din fråga om livsriktning kan detta läsas som något att pröva just nu – till exempel genom att ${h}. Vart det leder kan den här läsningen inte förutsäga.`
+};
 
-function genereraDjupläsning(name, kin, seal, tone, higher, hidden, anti){
-  const A = name && name.trim() ? name.trim() : 'Du';
-  const addr = A === 'Du' ? 'du' : A;
-  const oIdx = kin % OPENERS.length;
-  const cIdx = Math.floor(kin/7) % CLOSERS.length;
+function genereraDjupläsning(name, kin, seal, tone, higher, hidden, anti, sealIndex, tema){
+  const harNamn = !!(name && name.trim());
+  const visatNamn = harNamn ? name.trim() : '';
   const sealDesc = seal.desc.toLowerCase().replace(/\.$/,'');
-  const toneVerb = TONE_CORE[tone];
+  const higherDesc = higher.desc.toLowerCase().replace(/\.$/,'');
+  const hiddenDesc = hidden.desc.toLowerCase().replace(/\.$/,'');
+  const antiDesc = anti.desc.toLowerCase().replace(/\.$/,'');
+  const higherNr = ((sealIndex + 9) % 20) + 1;
+  const mainNr = sealIndex + 1;
 
-  const p1 = `${OPENERS[oIdx](A)} Med kin ${kin===0?260:kin} som ${tone.toLowerCase()} ${seal.sv.toLowerCase()} bär ${addr} en energi som ${toneVerb} kring temat <strong>${sealDesc}</strong>. Mantrat "${seal.mantra}" är inte en beskrivning utifrån — det är den röst som redan talar inifrån ${addr==='du'?'dig':addr} på de dagar allt känns självklart.`;
+  const s1 = `${harNamn ? visatNamn+', här är underlaget för läsningen: ' : 'Här är underlaget för läsningen: '}din huvudsignatur är Kin ${kin} – ${tone} ${seal.sv} – räknad från antal dagar sedan en referenspunkt i den 260-dagars “heliga räkningen” (Dreamspell/13-månaderskalendern). Högre Jag, Dold kraft och Antipod är inte fristående symboler utan härleds ur var huvudsignaturen ligger i sigillhjulet, enligt den förenklade tolkningsmodell den här sidan använder: Högre Jag är sigillet nio steg framåt (sigill nr ${mainNr} → nr ${higherNr}, ${higher.sv}), Dold kraft är dess spegelvända motsvarighet, och Antipod ligger tio steg bort, mitt emot i hjulet. Det är en egen, förenklad modell – inte identisk med alla varianter av traditionell Dreamspell-vägledning.`;
 
-  const p2 = `Riktningen som ${addr} växer mot bär namnet <strong>${higher.sv}</strong> — ${higher.desc.toLowerCase().replace(/\.$/,'')}. Det är inte något ${addr==='du'?'du':addr} saknar, utan snarare den mognad som redan är på väg, ofta synlig i det ${addr==='du'?'du':addr} längtar efter att bli bättre på.`;
+  const s2 = `<strong>${seal.sv}</strong> (huvudsignatur) kan symbolisera ${sealDesc}. <strong>${higher.sv}</strong> (Högre Jag) kan symbolisera ${higherDesc}. <strong>${hidden.sv}</strong> (Dold kraft) kan symbolisera ${hiddenDesc} – ofta som något att växa igenom snarare än en brist. <strong>${anti.sv}</strong> (Antipod) kan symbolisera ${antiDesc}, en motpol eller balanspunkt enligt den här modellen.`;
 
-  const p3 = `Den dolda kraften — och samtidigt utmaningen — heter <strong>${hidden.sv}</strong>: ${hidden.desc.toLowerCase().replace(/\.$/,'')}. Det som är svårast att äga hos ${addr==='du'?'dig':addr} är ofta också det som, när det får plats, blir en av de starkaste tillgångarna.`;
+  const s3 = `En fråga att utforska: hur kan det ${seal.sv.toLowerCase()} bär på – ${sealDesc} – röra sig vidare mot ${higher.sv.toLowerCase()}, till exempel genom att ${higher.handling}? Dold kraft (${hidden.sv}) pekar på ${hiddenDesc}, något som kan vara svårare att erkänna men som också kan bli en styrka om det får plats – kanske genom att ${hidden.handling}. Antipoden (${anti.sv}) kan fungera som en motvikt när balansen tappas, till exempel genom att ${anti.handling}.`;
 
-  const p4 = `Som stöd och motpol står <strong>${anti.sv}</strong> — ${anti.desc.toLowerCase().replace(/\.$/,'')}. När ${addr==='du'?'du':addr} tappar balansen är det ofta hit blicken vill vändas: inte för att bli någon annan, utan för att komma ihåg helheten i den egna signaturen.`;
+  const s4 = tema && TEMA_MALL[tema] ? TEMA_MALL[tema](seal.handling) : '';
 
-  const p5 = CLOSERS[cIdx](A);
+  const q1 = `Var i vardagen märker du redan ${seal.sv.toLowerCase()}-kvaliteten – och var skulle ${higher.sv.toLowerCase()}-riktningen kunna få mer plats?`;
+  const q2 = tema && TEMA_LABEL[tema]
+    ? `Vad skulle vara ett litet, konkret steg kring din fråga om ${TEMA_LABEL[tema]} den här veckan?`
+    : `Vad skulle det innebära att möta ${hidden.sv.toLowerCase()} som en tillgång snarare än ett hinder, just nu?`;
 
-  return `<p>${p1}</p><p>${p2}</p><p>${p3}</p><p>${p4}</p><p>${p5}</p>`;
+  return `<p><strong>Signatur och beräkningsgrund.</strong> ${s1}</p>`
+    + `<p><strong>Symbolernas betydelse.</strong> ${s2}</p>`
+    + `<p><strong>Sambandet.</strong> ${s3}</p>`
+    + (s4 ? `<p><strong>Din fråga.</strong> ${s4}</p>` : '')
+    + `<p><strong>Att reflektera vidare.</strong> ${q1}<br>${q2}</p>`;
 }
+
+let valdTema = '';
+document.querySelectorAll('.tema-btn').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    document.querySelectorAll('.tema-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    valdTema = btn.dataset.tema || '';
+  });
+});
 
 let sisstaLasningText = '';
 
@@ -556,7 +583,7 @@ function calcSignature() {
   document.getElementById('rSeal').textContent = `${tone} ${seal.sv}`;
   document.getElementById('rMantra').textContent = seal.mantra;
   document.getElementById('rDesc').textContent = seal.desc;
-  document.getElementById('rDjup').innerHTML = genereraDjupläsning(nameInput, kin, seal, tone, higherSelf, hiddenPower, antipod);
+  document.getElementById('rDjup').innerHTML = genereraDjupläsning(nameInput, kin, seal, tone, higherSelf, hiddenPower, antipod, sealIndex, valdTema);
   document.getElementById('cSelf').textContent = `${tone} ${seal.sv}`;
   document.getElementById('cHigher').textContent = higherSelf.sv;
   document.getElementById('cHidden').textContent = hiddenPower.sv;
