@@ -526,12 +526,25 @@ function calcSignature() {
   const input = document.getElementById('birthdate').value;
   if (!input) { alert('Ange ett födelsedatum!'); return; }
   const [year, month, day] = input.split('-').map(Number);
-  const refDate = new Date(1987, 6, 26);
+  const refDate = new Date(1987, 6, 26); // Kin 34, verifierat
   const bDate = new Date(year, month - 1, day);
-  const diffDays = Math.round((bDate - refDate) / 86400000);
-  const kin = ((diffDays % 260) + 260) % 260;
-  const sealIndex = kin % 20;
-  const toneIndex = kin % 13;
+  const isSkottar = (y) => (y % 4 === 0 && y % 100 !== 0) || y % 400 === 0;
+  const riktning = bDate >= refDate ? 1 : -1;
+  const start = riktning === 1 ? refDate : bDate;
+  const slut = riktning === 1 ? bDate : refDate;
+  const raDagar = Math.round((slut - start) / 86400000);
+  let skottdagar = 0;
+  for (let y = start.getFullYear(); y <= slut.getFullYear(); y++) {
+    if (isSkottar(y)) {
+      const feb29 = new Date(y, 1, 29);
+      if (feb29.getTime() > start.getTime() && feb29.getTime() <= slut.getTime()) skottdagar++;
+    }
+  }
+  const diffDays = riktning * (raDagar - skottdagar);
+  const kinIndex0 = (((diffDays + 33) % 260) + 260) % 260;
+  const kin = kinIndex0 + 1;
+  const sealIndex = kinIndex0 % 20;
+  const toneIndex = kinIndex0 % 13;
   const seal = SEALS[sealIndex];
   const tone = TONES[toneIndex];
   const higherSelf = SEALS[(sealIndex + 9) % 20];
